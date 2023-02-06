@@ -1,0 +1,21 @@
+{
+    "activity":"number","Names":["one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen",
+    "fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","twenty"],
+    "picitures":["D21/images/images_number/1/1.svg","D21/images/images_number/2/2.svg"
+,"D21/images/images_number/3/3.svg","D21/images/images_number/4/4.svg","D21/images/images_number/5/5.svg"
+,"D21/images/images_number/6/6.svg","D21/images/images_number/7/7.svg","D21/images/images_number/8/8.svg","D21/images/images_number/9/9.svg"
+,"D21/images/images_number/10/10.svg","D21/images/images_number/11/11.svg","D21/images/images_number/12/12.svg","D21/images/images_number/13/13.svg"
+,"D21/images/images_number/14/14.svg","D21/images/images_number/15/15.svg","D21/images/images_number/16/16.svg","D21/images/images_number/17/17.svg"
+,"D21/images/images_number/18/18.svg","D21/images/images_number/19/19.svg","D21/images/images_number/20/20.svg"],
+    "Sounds":["D21/sounds/sounds_number/1.mp3","D21/sounds/sounds_number/2.mp3"
+,"D21/sounds/sounds_number/3.mp3","D21/sounds/sounds_number/4.mp3"
+,"D21/sounds/sounds_number/5.mp3","D21/sounds/sounds_number/6.mp3"
+,"D21/sounds/sounds_number/7.mp3","D21/sounds/sounds_number/8.mp3"
+,"D21/sounds/sounds_number/9.mp3","D21/sounds/sounds_number/10.mp3"
+,"D21/sounds/sounds_number/11.mp3","D21/sounds/sounds_number/12.mp3"
+,"D21/sounds/sounds_number/13.mp3","D21/sounds/sounds_number/14.mp3"
+,"D21/sounds/sounds_number/15.mp3","D21/sounds/sounds_number/16.mp3"
+,"D21/sounds/sounds_number/17.mp3","D21/sounds/sounds_number/18.mp3"
+,"D21/sounds/sounds_number/19.mp3","D21/sounds/sounds_number/20.mp3"],
+    "Questions":["What is the Number?"]
+}
