@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project/components/custom_color.dart';
+import 'package:project/modules/child_app/levelOne_screen/level1_screen.dart';
+import 'package:project/modules/child_app/levelTwo_screen/level2_screen.dart';
 
 class LevelsScreen extends StatefulWidget {
   const LevelsScreen({Key? key}) : super(key: key);
@@ -158,85 +160,93 @@ class _LevelsScreenState extends State<LevelsScreen> {
           fontWeight: FontWeight.w600
         ),
       ),
-      content: Stack(
-        children:
-        [
-          Container(
-            width: 319.0,
-            height: 150.0,
-            decoration: BoxDecoration(
-              color: CustomColor.deepBlue,
-              borderRadius: BorderRadius.circular(15.0),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.grey.withOpacity(.6),
-                    spreadRadius: 5.0,
-                    blurRadius: 7.0,
-                    offset: Offset(1.5 , 3)
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 20.0,
-              left: 15.0,
-            ),
-            child: SizedBox(
-              width: 280.0,
-              child: LinearProgressIndicator(
-                minHeight: 8.0,
-                color: Colors.deepOrange.shade500.withOpacity(.9),
-                backgroundColor: Colors.white,
+      content: InkWell(
+        onTap: ()
+            {
+              Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>  LevelOneScreen(),
+              ));
+            },
+            child: Stack(
+          children:
+          [
+            Container(
+              width: 319.0,
+              height: 150.0,
+              decoration: BoxDecoration(
+                color: CustomColor.deepBlue,
+                borderRadius: BorderRadius.circular(15.0),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey.withOpacity(.6),
+                      spreadRadius: 5.0,
+                      blurRadius: 7.0,
+                      offset: Offset(1.5 , 3)
+                  )
+                ],
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 90.0,
-              left: 16.0,
-            ),
-            child: Text(
-              'Level 1',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 28.0,
-                fontWeight: FontWeight.w700,
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 20.0,
+                left: 15.0,
+              ),
+              child: SizedBox(
+                width: 280.0,
+                child: LinearProgressIndicator(
+                  minHeight: 8.0,
+                  color: Colors.deepOrange.shade500.withOpacity(.9),
+                  backgroundColor: Colors.white,
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 15.0,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 120.0,
-              left: 16.0,
-            ),
-            child: Text(
-              'Basic',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 15.0,
-                fontWeight: FontWeight.w400,
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 90.0,
+                left: 16.0,
+              ),
+              child: Text(
+                'Level 1',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 28.0,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 39.1,
-              left: 72.0,
+            SizedBox(
+              height: 15.0,
             ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(15.0)
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 120.0,
+                left: 16.0,
               ),
-              child: Image.asset(
-                'assets/images/child_app/levels_screen/one.png',
+              child: Text(
+                'Basic',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 39.1,
+                left: 72.0,
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(15.0)
+                ),
+                child: Image.asset(
+                  'assets/images/child_app/levels_screen/one.png',
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
       state: currentStep>=0 ? StepState.complete : StepState.disabled,
     ),
@@ -249,85 +259,93 @@ class _LevelsScreenState extends State<LevelsScreen> {
             fontWeight: FontWeight.w600
         ),
       ),
-      content: Stack(
-        children:
-        [
-          Container(
-            width: 319.0,
-            height: 150.0,
-            decoration: BoxDecoration(
-              color: CustomColor.sky1,
-              borderRadius: BorderRadius.circular(15.0),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.grey.withOpacity(.6),
-                    spreadRadius: 5.0,
-                    blurRadius: 7.0,
-                    offset: Offset(1.5 , 3)
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 20.0,
-              left: 14.0,
-            ),
-            child: SizedBox(
-              width: 280.0,
-              child: LinearProgressIndicator(
-                minHeight: 8.0,
-                color: Colors.deepOrange.shade500.withOpacity(.9),
-                backgroundColor: Colors.white,
+      content: InkWell(
+        onTap: ()
+        {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) =>  LevelTwoScreen(),
+          ));
+        },
+        child: Stack(
+          children:
+          [
+            Container(
+              width: 319.0,
+              height: 150.0,
+              decoration: BoxDecoration(
+                color: CustomColor.sky1,
+                borderRadius: BorderRadius.circular(15.0),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey.withOpacity(.6),
+                      spreadRadius: 5.0,
+                      blurRadius: 7.0,
+                      offset: Offset(1.5 , 3)
+                  )
+                ],
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 90.0,
-              left: 16.0,
-            ),
-            child: Text(
-              'Level 2',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 28.0,
-                fontWeight: FontWeight.w700,
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 20.0,
+                left: 14.0,
+              ),
+              child: SizedBox(
+                width: 280.0,
+                child: LinearProgressIndicator(
+                  minHeight: 8.0,
+                  color: Colors.deepOrange.shade500.withOpacity(.9),
+                  backgroundColor: Colors.white,
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 15.0,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 120.0,
-              left: 16.0,
-            ),
-            child: Text(
-              'Basic',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 15.0,
-                fontWeight: FontWeight.w400,
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 90.0,
+                left: 16.0,
+              ),
+              child: Text(
+                'Level 2',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 28.0,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 8.0,
-              left: 109.0,
+            SizedBox(
+              height: 15.0,
             ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(15.0)
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 120.0,
+                left: 16.0,
               ),
-              child: Image.asset(
-                'assets/images/child_app/levels_screen/two.png',
+              child: Text(
+                'Basic',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 8.0,
+                left: 109.0,
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(15.0)
+                ),
+                child: Image.asset(
+                  'assets/images/child_app/levels_screen/two.png',
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
       state: currentStep>=1 ? StepState.complete : StepState.disabled,
     ),

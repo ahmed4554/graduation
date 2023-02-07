@@ -82,6 +82,8 @@ flutter:
      - assets/images/profile/eliza.png
      - assets/images/child_app/child_home/
      - assets/images/child_app/levels_screen/
+     - assets/images/child_app/level_one/
+     - assets/images/child_app/level_two/
      - assets/lotties/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
