@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project/components/custom_color.dart';
+import 'package:project/modules/child_app/content_screens/animals/animals_screen.dart';
+import 'package:project/modules/child_app/content_screens/shapes/shapes_screen.dart';
 
 class LevelTwoScreen extends StatelessWidget {
   const LevelTwoScreen({Key? key}) : super(key: key);
@@ -7,68 +9,102 @@ class LevelTwoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: CustomColor.blue11.withOpacity(.8),
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new),
+          color: Colors.white,
+          onPressed: () {},
+        ),
+        centerTitle: true,
+        title: const Text(
+          'Level 2',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 28.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       body: Stack(
         children:
         [
           Container(
             width: double.infinity,
-            height: 290.0,
+            height: MediaQuery.of(context).size.height * .35,
+            // height: 350.0,
             decoration: BoxDecoration(
-                color:CustomColor.blue11.withOpacity(.8),
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(110.0),
-                  bottomLeft: Radius.circular(110.0),
-                )
+              // color: CustomColor.blue11.withOpacity(.8),
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  CustomColor.blue11.withOpacity(.8),
+                  Colors.white,
+                ],
+                stops: const [.4,.6],
+                tileMode: TileMode.clamp,
+              ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(
-              top: 45.0,
               left: 20.0,
               right: 20.0,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
+              // crossAxisAlignment: CrossAxisAlignment.start,
               children:
               [
                 Row(
-                  children:
-                  [
-                    Icon(
-                      Icons.arrow_back_ios_new,
-                      color: Colors.white,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 120.0,
+                      height: 40.0,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.white,
+                            spreadRadius: 0,
+                            blurRadius: 10,
+                            offset: Offset.zero,
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(50.0),
+                      ),
+                      child: Text(
+                        'Let\'s Study',
+                        style: TextStyle(
+                            fontSize: 26.0, fontWeight: FontWeight.w500),
+                      ),
                     ),
-                    SizedBox(
-                      width: 100.0,
-                    ),
-                    Text(
-                      'Level 2',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 28.0,
-                        fontWeight: FontWeight.bold,
+                    Container(
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      width: 102.0,
+                      height: 102.0,
+                      margin: const EdgeInsets.only(top: 10),
+                      decoration: BoxDecoration(
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.white,
+                              spreadRadius: 1,
+                              blurRadius: 10,
+                              offset: Offset.zero,
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(50.0)),
+                      child: Image.asset(
+                        "assets/images/profile/eliza.png",
                       ),
                     ),
                   ],
                 ),
                 SizedBox(
-                  height: 60.0,
-                ),
-                Row(
-                  children:
-                  [
-                    Text(
-                      'Let\'s study',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 28.0,
-                          fontWeight: FontWeight.w500
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 50.0,
+                  height: 26.0,
                 ),
                 Row(
                   children:
@@ -85,7 +121,7 @@ class LevelTwoScreen extends StatelessWidget {
                             height: 200.0 ,
                             width: 165.0,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Colors.white.withOpacity(.7),
                               borderRadius: BorderRadius.circular(16.0),
                               boxShadow: [
                                 BoxShadow(
@@ -106,7 +142,7 @@ class LevelTwoScreen extends StatelessWidget {
                               height: 106.0 ,
                               width: 106.0,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Colors.white.withOpacity(.7),
                                 borderRadius: BorderRadius.circular(55.0),
                                 boxShadow: [
                                   BoxShadow(
@@ -182,7 +218,7 @@ class LevelTwoScreen extends StatelessWidget {
                             height: 200.0 ,
                             width: 165.0,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Colors.white.withOpacity(.7),
                               borderRadius: BorderRadius.circular(16.0),
                               boxShadow: [
                                 BoxShadow(
@@ -203,7 +239,7 @@ class LevelTwoScreen extends StatelessWidget {
                               height: 106.0 ,
                               width: 106.0,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Colors.white.withOpacity(.7),
                                 borderRadius: BorderRadius.circular(55.0),
                                 boxShadow: [
                                   BoxShadow(
@@ -275,7 +311,11 @@ class LevelTwoScreen extends StatelessWidget {
                     InkWell(
                       onTap: ()
                       {
-
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder:
+                              (context)=>ShapesScreen(),
+                          ),
+                        );
                       },
                       child: Stack(
                         children:
@@ -284,7 +324,7 @@ class LevelTwoScreen extends StatelessWidget {
                             height: 200.0 ,
                             width: 165.0,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Colors.white.withOpacity(.7),
                               borderRadius: BorderRadius.circular(16.0),
                               boxShadow: [
                                 BoxShadow(
@@ -305,7 +345,7 @@ class LevelTwoScreen extends StatelessWidget {
                               height: 106.0 ,
                               width: 106.0,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Colors.white.withOpacity(.7),
                                 borderRadius: BorderRadius.circular(55.0),
                                 boxShadow: [
                                   BoxShadow(
@@ -372,7 +412,11 @@ class LevelTwoScreen extends StatelessWidget {
                     InkWell(
                       onTap: ()
                       {
-
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder:
+                              (context)=>AnimalsScreen(),
+                          ),
+                        );
                       },
                       child: Stack(
                         children:
@@ -381,7 +425,7 @@ class LevelTwoScreen extends StatelessWidget {
                             height: 200.0 ,
                             width: 165.0,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Colors.white.withOpacity(.7),
                               borderRadius: BorderRadius.circular(16.0),
                               boxShadow: [
                                 BoxShadow(
@@ -402,7 +446,7 @@ class LevelTwoScreen extends StatelessWidget {
                               height: 106.0 ,
                               width: 106.0,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Colors.white.withOpacity(.7),
                                 borderRadius: BorderRadius.circular(55.0),
                                 boxShadow: [
                                   BoxShadow(
@@ -483,7 +527,7 @@ class LevelTwoScreen extends StatelessWidget {
                             height: 200.0 ,
                             width: 165.0,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Colors.white.withOpacity(.7),
                               borderRadius: BorderRadius.circular(16.0),
                               boxShadow: [
                                 BoxShadow(
@@ -504,7 +548,7 @@ class LevelTwoScreen extends StatelessWidget {
                               height: 106.0 ,
                               width: 106.0,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Colors.white.withOpacity(.7),
                                 borderRadius: BorderRadius.circular(55.0),
                                 boxShadow: [
                                   BoxShadow(
@@ -580,7 +624,7 @@ class LevelTwoScreen extends StatelessWidget {
                             height: 200.0 ,
                             width: 165.0,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Colors.white.withOpacity(.7),
                               borderRadius: BorderRadius.circular(16.0),
                               boxShadow: [
                                 BoxShadow(
@@ -601,7 +645,7 @@ class LevelTwoScreen extends StatelessWidget {
                               height: 106.0 ,
                               width: 106.0,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Colors.white.withOpacity(.7),
                                 borderRadius: BorderRadius.circular(55.0),
                                 boxShadow: [
                                   BoxShadow(

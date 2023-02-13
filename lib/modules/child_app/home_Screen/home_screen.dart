@@ -30,6 +30,7 @@ class ChildHomeScreen extends StatelessWidget {
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children:
               [
                 Row(
@@ -52,24 +53,40 @@ class ChildHomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 60.0,
+                const SizedBox(
+                  height: 21.0,
+                ),
+                const Text(
+                  'Hello,',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 48.0,
+                    fontWeight: FontWeight.w700,
+                    fontFamily: 'Nunito'
+                  ),
                 ),
                 Row(
                   children:
                   [
-                    Text(
-                      'Let\'s study',
+                    const Text(
+                      'Dear',
                       style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 28.0,
-                        fontWeight: FontWeight.w500
+                        color: Colors.white,
+                        fontSize: 48.0,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: 'Nunito'
                       ),
+                    ),
+                    const SizedBox(
+                      width: 7.0,
+                    ),
+                    Image.asset(
+                        'assets/images/child_app/child_home/wave.png',
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 50.0,
+                const SizedBox(
+                  height: 30.0,
                 ),
                 Row(
                   children:

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project/components/custom_color.dart';
+import 'package:project/modules/child_app/content_screens/shapes/shapes_screen.dart';
 
 class LevelOneScreen extends StatelessWidget {
   const LevelOneScreen({Key? key}) : super(key: key);
@@ -29,6 +30,7 @@ class LevelOneScreen extends StatelessWidget {
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children:
               [
                 Row(
@@ -39,7 +41,7 @@ class LevelOneScreen extends StatelessWidget {
                       color: Colors.white,
                     ),
                     SizedBox(
-                      width: 100.0,
+                      width: 120.0,
                     ),
                     Text(
                       'Level 1',
@@ -52,23 +54,39 @@ class LevelOneScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 60.0,
+                  height: 21.0,
+                ),
+                const Text(
+                  'Hello,',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 48.0,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Nunito'
+                  ),
                 ),
                 Row(
                   children:
                   [
-                    Text(
-                      'Let\'s study',
+                    const Text(
+                      'Again',
                       style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 28.0,
-                          fontWeight: FontWeight.w500
+                          color: Colors.white,
+                          fontSize: 48.0,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: 'Nunito'
                       ),
+                    ),
+                    const SizedBox(
+                      width: 7.0,
+                    ),
+                    Image.asset(
+                      'assets/images/child_app/child_home/wave.png',
                     ),
                   ],
                 ),
                 SizedBox(
-                  height: 50.0,
+                  height: 30.0,
                 ),
                 Row(
                   children:
@@ -82,53 +100,53 @@ class LevelOneScreen extends StatelessWidget {
                         children:
                         [
                           Container(
-                          height: 200.0 ,
-                          width: 165.0,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(16.0),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 4,
-                                blurRadius: 7,
-                                offset: Offset(1.5, 2), // changes position of shadow
-                              ),
-                            ],
-                          ),
-                        ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                top: 10.0,
-                                left: 29.0,
-                            ),
-                            child: Container(
-                            height: 106.0 ,
-                            width: 106.0,
+                            height: 200.0 ,
+                            width: 165.0,
                             decoration: BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.circular(55.0),
+                              borderRadius: BorderRadius.circular(16.0),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 3,
-                                  blurRadius: 9,
-                                  offset: const Offset(.5, .5), // changes position of shadow
+                                  spreadRadius: 4,
+                                  blurRadius: 7,
+                                  offset: Offset(1.5, 2), // changes position of shadow
                                 ),
                               ],
                             ),
-                                child: Image.asset(
-                                    'assets/images/child_app/level_one/abc.png',
-                                ),
-                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
-                                top: 123.0,
+                              top: 10.0,
+                              left: 29.0,
+                            ),
+                            child: Container(
+                              height: 106.0 ,
+                              width: 106.0,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(55.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 3,
+                                    blurRadius: 9,
+                                    offset: const Offset(.5, .5), // changes position of shadow
+                                  ),
+                                ],
+                              ),
+                              child: Image.asset(
+                                'assets/images/child_app/level_one/abc.png',
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              top: 123.0,
                               left: 55.0,
                             ),
                             child: Text(
-                                'Alphabet',
+                              'Alphabet',
                               style: TextStyle(
                                 color: CustomColor.sky1,
                                 fontWeight: FontWeight.w600,
@@ -138,11 +156,11 @@ class LevelOneScreen extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
-                                top: 143.0,
+                              top: 143.0,
                               left: 55.0,
                             ),
                             child: Text(
-                                '20 / 26',
+                              '20 / 26',
                               style: TextStyle(
                                 color: CustomColor.sky1,
                                 fontWeight: FontWeight.w600,
@@ -152,7 +170,7 @@ class LevelOneScreen extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
-                                top: 172.0,
+                              top: 172.0,
                               left: 12.0,
                             ),
                             child: SizedBox(
@@ -172,9 +190,9 @@ class LevelOneScreen extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: ()
-                       {
+                      {
 
-                       },
+                      },
                       child: Stack(
                         children:
                         [
@@ -275,7 +293,11 @@ class LevelOneScreen extends StatelessWidget {
                     InkWell(
                       onTap: ()
                       {
-
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder:
+                              (context) => ShapesScreen()
+                          ),
+                        );
                       },
                       child: Stack(
                         children:

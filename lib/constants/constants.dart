@@ -1,4 +1,6 @@
-List<String> bloodKinds = [
+
+List<String> bloodKinds =
+[
   'A+',
   'A-',
   'B+',
@@ -27,32 +29,32 @@ var shapes =
     "triangle"
   ],
   "pictures": [
-    "Database/shapes/names/circle.png",
-    "Database/shapes/names/heart.png",
-    "Database/shapes/names/heptagon.png",
-    "Database/shapes/names/hexagon.png",
-    "Database/shapes/names/kite.png",
-    "Database/shapes/names/octagon.png",
-    "Database/shapes/names/pentagon.png",
-    "Database/shapes/names/rectangle.png",
-    "Database/shapes/names/square.png",
-    "Database/shapes/names/star.png",
-    "Database/shapes/names/trapezoid.png",
-    "Database/shapes/names/triangle.png"
+    "assets/Database/shapes/names/circle.png",
+    "assets/Database/shapes/names/heart.png",
+    "assets/Database/shapes/names/heptagon.png",
+    "assets/Database/shapes/names/hexagon.png",
+    "assets/Database/shapes/names/kite.png",
+    "assets/Database/shapes/names/octagon.png",
+    "assets/Database/shapes/names/pentagon.png",
+    "assets/Database/shapes/names/rectangle.png",
+    "assets/Database/shapes/names/square.png",
+    "assets/Database/shapes/names/star.png",
+    "assets/Database/shapes/names/trapezoid.png",
+    "assets/Database/shapes/names/triangle.png"
   ],
   "shapes": [
-    "Database/shapes/shapes/circle.png",
-    "Database/shapes/shapes/heart.png",
-    "Database/shapes/shapes/heptagon.png",
-    "Database/shapes/shapes/hexagon.png",
-    "Database/shapes/shapes/kite.png",
-    "Database/shapes/shapes/octagon.png",
-    "Database/shapes/shapes/pentagon.png",
-    "Database/shapes/shapes/rectangle.png",
-    "Database/shapes/shapes/square.png",
-    "Database/shapes/shapes/star.png",
-    "Database/shapes/shapes/trapezoid.png",
-    "Database/shapes/shapes/triangle.png"
+    "assets/Database/shapes/shapes/circle.png",
+    "assets/Database/shapes/shapes/heart.png",
+    "assets/Database/shapes/shapes/heptagon.png",
+    "assets/Database/shapes/shapes/hexagon.png",
+    "assets/Database/shapes/shapes/kite.png",
+    "assets/Database/shapes/shapes/octagon.png",
+    "assets/Database/shapes/shapes/pentagon.png",
+    "assets/Database/shapes/shapes/rectangle.png",
+    "assets/Database/shapes/shapes/square.png",
+    "assets/Database/shapes/shapes/star.png",
+    "assets/Database/shapes/shapes/trapezoid.png",
+    "assets/Database/shapes/shapes/triangle.png"
   ],
   "sounds": [
     "Database/shapes/sounds/circle.mp3",
@@ -71,5 +73,101 @@ var shapes =
   "questions":
   [
     "What is the name of this shape ?"
+  ]
+};
+
+var animals =
+{
+  "activity":"animals",
+  "names":
+  [
+    "Ant",
+    "Bear",
+    "Crocodile",
+    "Dog",
+    "Elephant",
+    "Fox",
+    "Giraffe",
+    "Horse",
+    "Iguana",
+    "Jellyfish",
+    "kangaroo",
+    "Lion",
+    "Monkey",
+    "Numba",
+    "Owl",
+    "Penguin",
+    "Quail",
+    "Rooster",
+    "Sheep",
+    "Tiger",
+    "Unicorn",
+    "Vulture",
+    "Whale",
+    "Xenops",
+    "Yak",
+    "Zebra"
+  ],
+  "pictures":
+  [
+    "assets/Database/animals/images/Ant.png",
+    "assets/Database/animals/images/Bear.png",
+    "assets/Database/animals/images/Crocodile.png",
+    "assets/Database/animals/images/Dog.png",
+    "assets/Database/animals/images/Elephant.png",
+    "assets/Database/animals/images/Fox.png",
+    "assets/Database/animals/images/Giraffe.png",
+    "assets/Database/animals/images/Horse.png",
+    "assets/Database/animals/images/Iguana.png",
+    "assets/Database/animals/images/Jellyfish.png",
+    "assets/Database/animals/images/Kangaroo.png",
+    "assets/Database/animals/images/Lion.png",
+    "assets/Database/animals/images/Monkey.png",
+    "assets/Database/animals/images/Numba.png",
+    "assets/Database/animals/images/Owl.png",
+    "assets/Database/animals/images/Penguin.png",
+    "assets/Database/animals/images/Quail.png",
+    "assets/Database/animals/images/Rooster.png",
+    "assets/Database/animals/images/Sheep.png",
+    "assets/Database/animals/images/Tiger.png",
+    "assets/Database/animals/images/Unicorn.png",
+    "assets/Database/animals/images/Vulture.png",
+    "assets/Database/animals/images/Whale.png",
+    "assets/Database/animals/images/Xenops.png",
+    "assets/Database/animals/images/Yak.png",
+    "assets/Database/animals/images/Zebra.png"
+  ],
+  "sounds":
+  [
+    "assets/Database/animals/Sounds/ant.mp3",
+    "assets/Database/animals/Sounds/bear.mp3",
+    "assets/Database/animals/Sounds/crocodile.mp3",
+    "assets/Database/animals/Sounds/dog.mp3",
+    "assets/Database/animals/Sounds/elephant.mp3",
+    "assets/Database/animals/Sounds/fox.mp3",
+    "assets/Database/animals/Sounds/giraffe.mp3",
+    "assets/Database/animals/Sounds/horse.mp3",
+    "assets/Database/animals/Sounds/iguana.mp3",
+    "assets/Database/animals/Sounds/jellyfish.mp3",
+    "assets/Database/animals/Sounds/kangaroo.mp3",
+    "assets/Database/animals/Sounds/lion.mp3",
+    "assets/Database/animals/Sounds/monkey.mp3",
+    "assets/Database/animals/Sounds/numba.mp3",
+    "assets/Database/animals/Sounds/owl.mp3",
+    "assets/Database/animals/Sounds/penguin.mp3",
+    "assets/Database/animals/Sounds/quail.mp3",
+    "assets/Database/animals/Sounds/rooster.mp3",
+    "assets/Database/animals/Sounds/sheep.mp3",
+    "assets/Database/animals/Sounds/tiger.mp3",
+    "assets/Database/animals/Sounds/unicorn.mp3",
+    "assets/Database/animals/Sounds/vulture.mp3",
+    "assets/Database/animals/Sounds/whale.mp3",
+    "assets/Database/animals/Sounds/xenops.mp3",
+    "assets/Database/animals/Sounds/yak.mp3",
+    "assets/Database/animals/Sounds/zebra.mp3"
+  ],
+  "questions":
+  [
+    "What is the Animal?"
   ]
 };

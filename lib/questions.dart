@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project/modules/child_app/home_Screen/shapes.dart';
+import 'package:project/modules/child_app/content_screens/shapes/shapes.dart';
 import '../../../constants/constants.dart';
 
 class QuestionsScreen extends StatefulWidget {
