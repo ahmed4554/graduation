@@ -15,8 +15,8 @@ class RegisterScreen extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xff9CDFB5),
-              Color(0xffEEF8F2),
+              Color(0xFF1CB0F6),
+              Color(0xfff5fcf7),
               Color(0xffFFFFFF),
             ],
           ),

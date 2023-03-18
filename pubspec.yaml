@@ -46,6 +46,7 @@ dependencies:
   curved_navigation_bar: ^1.0.3
   lottie: any
   http: ^0.13.5
+  floating_action_bubble: ^1.1.4
 
 dev_dependencies:
   flutter_test:
@@ -76,6 +77,8 @@ flutter:
      - assets/images/logo.svg
      - assets/images/access/
      - assets/images/parentHome/
+     - assets/images/reminder/
+     - assets/images/healthy/
      - assets/images/bottomNavBar/
      - assets/images/settings/
      - assets/images/profile/

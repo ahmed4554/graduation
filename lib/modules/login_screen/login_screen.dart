@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:project/modules/home/home_screen.dart';
+import 'package:project/components/custom_color.dart';
 import 'package:project/modules/register_screen/register_screen.dart';
 import 'package:project/modules/reset/forgot_screen.dart';
 import '../../components/components.dart';
@@ -29,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Color(0xff9CDFB5),
+                Color(0xFF1CB0F6),
                 Color(0xffEEF8F2),
                 Color(0xffFFFFFF),
               ],
@@ -115,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 'Forgot password ?',
                               style: TextStyle(
                                 fontSize: 15,
-                                color: Color.fromARGB(255, 23, 203, 29),
+                                color: CustomColor.blue11,
                                 fontWeight: FontWeight.bold,
                                 decoration: TextDecoration.underline,
                               ),
@@ -190,7 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               'Register now',
                               style: TextStyle(
                                 fontSize: 15,
-                                color: Color.fromARGB(255, 23, 203, 29),
+                                color: CustomColor.blue11,
                                 fontWeight: FontWeight.bold,
                                 decoration: TextDecoration.underline,
                               ),

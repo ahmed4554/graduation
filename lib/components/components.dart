@@ -92,7 +92,7 @@ class MainButton extends StatelessWidget {
       width: width,
       child: MaterialButton(
         height: 50,
-        color: CustomColor.deepGreen,
+        color: CustomColor.blue11,
         minWidth: double.infinity,
         onPressed: onTap,
         child: Text(
@@ -163,6 +163,8 @@ class TextEditorForPhoneVerify extends StatelessWidget {
 }
 
 class TextEditorForVerifyCode extends StatelessWidget {
+  const TextEditorForVerifyCode({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -173,7 +175,7 @@ class TextEditorForVerifyCode extends StatelessWidget {
       focusedBorderColor: CustomColor.sky,
       borderRadius: BorderRadius.circular(10),
 
-      textStyle: TextStyle(
+      textStyle: const TextStyle(
         fontSize: 20.0,
         fontWeight: FontWeight.bold
       ),
@@ -219,7 +221,7 @@ class BloodKindBubble extends StatelessWidget {
       ),
       child: Text(
         title,
-        style: TextStyle(
+        style:const TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
           color: Colors.red,
@@ -301,7 +303,7 @@ class DonorInfo extends StatelessWidget {
                       children: [
                         const Icon(
                           Icons.link,
-                          color: Colors.green,
+                          color: CustomColor.blue11,
                         ),
                         const SizedBox(
                           width: 10,
@@ -364,5 +366,49 @@ class ChatItem extends StatelessWidget {
     );
   }
 }
+
+class HealtyFoodComponent extends StatelessWidget {
+  const HealtyFoodComponent({
+    Key? key,
+    required this.data,
+    required this.pic,
+  }) : super(key: key);
+  final String data;
+  final String pic;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          data,
+          style: const TextStyle(
+            fontSize: 19,
+            color: Colors.black54,
+          ),
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        Image(
+          image: AssetImage(pic),
+          width: MediaQuery.of(context).size.width,
+          height: 230,
+          fit: BoxFit.contain,
+        ),
+        Container(
+          margin: const EdgeInsets.only(
+              top: 15,
+          ),
+          height: 1.0,
+          color: Colors.black45,
+        ),
+      ],
+    );
+  }
+}
+
+
+
 
 

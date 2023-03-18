@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:project/components/custom_color.dart';
 import 'package:project/modules/child_app/home_Screen/home_screen.dart';
 import 'package:project/modules/home/home_screen.dart';
+import 'package:project/modules/login_screen/login_screen.dart';
 import '../../components/components.dart';
 
-class AccessScreen extends StatelessWidget {
+class AccessScreen extends StatefulWidget {
   const AccessScreen({Key? key}) : super(key: key);
+
+  @override
+  State<AccessScreen> createState() => _AccessScreenState();
+}
+
+enum UserType{ child , parent }
+
+class _AccessScreenState extends State<AccessScreen> {
+
+  UserType userType = UserType.parent;
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +54,11 @@ class AccessScreen extends StatelessWidget {
                         gradient: const LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
-                          // stops: [.38,.6],
+                          stops: [.1,.7,1.0],
                           colors: [
-                            Color(0xff9CDFB5),
+                            CustomColor.blue11,
                             Color(0xffEEF8F2),
-                            Color(0xffE3FBE8),
+                            CustomColor.blue11,
                           ],
                         ),
                       ),
@@ -113,33 +125,44 @@ class AccessScreen extends StatelessWidget {
                   child: Row(
                     children: [
                       InkWell(
-                        onTap: (){
-
+                        onTap: ()
+                        {
+                          setState(() {
+                            userType = UserType.parent;
+                          });
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder:
+                                (context)=> LoginScreen()
+                            ),
+                          );
                         },
                         child: Container(
-                          height: 300.0,
+                          height: 270.0,
                           width: 150.0,
-                          padding: const EdgeInsets.all(15),
+                          //padding: const EdgeInsets.all(15),
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            boxShadow: [
+                            boxShadow: userType == UserType.parent ? [
                               BoxShadow(
                                   color: Colors.grey[300]!,
                                   offset: const Offset(4, 4),
                                   blurRadius: 15,
-                                  spreadRadius: 1),
+                                  spreadRadius: 1
+                              ),
                               const BoxShadow(
-                                  color: Color.fromARGB(255, 215, 248, 227),
+                                  color: CustomColor.sky,
                                   offset: Offset(-4, -4),
-                                  blurRadius: 8,
-                                  spreadRadius: 1)
-                            ],
+                                  blurRadius: 9,
+                                  spreadRadius: .5
+                              )
+                            ] : null,
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: const Image(
                             image: AssetImage(
                               'assets/images/access/parent.png',
                             ),
+                            fit: BoxFit.contain,
                           ),
                         ),
                       ),
@@ -148,6 +171,9 @@ class AccessScreen extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: (){
+                          setState(() {
+                            userType = UserType.child;
+                          });
                           Navigator.of(context).push(
                             MaterialPageRoute(builder:
                                 (context)=> ChildHomeScreen()
@@ -155,29 +181,31 @@ class AccessScreen extends StatelessWidget {
                           );
                         },
                         child: Container(
-                          height: 300.0,
+                          height: 270.0,
                           width: 150.0,
-                          padding: const EdgeInsets.all(15),
+                          //padding: const EdgeInsets.all(15),
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            // boxShadow: [
-                            //   BoxShadow(
-                            //       color: Colors.grey[300]!,
-                            //       offset: const Offset(4, 4),
-                            //       blurRadius: 15,
-                            //       spreadRadius: 1),
-                            //   BoxShadow(
-                            //       color: Colors.grey[100]!,
-                            //       offset: const Offset(-4, -4),
-                            //       blurRadius: 15,
-                            //       spreadRadius: 1)
-                            // ],
+                            boxShadow: userType == UserType.child ? [
+                               BoxShadow(
+                                   color: Colors.grey[300]!,
+                                   offset: const Offset(4, 4),
+                                   blurRadius: 15,
+                                   spreadRadius: 1),
+                               BoxShadow(
+                                   color: CustomColor.sky,
+                                   offset: const Offset(-4, -4),
+                                   blurRadius: 15,
+                                   spreadRadius: 1,
+                               )
+                             ] : null,
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: const Image(
                             image: AssetImage(
                               'assets/images/access/child.png',
                             ),
+                            fit: BoxFit.contain,
                           ),
                         ),
                       ),

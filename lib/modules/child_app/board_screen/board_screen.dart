@@ -91,11 +91,9 @@ class _BoardScreenState extends State<BoardScreen> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(
-                top: 110.0,
-              left: 120.0,
-            ),
+          Positioned(
+            top: MediaQuery.of(context).size.width / 7,
+            left: 140,
             child: SizedBox(
               width: 160.0,
               height: 160.0,
@@ -105,16 +103,14 @@ class _BoardScreenState extends State<BoardScreen> {
             ),
           ),
           if (show == true)
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 110.0,
-              left: 500.0,
-            ),
-            child: SizedBox(
-              width: 160.0,
-              height: 160.0,
-              child: Image.asset(
-                widget.board.pictures![widget.index],
+          Positioned(
+            top: MediaQuery.of(context).size.width / 5,
+            right: 150,
+            child: Text(
+              widget.board.names![widget.index],
+              style: TextStyle(
+                fontSize: 70.0,
+                fontWeight: FontWeight.w900,
               ),
             ),
           ),

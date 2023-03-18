@@ -41,10 +41,10 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [CustomColor.green, CustomColor.yellow,CustomColor.blue],
+              colors: [ Colors.white,CustomColor.blue11.withOpacity(.9)],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              stops: [0.1, 0.5,1.0],
+              stops: [ 0.0,1.0],
               tileMode: TileMode.clamp
           ),
         ),

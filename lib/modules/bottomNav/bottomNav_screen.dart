@@ -5,7 +5,6 @@ import 'package:project/modules/home/home_screen.dart';
 import 'package:project/modules/notification/notification_screen.dart';
 import 'package:project/modules/profile/profile_screen.dart';
 import 'package:project/modules/settings/settings_screen.dart';
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 
 
 class MainPage extends StatefulWidget {
@@ -19,7 +18,7 @@ class _MainPageState extends State<MainPage> {
   List<Widget> pages = <Widget>
   [
     SettingsScreen(),
-    ChatScreen(),
+    Chat(),
     HomeScreen(),
     NotifyScreen(),
     ProfileScreen(),

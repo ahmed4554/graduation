@@ -176,7 +176,7 @@ class _AnimalsScreenState extends State<AnimalsScreen> {
                                       width: 90.0,
                                       height: 90.0,
                                       child: Image.asset(
-                                        animalsC!.pictures![index],
+                                        animalsC!.shapes![index],
                                       ),
                                     ),
                                     Text(

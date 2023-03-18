@@ -15,33 +15,20 @@ var shapes =
 {
   "activity": "shapes",
   "names": [
-    "circle",
-    "heart",
-    "heptagon",
-    "hexagon",
-    "kite",
-    "octagon",
-    "pentagon",
-    "rectangle",
-    "square",
-    "star",
-    "trapezoid",
-    "triangle"
+    "Circle",
+    "Heart",
+    "Heptagon",
+    "Hexagon",
+    "Kite",
+    "Octagon",
+    "Pentagon",
+    "Rectangle",
+    "Square",
+    "Star",
+    "Trapezoid",
+    "Triangle"
   ],
-  "pictures": [
-    "assets/Database/shapes/names/circle.png",
-    "assets/Database/shapes/names/heart.png",
-    "assets/Database/shapes/names/heptagon.png",
-    "assets/Database/shapes/names/hexagon.png",
-    "assets/Database/shapes/names/kite.png",
-    "assets/Database/shapes/names/octagon.png",
-    "assets/Database/shapes/names/pentagon.png",
-    "assets/Database/shapes/names/rectangle.png",
-    "assets/Database/shapes/names/square.png",
-    "assets/Database/shapes/names/star.png",
-    "assets/Database/shapes/names/trapezoid.png",
-    "assets/Database/shapes/names/triangle.png"
-  ],
+
   "shapes": [
     "assets/Database/shapes/shapes/circle.png",
     "assets/Database/shapes/shapes/heart.png",
@@ -108,7 +95,7 @@ var animals =
     "Yak",
     "Zebra"
   ],
-  "pictures":
+  "shapes":
   [
     "assets/Database/animals/images/Ant.png",
     "assets/Database/animals/images/Bear.png",
@@ -171,3 +158,18 @@ var animals =
     "What is the Animal?"
   ]
 };
+
+String healthyFood =
+    'The American Academy of Pediatrics’ '
+    'Committee on Genetics has noted that those with Down syndrome are likely to develop certain health problems.'
+    'This is thought to happen as a result of body structures not developing normally.'
+    'Children with Down syndrome are likely to be overweight and have a higher risk of obesity. '
+    'They burn calories at a slower rate and are frequently diagnosed with an under-active thyroid which can contribute to weight gain.'
+    'Gastroesophageal reflux disease (GERD) is common among children with Down syndrome.Symptoms include heartburn, '
+    'sore throat,'
+    ' regurgitation and chest pain.'
+    'Gluten intolerance and celiac disease is also widespread and can lead to nutrient deficiency and an impaired immune system if dietary needs are avoided.Finally, '
+    'periodontal disease becomes prevalent in adulthood so it is important to establish habits to eat foods that will decrease its likelihood.';
+
+String aboutUs =
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';

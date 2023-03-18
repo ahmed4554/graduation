@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project/components/components.dart';
 import 'package:project/components/custom_color.dart';
+import 'package:project/modules/home/home_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -18,8 +19,8 @@ class ProfileScreen extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Color(0xff9CDFB5),
-                Color(0xffddf3e3),
+                CustomColor.blue11,
+                Color(0xffccdfef),
                 Color(0xffFFFFFF),
               ],
             ),
@@ -37,14 +38,17 @@ class ProfileScreen extends StatelessWidget {
                 Row(
                   children:
                   [
-                    Icon(Icons.arrow_back_ios_new),
+                    Icon(
+                        Icons.person_outline_rounded,
+                    ),
                     SizedBox(
-                      width: 14.0,
+                      width: 5.0,
                     ),
                     Text(
                       'Profile',
                       style: TextStyle(
-                          fontSize: 27.0
+                          fontSize: 27.0,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     Spacer(),
@@ -92,8 +96,8 @@ class ProfileScreen extends StatelessWidget {
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
                                   colors: [
-                                    Color(0xffbbe3c7),
-                                    Color(0xffc4eed7),
+                                    Color(0xffbce1ec),
+                                    Color(0xffbce1ec),
                                   ],
                                 ),
                                 border: Border.all(
@@ -131,13 +135,13 @@ class ProfileScreen extends StatelessWidget {
                               'Edit profile',
                             style: TextStyle(
                               fontSize: 15.0,
-                              color: CustomColor.deepGreen,
+                              color: CustomColor.blue11,
                             ),
                            ),
                           ),
                           Icon(
                               Icons.edit,
-                            color: CustomColor.deepGreen,
+                            color: CustomColor.blue11,
                             size: 20.0,
                           ),
                         ],

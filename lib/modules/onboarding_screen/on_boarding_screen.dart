@@ -96,7 +96,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               child: SmoothPageIndicator(
                 controller: boardController,
                 effect: const ExpandingDotsEffect(
-                  activeDotColor: CustomColor.deepGreen,
+                  activeDotColor: CustomColor.blue11,
                   dotColor: Colors.grey,
                   dotHeight: 14,
                   expansionFactor: 4,
@@ -126,7 +126,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   child: const Text(
                       'Skip',
                     style: TextStyle(
-                        color: CustomColor.deepGreen,
+                        color: CustomColor.blue11,
                         fontSize: 24.0
                     ),
                   ),
@@ -140,7 +140,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     borderRadius: BorderRadius.circular(30.0)
                   ),
                   child: MaterialButton(
-                    color: CustomColor.deepGreen,
+                    color: CustomColor.blue11,
                     onPressed: ()
                     {
                       if (isLast == true)
@@ -148,7 +148,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) {
-                              return LoginScreen();
+                              return AccessScreen();
                             },
                           ),
                         );

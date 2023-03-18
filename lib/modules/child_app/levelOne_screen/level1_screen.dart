@@ -13,13 +13,20 @@ class LevelOneScreen extends StatelessWidget {
         [
           Container(
             width: double.infinity,
-            height: 290.0,
+            height: MediaQuery.of(context).size.height * .6,
+            // height: 350.0,
             decoration: BoxDecoration(
-                color:CustomColor.blue11.withOpacity(.8),
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(110.0),
-                  bottomLeft: Radius.circular(110.0),
-                )
+              // color: CustomColor.blue11.withOpacity(.8),
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  CustomColor.blue11.withOpacity(.8),
+                  Colors.white,
+                ],
+                stops: const [.4,.6],
+                tileMode: TileMode.clamp,
+              ),
             ),
           ),
           Padding(
@@ -54,39 +61,55 @@ class LevelOneScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 21.0,
-                ),
-                const Text(
-                  'Hello,',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 48.0,
-                      fontWeight: FontWeight.w700,
-                      fontFamily: 'Nunito'
-                  ),
+                  height: 26.0,
                 ),
                 Row(
-                  children:
-                  [
-                    const Text(
-                      'Again',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 48.0,
-                          fontWeight: FontWeight.w700,
-                          fontFamily: 'Nunito'
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 120.0,
+                      height: 40.0,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.white,
+                            spreadRadius: 0,
+                            blurRadius: 10,
+                            offset: Offset.zero,
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(50.0),
+                      ),
+                      child: Text(
+                        'Let\'s Study',
+                        style: TextStyle(
+                            fontSize: 26.0, fontWeight: FontWeight.w500),
                       ),
                     ),
-                    const SizedBox(
-                      width: 7.0,
-                    ),
-                    Image.asset(
-                      'assets/images/child_app/child_home/wave.png',
+                    Container(
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      width: 102.0,
+                      height: 102.0,
+                      margin: const EdgeInsets.only(top: 10),
+                      decoration: BoxDecoration(
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.white,
+                              spreadRadius: 1,
+                              blurRadius: 10,
+                              offset: Offset.zero,
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(50.0)),
+                      child: Image.asset(
+                        "assets/images/profile/eliza.png",
+                      ),
                     ),
                   ],
                 ),
                 SizedBox(
-                  height: 30.0,
+                  height: 55.0,
                 ),
                 Row(
                   children:

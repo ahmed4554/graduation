@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:project/components/components.dart';
+import 'package:project/components/custom_color.dart';
 import 'package:project/modules/donor_list/donor_list_request.dart';
+import 'package:project/modules/home/home_screen.dart';
 
 import '../../constants/constants.dart';
 
@@ -21,8 +23,8 @@ class DonorInfoScreen extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.center,
             colors: [
-              Color(0xffB8EBCB),
-              Color(0xffEEF8F2),
+              Color(0xff1CB0F6),
+              Color(0xffd0e7fc),
               Colors.white,
             ],
           ),
@@ -33,13 +35,37 @@ class DonorInfoScreen extends StatelessWidget {
             const SizedBox(
               height: 60,
             ),
-            const Text(
-              'Find Donor',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 32,
-                color: Colors.black,
+            Padding(
+              padding: const EdgeInsets.only(left: 14.0),
+              child: Row(
+                 children:
+                 [
+                   InkWell(
+                     onTap: ()
+                       {
+                         Navigator.of(context).pop(
+                         MaterialPageRoute(
+                          builder: (context) => HomeScreen(),
+                        ),
+                      );
+                    },
+                     child: Icon(
+                           Icons.arrow_back_ios_new,
+                       ),
+                   ),
+                   SizedBox(
+                     width: 90.0,
+                   ),
+                   Text(
+                    'Find Donor',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 32,
+                      color: Colors.black,
+                    ),
               ),
+                 ],
+               ),
             ),
             const SizedBox(
               height: 10,
@@ -48,7 +74,7 @@ class DonorInfoScreen extends StatelessWidget {
               'Search for blood donors around you ',
               style: TextStyle(
                 fontSize: 19,
-                color: Colors.black.withOpacity(.3),
+                color: Colors.black.withOpacity(.5),
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -59,7 +85,7 @@ class DonorInfoScreen extends StatelessWidget {
               'Choose Blood Group',
               style: TextStyle(
                 fontSize: 25,
-                color: Color(0xff32D74B),
+                color: CustomColor.deepBlue,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -80,7 +106,7 @@ class DonorInfoScreen extends StatelessWidget {
               'Location',
               style: TextStyle(
                 fontSize: 25,
-                color: Color(0xff32D74B),
+                color: CustomColor.deepBlue,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -140,7 +166,7 @@ class DonorInfoScreen extends StatelessWidget {
                       height: 20,
                     ),
                     MainButton(
-                      label: 'Find Donor',
+                      label: 'Search Donor',
                       width: double.infinity,
                       onTap: ()
                       {

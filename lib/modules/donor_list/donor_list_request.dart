@@ -18,8 +18,8 @@ class DonorlistRequest extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xffB8EBCB),
-              Color(0xffEEF8F2),
+              Color(0xff58bff1),
+              Color(0xffd0e7fc),
               Colors.white,
             ],
           ),
@@ -44,27 +44,27 @@ class DonorlistRequest extends StatelessWidget {
                     'Donors List',
                     style: TextStyle(
                       fontSize: 25,
-                      color: Color(0xff4A4B4D),
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
                     ),
                   ),
                 ],
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               const Text(
                 'Found 14 Donors with B- in your location',
                 style: TextStyle(
                   fontSize: 16,
+                  fontWeight: FontWeight.bold,
                   color: Color(0xff4A4B4D),
                 ),
               ),
-              const SizedBox(
-                height: 15,
-              ),
               Expanded(
                 child: ListView.builder(
-                  itemBuilder: ((context, index) => DonorInfo()),
+                  itemBuilder: ((context, index) => DonorInfo()
+                  ),
                   itemCount: 10,
                 ),
               ),
