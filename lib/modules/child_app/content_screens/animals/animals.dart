@@ -10,7 +10,8 @@ class Animals {
       this.names,
       this.shapes,
       this.sounds, 
-      this.questions,});
+      this.questions,
+  });
 
   Animals.fromJson(dynamic json) {
     activity = json['activity'];

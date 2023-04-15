@@ -3,6 +3,7 @@ import 'package:project/components/custom_color.dart';
 import 'package:project/modules/access_screen/access_screen.dart';
 import 'package:project/modules/child_app/chat_bot/chat_bot.dart';
 import 'package:project/modules/child_app/levels_screen/levels_screen.dart';
+import 'package:project/modules/child_app/object_detection/object_detection.dart';
 
 class ChildHomeScreen extends StatelessWidget {
   const ChildHomeScreen({Key? key}) : super(key: key);
@@ -36,7 +37,7 @@ class ChildHomeScreen extends StatelessWidget {
             padding: const EdgeInsets.only(
               top: 45.0,
               left: 20.0,
-              right: 20.0,
+              right: 18.0,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -166,7 +167,7 @@ class ChildHomeScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 16.0,
+                      width: 20.0,
                     ),
                     InkWell(
                       onTap: ()
@@ -228,17 +229,14 @@ class ChildHomeScreen extends StatelessWidget {
                 Row(
                   children:
                   [
-                    SizedBox(
-                      width: 181.0,
-                    ),
                     InkWell(
                       onTap: ()
                       {
-                        // Navigator.of(context).push(
-                        //   MaterialPageRoute(builder: (context) {
-                        //     return ObjectDetectionScreen();
-                        //   }),
-                        // );
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) {
+                            return ChatBot();
+                          }),
+                        );
                       },
                       child: Stack(
                         children: [

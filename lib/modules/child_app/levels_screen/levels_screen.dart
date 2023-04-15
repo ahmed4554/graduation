@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project/components/custom_color.dart';
+import 'package:project/modules/child_app/activity_screen/activity_screen.dart';
+import 'package:project/modules/child_app/home_Screen/home_screen.dart';
 import 'package:project/modules/child_app/levelOne_screen/level1_screen.dart';
 import 'package:project/modules/child_app/levelTwo_screen/level2_screen.dart';
 
@@ -78,7 +80,14 @@ class _LevelsScreenState extends State<LevelsScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new),
           color: Colors.white,
-          onPressed: () {},
+          onPressed: ()
+          {
+            Navigator.of(context).pop(
+              MaterialPageRoute(builder: (context) {
+                return ChildHomeScreen();
+              }),
+            );
+          },
         ),
         centerTitle: true,
         title: const Text(
@@ -500,76 +509,86 @@ class _LevelsScreenState extends State<LevelsScreen> {
                 fontWeight: FontWeight.w600
             ),
           ),
-          content: Container(
-            margin: const EdgeInsets.only(
-                top:10,
-                bottom: 10,
-            ),
-            child: Stack(
-              children:
-              [
-                Container(
-                  width: 319.0,
-                  height: 150.0,
-                  decoration: BoxDecoration(
-                    color: CustomColor.teal1,
-                    borderRadius: BorderRadius.circular(15.0),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey.withOpacity(.6),
-                          spreadRadius: 5.0,
-                          blurRadius: 7.0,
-                          offset: Offset(1.5, 3)
-                      )
-                    ],
-                  ),
+          content: InkWell(
+            onTap: ()
+            {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => QuestionsScreen(),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 90.0,
-                    left: 16.0,
-                  ),
-                  child: Text(
-                    'Activity',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 28.0,
-                      fontWeight: FontWeight.w700,
+              );
+            },
+            child: Container(
+              margin: const EdgeInsets.only(
+                  top:10,
+                  bottom: 10,
+              ),
+              child: Stack(
+                children:
+                [
+                  Container(
+                    width: 319.0,
+                    height: 150.0,
+                    decoration: BoxDecoration(
+                      color: CustomColor.teal1,
+                      borderRadius: BorderRadius.circular(15.0),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(.6),
+                            spreadRadius: 5.0,
+                            blurRadius: 7.0,
+                            offset: Offset(1.5, 3)
+                        )
+                      ],
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 15.0,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 120.0,
-                    left: 16.0,
-                  ),
-                  child: Text(
-                    'lvl 1,2,3',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15.0,
-                      fontWeight: FontWeight.w400,
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 90.0,
+                      left: 16.0,
+                    ),
+                    child: Text(
+                      'Activity',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 28.0,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 39.1,
-                    left: 72.0,
+                  SizedBox(
+                    height: 15.0,
                   ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(15.0)
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 120.0,
+                      left: 16.0,
                     ),
-                    child: Image.asset(
-                      'assets/images/child_app/levels_screen/one.png',
+                    child: Text(
+                      'lvl 1,2,3',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 39.1,
+                      left: 72.0,
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(15.0)
+                      ),
+                      child: Image.asset(
+                        'assets/images/child_app/levels_screen/one.png',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           state: currentStep >= 3 ? StepState.complete : StepState.disabled,

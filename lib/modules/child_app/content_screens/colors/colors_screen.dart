@@ -3,29 +3,22 @@ import 'package:flutter/services.dart';
 import 'package:project/components/custom_color.dart';
 import 'package:project/constants/constants.dart';
 import 'package:project/modules/child_app/board_screen/board_screen.dart';
-import 'package:project/modules/child_app/content_screens/shapes/shapes.dart';
-import 'package:project/modules/child_app/levelOne_screen/level1_screen.dart';
+import 'package:project/modules/child_app/content_screens/colors/colurs.dart';
 
-class ShapesScreen extends StatefulWidget {
+class ColorsScreen extends StatefulWidget {
+  const ColorsScreen({Key? key}) : super(key: key);
 
   @override
-  State<ShapesScreen> createState() => _ShapesScreenState();
+  State<ColorsScreen> createState() => _ColorsScreenState();
 }
 
-class _ShapesScreenState extends State<ShapesScreen> {
-  Shapes? content;
+class _ColorsScreenState extends State<ColorsScreen> {
+  Colurs? colurs;
+
   @override
   void initState() {
     setState(() {
-      SystemChrome.setPreferredOrientations(
-          [
-            DeviceOrientation.portraitUp,
-          ]
-      );
-    });
-    setState(()
-    {
-      content = Shapes.fromJson(shapes);
+      colurs = Colurs.fromJson(color);
     });
     super.initState();
   }
@@ -38,14 +31,7 @@ class _ShapesScreenState extends State<ShapesScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new),
           color: Colors.white,
-          onPressed: ()
-          {
-            Navigator.of(context).pop(
-              MaterialPageRoute(builder: (context) {
-                return LevelOneScreen();
-              }),
-            );
-          },
+          onPressed: () {},
         ),
         centerTitle: true,
         title: const Text(
@@ -123,7 +109,7 @@ class _ShapesScreenState extends State<ShapesScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        'Shapes',
+                        'Colors',
                         style: TextStyle(
                             fontSize: 26.0, fontWeight: FontWeight.w500),
                       ),
@@ -142,7 +128,7 @@ class _ShapesScreenState extends State<ShapesScreen> {
                       crossAxisCount: 3,
                       childAspectRatio: 1 / 1.1,
                       children: List.generate(
-                        content!.names!.length,
+                        colurs!.names!.length,
                             (index) => InkWell(
                           onTap: () {
                             Navigator.of(context).push(
@@ -154,7 +140,7 @@ class _ShapesScreenState extends State<ShapesScreen> {
                                     ]
                                 );
                                 return BoardScreen(
-                                  board: content ,
+                                  board: colurs ,
                                   index: index,
                                 );
                               },
@@ -188,15 +174,14 @@ class _ShapesScreenState extends State<ShapesScreen> {
                                       width: 90.0,
                                       height: 90.0,
                                       child: Image.asset(
-                                        content!.shapes![index],
+                                        colurs!.shapes![index],
                                       ),
                                     ),
                                     Text(
-                                      content!.names![index],
+                                      colurs!.names![index],
                                       style: const TextStyle(
                                           fontSize: 20.0,
-                                          fontWeight: FontWeight.w700,
-                                      ),
+                                          fontWeight: FontWeight.w700),
                                     ),
                                   ],
                                 ),

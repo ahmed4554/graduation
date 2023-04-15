@@ -3,32 +3,28 @@ import 'package:flutter/services.dart';
 import 'package:project/components/custom_color.dart';
 import 'package:project/constants/constants.dart';
 import 'package:project/modules/child_app/board_screen/board_screen.dart';
-import 'package:project/modules/child_app/content_screens/shapes/shapes.dart';
+import 'package:project/modules/child_app/content_screens/alphabet/alphabet.dart';
 import 'package:project/modules/child_app/levelOne_screen/level1_screen.dart';
 
-class ShapesScreen extends StatefulWidget {
+class AlphabetScreen extends StatefulWidget {
+  const AlphabetScreen({Key? key}) : super(key: key);
 
   @override
-  State<ShapesScreen> createState() => _ShapesScreenState();
+  State<AlphabetScreen> createState() => _AlphabetScreenState();
 }
 
-class _ShapesScreenState extends State<ShapesScreen> {
-  Shapes? content;
+class _AlphabetScreenState extends State<AlphabetScreen> {
+
+  Alphabet? char;
+
   @override
   void initState() {
     setState(() {
-      SystemChrome.setPreferredOrientations(
-          [
-            DeviceOrientation.portraitUp,
-          ]
-      );
-    });
-    setState(()
-    {
-      content = Shapes.fromJson(shapes);
+      char = Alphabet.fromJson(alpha);
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,14 +119,16 @@ class _ShapesScreenState extends State<ShapesScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        'Shapes',
+                        'Alphabet',
                         style: TextStyle(
-                            fontSize: 26.0, fontWeight: FontWeight.w500),
+                            fontSize: 26.0,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 10,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
@@ -142,7 +140,7 @@ class _ShapesScreenState extends State<ShapesScreen> {
                       crossAxisCount: 3,
                       childAspectRatio: 1 / 1.1,
                       children: List.generate(
-                        content!.names!.length,
+                        char!.pictures!.length,
                             (index) => InkWell(
                           onTap: () {
                             Navigator.of(context).push(
@@ -154,7 +152,7 @@ class _ShapesScreenState extends State<ShapesScreen> {
                                     ]
                                 );
                                 return BoardScreen(
-                                  board: content ,
+                                  board: char ,
                                   index: index,
                                 );
                               },
@@ -179,7 +177,7 @@ class _ShapesScreenState extends State<ShapesScreen> {
                             ),
                             child: Padding(
                               padding: const EdgeInsets.only(
-                                top: 8.0,
+                                top: 18.0,
                               ),
                               child: Center(
                                 child: Column(
@@ -188,16 +186,16 @@ class _ShapesScreenState extends State<ShapesScreen> {
                                       width: 90.0,
                                       height: 90.0,
                                       child: Image.asset(
-                                        content!.shapes![index],
+                                        char!.pictures![index],
                                       ),
                                     ),
-                                    Text(
-                                      content!.names![index],
-                                      style: const TextStyle(
-                                          fontSize: 20.0,
-                                          fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
+                                    // Text(
+                                    //   char!.alpha![index].toUpperCase(),
+                                    //   style: const TextStyle(
+                                    //     fontSize: 24.0,
+                                    //     fontWeight: FontWeight.bold,
+                                    //   ),
+                                    // ),
                                   ],
                                 ),
                               ),

@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   bloc: ^8.0.3
   flutter_bloc: ^8.0.1
-  hexcolor: ^2.0.7
+  hexcolor: ^3.0.1
   smooth_page_indicator: ^1.0.0+2
   carousel_slider: ^4.1.1
   shared_preferences: ^2.0.15
@@ -47,6 +47,9 @@ dependencies:
   lottie: any
   http: ^0.13.5
   floating_action_bubble: ^1.1.4
+  flutter_local_notifications: ^13.0.0
+  workmanager: ^0.5.1
+  image_picker: any
 
 dev_dependencies:
   flutter_test:
@@ -92,6 +95,16 @@ flutter:
      - assets/images/child_app/board/
      - assets/Database/shapes/names/
      - assets/Database/animals/images/
+     - assets/Database/char/images/
+     - assets/Database/char/words/
+     - assets/Database/char/char/
+     - assets/Database/colors/color/
+     - assets/Database/colors/names/
+     - assets/Database/colors/Sounds/
+     - assets/Database/fruits/fruits/
+     - assets/Database/fruits/voice fruits/
+     - assets/Database/numbers/shapes/
+     - assets/Database/numbers/sounds/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

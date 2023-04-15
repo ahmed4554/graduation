@@ -3,32 +3,26 @@ import 'package:flutter/services.dart';
 import 'package:project/components/custom_color.dart';
 import 'package:project/constants/constants.dart';
 import 'package:project/modules/child_app/board_screen/board_screen.dart';
-import 'package:project/modules/child_app/content_screens/shapes/shapes.dart';
-import 'package:project/modules/child_app/levelOne_screen/level1_screen.dart';
+import 'package:project/modules/child_app/content_screens/fruits/fruits.dart';
 
-class ShapesScreen extends StatefulWidget {
+class FruitsScreen extends StatefulWidget {
+  const FruitsScreen({Key? key}) : super(key: key);
 
   @override
-  State<ShapesScreen> createState() => _ShapesScreenState();
+  State<FruitsScreen> createState() => _FruitsScreenState();
 }
 
-class _ShapesScreenState extends State<ShapesScreen> {
-  Shapes? content;
+class _FruitsScreenState extends State<FruitsScreen> {
+  Fruits? fruits;
+
   @override
   void initState() {
     setState(() {
-      SystemChrome.setPreferredOrientations(
-          [
-            DeviceOrientation.portraitUp,
-          ]
-      );
-    });
-    setState(()
-    {
-      content = Shapes.fromJson(shapes);
+      fruits = Fruits.fromJson(fruit);
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,14 +32,7 @@ class _ShapesScreenState extends State<ShapesScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new),
           color: Colors.white,
-          onPressed: ()
-          {
-            Navigator.of(context).pop(
-              MaterialPageRoute(builder: (context) {
-                return LevelOneScreen();
-              }),
-            );
-          },
+          onPressed: () {},
         ),
         centerTitle: true,
         title: const Text(
@@ -123,7 +110,7 @@ class _ShapesScreenState extends State<ShapesScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        'Shapes',
+                        'Fruits',
                         style: TextStyle(
                             fontSize: 26.0, fontWeight: FontWeight.w500),
                       ),
@@ -142,7 +129,7 @@ class _ShapesScreenState extends State<ShapesScreen> {
                       crossAxisCount: 3,
                       childAspectRatio: 1 / 1.1,
                       children: List.generate(
-                        content!.names!.length,
+                        fruits!.names!.length,
                             (index) => InkWell(
                           onTap: () {
                             Navigator.of(context).push(
@@ -154,7 +141,7 @@ class _ShapesScreenState extends State<ShapesScreen> {
                                     ]
                                 );
                                 return BoardScreen(
-                                  board: content ,
+                                  board: fruits ,
                                   index: index,
                                 );
                               },
@@ -185,18 +172,17 @@ class _ShapesScreenState extends State<ShapesScreen> {
                                 child: Column(
                                   children: [
                                     Container(
-                                      width: 90.0,
-                                      height: 90.0,
+                                      width: 85.0,
+                                      height: 80.0,
                                       child: Image.asset(
-                                        content!.shapes![index],
+                                        fruits!.shapes![index],
                                       ),
                                     ),
                                     Text(
-                                      content!.names![index],
+                                      fruits!.names![index],
                                       style: const TextStyle(
                                           fontSize: 20.0,
-                                          fontWeight: FontWeight.w700,
-                                      ),
+                                          fontWeight: FontWeight.w700),
                                     ),
                                   ],
                                 ),

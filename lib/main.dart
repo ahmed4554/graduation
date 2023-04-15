@@ -15,7 +15,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.lightBlue,
       ),
-      home: SplashScreen(),
+      home: const SplashScreen(),
+      builder:(context , child) {
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(textScaleFactor: .84),
+          child: child!,
+        );
+      },
     );
   }
 }

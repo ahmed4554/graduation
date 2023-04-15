@@ -1,0 +1,62 @@
+{
+  "activity": "numbers",
+  "names":
+  [
+    "Zero",
+    "One",
+    "Two",
+    "Three",
+    "Four",
+    "Five",
+    "Six",
+    "Seven",
+    "Eight",
+    "Nine"
+  ],
+  "number":
+  [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
+  ],
+
+  "shapes":
+  [
+    "assets/Database/numbers/shapes/0.png",
+    "assets/Database/numbers/shapes/1.png",
+    "assets/Database/numbers/shapes/2.png",
+    "assets/Database/numbers/shapes/3.png",
+    "assets/Database/numbers/shapes/4.png",
+    "assets/Database/numbers/shapes/5.png",
+    "assets/Database/numbers/shapes/6.png",
+    "assets/Database/numbers/shapes/7.png",
+    "assets/Database/numbers/shapes/8.png",
+    "assets/Database/numbers/shapes/9.png",
+  ],
+
+  "sounds":
+  [
+    "assets/Database/numbers/sounds/0.mp3",
+    "assets/Database/numbers/sounds/1.mp3",
+    "assets/Database/numbers/sounds/2.mp3",
+    "assets/Database/numbers/sounds/3.mp3",
+    "assets/Database/numbers/sounds/4.mp3",
+    "assets/Database/numbers/sounds/5.mp3",
+    "assets/Database/numbers/sounds/6.mp3",
+    "assets/Database/numbers/sounds/7.mp3",
+    "assets/Database/numbers/sounds/8.mp3",
+    "assets/Database/numbers/sounds/9.mp3"
+  ],
+
+  "questions":
+  [
+   "What is the number?"
+  ]
+}

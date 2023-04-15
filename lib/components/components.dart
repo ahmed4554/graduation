@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project/components/custom_color.dart';
+import 'package:project/models/animal.dart';
+
+import '../modules/child_app/content_screens/animals/animals.dart';
 
 class AppName extends StatelessWidget {
   const AppName({Key? key}) : super(key: key);
@@ -407,6 +411,365 @@ class HealtyFoodComponent extends StatelessWidget {
     );
   }
 }
+
+class BuildMultiShadowContainer extends StatelessWidget {
+  const BuildMultiShadowContainer({Key? key, required this.child})
+      : super(key: key);
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    return SizedBox(
+      // height: 500,
+      child: Stack(
+        children: [
+          Positioned(
+            top: 20,
+            left: (width / 2) - width * .4,
+            right: (width / 2) - width * .4,
+            child: Container(
+              height: 200,
+              width: width * .4,
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(.4),
+                borderRadius: BorderRadius.circular(30),
+              ),
+            ),
+          ),
+          Positioned(
+            top: 40,
+            left: (width / 2) - width * .45,
+            right: (width / 2) - width * .45,
+            child: Container(
+              height: 200,
+              width: width * .45,
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(.2),
+                borderRadius: BorderRadius.circular(30),
+              ),
+            ),
+          ),
+          Positioned(
+            top: 60,
+            child: Container(
+                padding: const EdgeInsets.all(20),
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                width: width - 20,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: Colors.white,
+                ),
+                child: child),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class NumberComponent extends StatelessWidget {
+  const NumberComponent({
+    Key? key,
+    required this.numbersModel,
+    required this.index,
+  }) : super(key: key);
+  final AnimalsModel numbersModel;
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      enableFeedback: true,
+      onTap: ()
+      {
+
+      },
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 8,
+            ),
+          ],
+        ),
+        child: SvgPicture.asset(numbersModel.shapes[index]),
+      ),
+    );
+  }
+}
+
+class PicAnswer extends StatelessWidget {
+  PicAnswer({
+    Key? key,
+    required this.index,
+    required this.model,
+    this.right,
+  }) : super(key: key);
+
+  final AnimalsQuestion model;
+  final int index;
+  bool? right;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        if (model.answer == model.options[index]) {
+          right = true;
+        } else {
+          right = false;
+        }
+      },
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        margin: const EdgeInsets.only(top: 20),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(
+            color: model.answer == model.options[index]
+                ? Colors.green
+                : Colors.red,
+          ),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Image(
+              image: AssetImage(
+                model.options[index],
+              ),
+              width: 100,
+              height: 100,
+            ),
+            if (model.answer == model.options[index])
+              const Icon(
+                Icons.check_circle,
+                color: Colors.green,
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class TextAnswer extends StatefulWidget {
+  TextAnswer({
+    Key? key,
+    required this.index,
+    required this.model,
+    this.right,
+  }) : super(key: key);
+
+  final AnimalsQuestion model;
+  final int index;
+  bool? right;
+
+  @override
+  State<TextAnswer> createState() => _TextAnswerState();
+}
+
+class _TextAnswerState extends State<TextAnswer> {
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        if (widget.model.answer == widget.model.options[widget.index]) {
+          setState(() {
+            widget.right = true;
+          });
+        } else {
+          setState(() {
+            widget.right = false;
+          });
+        }
+      },
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        margin: const EdgeInsets.only(top: 20),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(
+            color: widget.right == null
+                ? Colors.grey
+                : widget.right == true
+                ? Colors.green
+                : Colors.red,
+          ),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              widget.model.options[widget.index],
+              style: const TextStyle(
+                fontSize: 16,
+                color: Colors.grey,
+              ),
+            ),
+            if (widget.right == true)
+              const Icon(
+                Icons.check_circle,
+                color: Colors.green,
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MultiChoiseQuestionComponent extends StatelessWidget {
+  MultiChoiseQuestionComponent({
+    Key? key,
+    required this.model,
+  }) : super(key: key);
+  final AnimalsQuestion model;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      child: Column(
+        children: [
+          Text(
+            model.text,
+            style: TextStyle(
+              fontSize: 22,
+              color: CustomColor.blue11,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(
+            height: 20.0,
+          ),
+          if (model.pic.isNotEmpty)
+            SizedBox(
+              height: 200,
+              child: Image(
+                image: AssetImage(model.pic),
+                fit: BoxFit.fill,
+              ),
+            ),
+          const SizedBox(
+            height: 15,
+          ),
+          Expanded(
+            child: ListView(
+              children: List.generate(
+                model.options.length,
+                    (index) => model.kind == 'text'
+                    ? TextAnswer(
+                  index: index,
+                  model: model,
+                )
+                    : PicAnswer(
+                  index: index,
+                  model: model,
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class UserMessage extends StatelessWidget {
+  const UserMessage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const CircleAvatar(
+            backgroundColor: Colors.blue,
+            backgroundImage:
+            AssetImage('assets/for_design/chat_bot_background.png'),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          Container(
+            padding: const EdgeInsets.all(10),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: const Text(
+              'fine,thank you baby',
+              style: TextStyle(
+                fontSize: 14,
+                color: Color(0xff192A3E),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class BotMessage extends StatelessWidget {
+  const BotMessage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const CircleAvatar(
+            backgroundColor: Colors.blue,
+            backgroundImage:
+            AssetImage('assets/for_design/chat_bot_background.png'),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          Container(
+            padding: const EdgeInsets.all(10),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: const Text(
+              'how you doing',
+              style: TextStyle(
+                fontSize: 14,
+                color: Color(0xff192A3E),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+
 
 
 

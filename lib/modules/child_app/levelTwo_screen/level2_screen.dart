@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:project/components/custom_color.dart';
+import 'package:project/modules/child_app/content_screens/alphabet/alphabet_screen.dart';
 import 'package:project/modules/child_app/content_screens/animals/animals_screen.dart';
+import 'package:project/modules/child_app/content_screens/colors/colors_screen.dart';
+import 'package:project/modules/child_app/content_screens/fruits/fruits_screen.dart';
+import 'package:project/modules/child_app/content_screens/numbers/numbers_screen.dart';
 import 'package:project/modules/child_app/content_screens/shapes/shapes_screen.dart';
 
 class LevelTwoScreen extends StatelessWidget {
@@ -112,7 +116,11 @@ class LevelTwoScreen extends StatelessWidget {
                     InkWell(
                       onTap: ()
                       {
-
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => AlphabetScreen(),
+                          ),
+                        );
                       },
                       child: Stack(
                         children:
@@ -209,7 +217,11 @@ class LevelTwoScreen extends StatelessWidget {
                     InkWell(
                       onTap: ()
                       {
-
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) {
+                            return NumbersScreen();
+                          }),
+                        );
                       },
                       child: Stack(
                         children:
@@ -518,7 +530,11 @@ class LevelTwoScreen extends StatelessWidget {
                     InkWell(
                       onTap: ()
                       {
-
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => ColorsScreen(),
+                          ),
+                        );
                       },
                       child: Stack(
                         children:
@@ -615,7 +631,11 @@ class LevelTwoScreen extends StatelessWidget {
                     InkWell(
                       onTap: ()
                       {
-
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => FruitsScreen(),
+                          ),
+                        );
                       },
                       child: Stack(
                         children:
