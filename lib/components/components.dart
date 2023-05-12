@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:project/components/custom_color.dart';
+import 'package:project/constants/constants.dart';
+import 'package:project/modules/child_app/activity_screen/activity_screen.dart';
 
 import '../modules/child_app/content_screens/animals/animals.dart';
 
@@ -80,7 +82,8 @@ class CustomInputField extends StatelessWidget {
 }
 
 class MainButton extends StatelessWidget {
-  MainButton({Key? key, required this.label, this.width = double.infinity,this.onTap})
+  MainButton(
+      {Key? key, required this.label, this.width = double.infinity, this.onTap})
       : super(key: key);
   final String label;
   double width;
@@ -137,14 +140,11 @@ class TextEditorForPhoneVerify extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onChanged: (value)
-      {
-        if(value.length == 1 && last == false)
-        {
+      onChanged: (value) {
+        if (value.length == 1 && last == false) {
           FocusScope.of(context).nextFocus();
         }
-        if(value.length == 1 && first == false)
-        {
+        if (value.length == 1 && first == false) {
           FocusScope.of(context).nextFocus();
         }
       },
@@ -156,7 +156,7 @@ class TextEditorForPhoneVerify extends StatelessWidget {
         border: InputBorder.none,
         counterText: '',
         hintStyle: TextStyle(
-          color:Colors.deepOrange[600],
+          color: Colors.deepOrange[600],
           fontSize: 20.0,
         ),
       ),
@@ -167,7 +167,6 @@ class TextEditorForPhoneVerify extends StatelessWidget {
 class TextEditorForVerifyCode extends StatelessWidget {
   const TextEditorForVerifyCode({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return OtpTextField(
@@ -177,10 +176,7 @@ class TextEditorForVerifyCode extends StatelessWidget {
       focusedBorderColor: CustomColor.sky,
       borderRadius: BorderRadius.circular(10),
 
-      textStyle: const TextStyle(
-        fontSize: 20.0,
-        fontWeight: FontWeight.bold
-      ),
+      textStyle: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
       //set to true to show as box or false to show as dash
       showFieldAsBox: true,
       //runs when a code is typed in
@@ -188,10 +184,7 @@ class TextEditorForVerifyCode extends StatelessWidget {
         //handle validation or checks here
       },
       //runs when every textfield is filled
-      onSubmit: (String verificationCode)
-        {
-
-        }, // end onSubmit
+      onSubmit: (String verificationCode) {}, // end onSubmit
     );
   }
 }
@@ -223,7 +216,7 @@ class BloodKindBubble extends StatelessWidget {
       ),
       child: Text(
         title,
-        style:const TextStyle(
+        style: const TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
           color: Colors.red,
@@ -400,7 +393,7 @@ class HealtyFoodComponent extends StatelessWidget {
         ),
         Container(
           margin: const EdgeInsets.only(
-              top: 15,
+            top: 15,
           ),
           height: 1.0,
           color: Colors.black45,
@@ -508,29 +501,32 @@ class PicAnswer extends StatefulWidget {
     Key? key,
     required this.index,
     required this.model,
-    this.right,
   }) : super(key: key);
 
   final dynamic model;
   final int index;
-  bool? right;
 
   @override
   State<PicAnswer> createState() => _PicAnswerState();
 }
 
 class _PicAnswerState extends State<PicAnswer> {
+  bool? right;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         if (widget.model.answer == widget.model.options![widget.index]) {
           setState(() {
-            widget.right = true;
+            right = true;
+            controller.nextPage(
+                duration: Duration(milliseconds: 450),
+                curve: Curves.bounceInOut);
           });
         } else {
           setState(() {
-            widget.right = false;
+            right = false;
           });
         }
       },
@@ -540,9 +536,11 @@ class _PicAnswerState extends State<PicAnswer> {
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(
-            color: widget.right==null?Colors.grey:widget.right==true
-                ? Colors.green
-                : Colors.red,
+            color: right == null
+                ? Colors.grey
+                : right == true
+                    ? Colors.green
+                    : Colors.red,
           ),
           borderRadius: BorderRadius.circular(15),
         ),
@@ -556,12 +554,12 @@ class _PicAnswerState extends State<PicAnswer> {
               width: 100,
               height: 100,
             ),
-            if (widget.right == true)
+            if (right == true)
               const Icon(
                 Icons.check_circle,
                 color: Colors.green,
               ),
-            if (widget.right == false)
+            if (right == false)
               const Icon(
                 Icons.close_rounded,
                 color: Colors.red,
@@ -574,16 +572,14 @@ class _PicAnswerState extends State<PicAnswer> {
 }
 
 class TextAnswer extends StatefulWidget {
-  TextAnswer({
+  const TextAnswer({
     Key? key,
     required this.index,
     required this.model,
-    this.right,
   }) : super(key: key);
 
   final dynamic model;
   final int index;
-  bool? right;
 
   @override
   State<TextAnswer> createState() => _TextAnswerState();
@@ -591,17 +587,23 @@ class TextAnswer extends StatefulWidget {
 
 class _TextAnswerState extends State<TextAnswer> {
 
+  bool? right;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         if (widget.model.answer == widget.model.options![widget.index]) {
+          right = true;
+          controller.nextPage(
+              duration: const Duration(milliseconds: 450), curve: Curves.bounceInOut);
           setState(() {
-            widget.right = true;
+
           });
         } else {
+          right = false;
           setState(() {
-            widget.right = false;
+
           });
         }
       },
@@ -611,11 +613,11 @@ class _TextAnswerState extends State<TextAnswer> {
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(
-            color: widget.right == null
+            color: right == null
                 ? Colors.grey
-                : widget.right == true
-                ? Colors.green
-                : Colors.red,
+                : right == true
+                    ? Colors.green
+                    : Colors.red,
           ),
           borderRadius: BorderRadius.circular(15),
         ),
@@ -629,17 +631,17 @@ class _TextAnswerState extends State<TextAnswer> {
                 color: Colors.grey,
               ),
             ),
-            if (widget.right == true)
+            if (right == true)
               const Icon(
                 Icons.check_circle,
                 color: Colors.green,
               ),
-            if (widget.right == false)
+            if (right == false)
               const Icon(
                 Icons.close_rounded,
                 color: Colors.red,
               ),
-           ],
+          ],
         ),
       ),
     );
@@ -647,14 +649,19 @@ class _TextAnswerState extends State<TextAnswer> {
 }
 
 class MultiChoiseQuestionComponent extends StatefulWidget {
-  MultiChoiseQuestionComponent({Key? key, required this.model,}) : super(key: key);
+  MultiChoiseQuestionComponent({
+    Key? key,
+    required this.model,
+  }) : super(key: key);
   final dynamic model;
 
   @override
-  State<MultiChoiseQuestionComponent> createState() => _MultiChoiseQuestionComponentState();
+  State<MultiChoiseQuestionComponent> createState() =>
+      _MultiChoiseQuestionComponentState();
 }
 
-class _MultiChoiseQuestionComponentState extends State<MultiChoiseQuestionComponent> {
+class _MultiChoiseQuestionComponentState
+    extends State<MultiChoiseQuestionComponent> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -683,11 +690,11 @@ class _MultiChoiseQuestionComponentState extends State<MultiChoiseQuestionCompon
                 fit: BoxFit.fill,
               ),
             ),
-          if(widget.model.text2!.isEmpty && widget.model.pic!.isEmpty)
+          if (widget.model.text2!.isEmpty && widget.model.pic!.isEmpty)
             SizedBox(
-              height: 50.0,
+              height: 30.0,
             ),
-          if(widget.model.text2!.isNotEmpty)
+          if (widget.model.text2!.isNotEmpty)
             SizedBox(
               child: Text(
                 widget.model.text2!,
@@ -698,26 +705,23 @@ class _MultiChoiseQuestionComponentState extends State<MultiChoiseQuestionCompon
                 ),
               ),
             ),
-          if(widget.model.text2!.isEmpty && widget.model.pic!.isEmpty)
+          if (widget.model.text2!.isEmpty && widget.model.pic!.isEmpty)
             SizedBox(
               height: 50.0,
             ),
-          const SizedBox(
-            height: 15,
-          ),
           Expanded(
             child: ListView(
               children: List.generate(
                 widget.model.options!.length,
-                    (index) => widget.model.kind == 'text'
+                (index) => widget.model.kind == 'text'
                     ? TextAnswer(
-                  index: index,
-                  model: widget.model,
-                )
+                        index: index,
+                        model: widget.model,
+                      )
                     : PicAnswer(
-                  index: index,
-                  model: widget.model,
-                ),
+                        index: index,
+                        model: widget.model,
+                      ),
               ),
             ),
           )
@@ -741,7 +745,7 @@ class UserMessage extends StatelessWidget {
           const CircleAvatar(
             backgroundColor: Colors.blue,
             backgroundImage:
-            AssetImage('assets/for_design/chat_bot_background.png'),
+                AssetImage('assets/for_design/chat_bot_background.png'),
           ),
           const SizedBox(
             width: 10,
@@ -781,7 +785,7 @@ class BotMessage extends StatelessWidget {
           const CircleAvatar(
             backgroundColor: Colors.blue,
             backgroundImage:
-            AssetImage('assets/for_design/chat_bot_background.png'),
+                AssetImage('assets/for_design/chat_bot_background.png'),
           ),
           const SizedBox(
             width: 10,
@@ -808,70 +812,59 @@ class BotMessage extends StatelessWidget {
 }
 
 class CategoryComponent extends StatelessWidget {
-  const CategoryComponent({Key? key,required this.color,required this.name,required this.picName}) : super(key: key);
+  const CategoryComponent(
+      {Key? key,
+      required this.color,
+      required this.name,
+      required this.picName})
+      : super(key: key);
 
-  final Color color ;
-  final String name,picName;
+  final Color color;
 
+  final String name, picName;
 
   @override
   Widget build(BuildContext context) {
     var radius = Radius.circular(100.0);
     return Container(
       decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.only(
-          topLeft: radius,
-          bottomLeft: radius,
-          bottomRight: radius,
-        )
-      ),
+          color: color,
+          borderRadius: BorderRadius.only(
+            topLeft: radius,
+            bottomLeft: radius,
+            bottomRight: radius,
+          )),
       child: Row(
-        children:
-        [
+        children: [
           Align(
             alignment: Alignment.centerLeft,
             child: Container(
               width: 100.0,
-              height: 100.0,
+              height: 99.0,
               padding: EdgeInsets.all(20.0),
               decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(
-                  width: 2.0,
-                  color: color,
-                ),
-                borderRadius: BorderRadius.circular(100.0)
-              ),
+                  color: Colors.white,
+                  border: Border.all(
+                    width: 2.0,
+                    color: color,
+                  ),
+                  borderRadius: BorderRadius.circular(100.0)),
               child: Image.asset(
-                  picName,
+                picName,
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          const SizedBox(
-            width: 30.0
-          ),
-          Text( name,
+          const SizedBox(width: 30.0),
+          Text(
+            name,
             style: TextStyle(
-              color: Color(0xffF5F6FA),
-              fontSize: 30.0,
-              fontWeight: FontWeight.bold
-            ),
+                color: Color(0xffF5F6FA),
+                fontSize: 30.0,
+                fontWeight: FontWeight.bold),
           ),
         ],
       ),
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-

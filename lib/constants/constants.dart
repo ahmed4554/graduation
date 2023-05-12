@@ -1,6 +1,8 @@
 
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 List<String> bloodKinds =
 [
   'A+',
@@ -737,6 +739,93 @@ var color =
   ]
 };
 
+var qColor =
+{
+  "questions":
+  [
+    {
+      "kind":"text",
+      "text":"What is the color?",
+      "text2":"",
+      "pic":"assets/Database/colors/color/BLUE.png",
+      "answer":"Blue",
+      "options":["Orange","Blue","Green"]
+    },
+    {
+      "kind":"text",
+      "text":"What is the color?",
+      "text2":"",
+      "pic":"assets/Database/colors/color/PINK.png",
+      "answer":"Pink",
+      "options":["Pink","Purple","Brown"]
+    },
+    {
+      "kind":"text",
+      "text":"What is the color?",
+      "text2":"",
+      "pic":"assets/Database/colors/color/YELLOW.png",
+      "answer":"Yellow",
+      "options":["Green","Red","Yellow"]
+    },
+    {
+      "kind":"text",
+      "text":"What is the color of the hat? ",
+      "text2":"",
+      "pic":"assets/Database/colors/hat.png",
+      "answer":"Green",
+      "options":["Green","Blue","White"]
+    },
+    {
+      "kind":"text",
+      "text":"What is the color of the shoes?",
+      "text2":"",
+      "pic":"assets/Database/colors/shoes.png",
+      "answer":"Blue",
+      "options":["Red","Pink","Blue"]
+    },
+    {
+      "kind":"text",
+      "text":"What is the color of the ball?",
+      "text2":"",
+      "pic":"assets/Database/colors/ball.png",
+      "answer":"Orange",
+      "options":["Yellow","Orange","Black"]
+    },
+    {
+      "kind":"text",
+      "text":"What is the color the shorts?",
+      "text2":"",
+      "pic":"assets/Database/colors/brown.png",
+      "answer":"Brown",
+      "options":["Brown","Red","Blue"]
+    },
+    {
+      "kind":"text",
+      "text":"What is the color of the car?",
+      "text2":"",
+      "pic":"assets/Database/colors/car.png",
+      "answer":"Red",
+      "options":["Pink","Purple","Red"]
+    },
+    {
+      "kind":"text",
+      "text":"What is the color of the fruit in the picture?",
+      "text2":"",
+      "pic":"assets/Database/colors/grapes.png",
+      "answer":"Purple",
+      "options":["Blue","Purple","White"]
+    },
+    {
+      "kind":"text",
+      "text":"What is the color of the flower?",
+      "text2":"",
+      "pic":"assets/Database/colors/sun.png",
+      "answer":"Yellow",
+      "options":["Orange","Black","Yellow"]
+    },
+  ]
+};
+
 var fruit =
 {
   "activity": "fruit",
@@ -823,6 +912,102 @@ var fruit =
   ],
   "Questions": [
     "What is this Fruit ?"
+  ]
+};
+
+var qFruit =
+{
+  "questions":
+  [
+    {
+      "kind":"text",
+      "text":"Can you name this fruit ?",
+      "text2":"",
+      "pic":"assets/Database/fruits/fruits/peach.png",
+      "answer":"Peach",
+      "options":["Strawberry","Mango","Peach"]
+    },
+    {
+      "kind":"text",
+      "text":"Can you name this fruit ?",
+      "text2":"",
+      "pic":"assets/Database/fruits/fruits/banana.png",
+      "answer":"Banana",
+      "options":["Banana","Lemon","Cucumber"]
+    },
+    {
+      "kind":"text",
+      "text":"Can you name this fruit ?",
+      "text2":"",
+      "pic":"assets/Database/fruits/fruits/mango.png",
+      "answer":"Mango",
+      "options":["Fig","Mango","Orange"]
+    },
+    {
+      "kind":"text",
+      "text":"Can you name this fruit ?",
+      "text2":"",
+      "pic":"assets/Database/fruits/fruits/watermelon.png",
+      "answer":"Watermelon",
+      "options":["Orange","Watermelon","Dragon"]
+    },
+    {
+      "kind":"text",
+      "text":"Are these grapes?",
+      "text2":"",
+      "pic":"assets/Database/fruits/fruits/graps.png",
+      "answer":"Yes,they are.",
+      "options":["No,they are not","No,it\'s not","Yes,they are."]
+    },
+    {
+      "kind":"text",
+      "text":"Is this a jackfruit?",
+      "text2":"",
+      "pic":"assets/Database/fruits/fruits/sweet potato.png",
+      "answer":"No,it\s not",
+      "options":["No,it\s not","Yes,it is"]
+    },
+    {
+      "kind":"text",
+      "text":"What color is the apple?",
+      "text2":"",
+      "pic":"assets/Database/fruits/fruits/apple.png",
+      "answer":"Red",
+      "options":["Yellow","Blue","Red"]
+    },
+    {
+      "kind":"text",
+      "text":"What is this?",
+      "text2":"",
+      "pic":"assets/Database/fruits/fruits/str.png",
+      "answer":"Strawberry",
+      "options":["Apple","Strawberry","Lemon"]
+    },
+    {
+      "kind":"pic",
+      "text":"Which one of these is kiwi?",
+      "text2":"",
+      "pic":"",
+      "answer":"assets/Database/fruits/fruits/kiwi.png",
+      "options":[
+        "assets/Database/fruits/fruits/tangerine.png",
+        "assets/Database/fruits/fruits/quince.png",
+        "assets/Database/fruits/fruits/kiwi.png",
+      ]
+    },
+    {
+      "kind":"pic",
+      "text":"Which one of these is cherries?",
+      "text2":"",
+      "pic":"",
+      "answer":"assets/Database/fruits/fruits/cherries.png",
+      "options":
+      [
+        "assets/Database/fruits/fruits/graps.png",
+        "assets/Database/fruits/fruits/cherries.png",
+        "assets/Database/fruits/fruits/quince.png",
+      ]
+    },
   ]
 };
 
@@ -1028,4 +1213,6 @@ List<String> picNames =
   'assets/images/child_app/level_two/rgb.png',
   'assets/images/child_app/level_two/fruits.png'
 ];
+
+PageController controller = PageController();
 

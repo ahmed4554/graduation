@@ -99,6 +99,7 @@ flutter:
      - assets/Database/char/images/
      - assets/Database/char/words/
      - assets/Database/char/char/
+     - assets/Database/colors/
      - assets/Database/colors/color/
      - assets/Database/colors/names/
      - assets/Database/colors/Sounds/

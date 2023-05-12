@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:project/components/components.dart';
 import 'package:project/components/custom_color.dart';
+import 'package:project/constants/constants.dart';
 
 class QuestionsScreen extends StatefulWidget {
-   QuestionsScreen({Key? key,required this.quiz,required this.index}) : super(key: key);
+  QuestionsScreen({
+    Key? key,
+    required this.quiz,
+    required this.index,
+  }) : super(key: key);
 
   final dynamic quiz;
   int index;
@@ -13,15 +18,15 @@ class QuestionsScreen extends StatefulWidget {
 }
 
 class _QuestionsScreenState extends State<QuestionsScreen> {
+  var height = 0.0;
+  @override
   int currentIndex = 0;
-
-  PageController controller = PageController();
-
 
   @override
   Widget build(BuildContext context) {
+    height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: CustomColor.blue11,
+      backgroundColor: CustomColor.blue11.withOpacity(.7),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -29,7 +34,9 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
           icon: const Icon(
             Icons.arrow_back_ios,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         title: Text(
           'Play Quiz',
@@ -38,70 +45,49 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Center(
-                child: Text(
-                  'Question ${currentIndex + 1} / ${widget.quiz.questions.length}', textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20.0),
-                ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Center(
+              child: Text(
+                'Question ${currentIndex + 1} / ${widget.quiz.questions.length}',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 23.0, fontWeight: FontWeight.w500),
               ),
-              Expanded(
-                child: BuildMultiShadowContainer(
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.height * .7,
-                    child: PageView.builder(
-                      controller: controller,
-                      onPageChanged: (int index) {
-                        currentIndex = index;
-                        setState(() {});
-                      },
-                      itemBuilder: (context, index) {
-                        return Expanded(
-                          child: Column(
-                            children: [
-                              Expanded(
-                                child: MultiChoiseQuestionComponent(
-                                  model: widget.quiz.questions[index],
-                                ),
+            ),
+            SizedBox(
+              height: height * .8,
+              child: BuildMultiShadowContainer(
+                child: SizedBox(
+                  height: height * .67,
+                  child: PageView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    controller: controller,
+                    onPageChanged: (int index) {
+                      currentIndex = index;
+                      setState(() {});
+                    },
+                    itemBuilder: (context, index) {
+                      return SizedBox(
+                        height: height * .8,
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: MultiChoiseQuestionComponent(
+                                model: widget.quiz.questions[index],
                               ),
-                              Align(
-                                alignment: Alignment.bottomRight,
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: CustomColor.blue11,
-                                    padding: const EdgeInsets.symmetric(horizontal: 40,vertical: 5),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(16.0)
-                                    )
-                                  ),
-                                  onPressed: () {
-                                    controller.nextPage(
-                                        duration:const  Duration(milliseconds: 300),
-                                        curve: Curves.easeInOut);
-                                  },
-                                  child: const Text('Submit',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.bold,
-                                      )),
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                      scrollDirection: Axis.horizontal,
-                      itemCount: widget.quiz.questions.length,
-                    ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                    scrollDirection: Axis.horizontal,
+                    itemCount: widget.quiz.questions.length,
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
