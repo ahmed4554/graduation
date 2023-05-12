@@ -144,9 +144,9 @@ class _AnimalsScreenState extends State<AnimalsScreen> {
                                 board: animalsC ,
                                 index: index,
                               );
-                            },
+                             },
                             ),
-                          );
+                           );
                           },
                           child: Container(
                             height: 140.0,

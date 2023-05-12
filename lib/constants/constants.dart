@@ -1,4 +1,6 @@
 
+import 'dart:ui';
+
 List<String> bloodKinds =
 [
   'A+',
@@ -60,6 +62,93 @@ var shapes =
   "questions":
   [
     "What is the name of this shape ?"
+  ]
+};
+
+var qShapes =
+{
+  "questions":
+  [
+    {
+      "kind": "text",
+      "text": "What is this shape?",
+      "text2": "",
+      "pic": "assets/Database/shapes/shapes/circle.png",
+      "answer": "circle",
+      "options": ["square", "circle", "kite"]
+    },
+    {
+      "kind": "text",
+      "text": "What is this shape?",
+      "text2": "",
+      "pic": "assets/Database/shapes/shapes/octagon.png",
+      "answer": "octagon",
+      "options": ["octagon", "star", "heart"]
+    },
+    {
+      "kind": "text",
+      "text": "What is this shape?",
+      "text2": "",
+      "pic": "assets/Database/shapes/shapes/triangle.png",
+      "answer": "triangle",
+      "options": ["heptagon", "circle", "triangle"]
+    },
+    {
+      "kind": "text",
+      "text": "How many sides does a triangle have?",
+      "text2": "",
+      "pic": "assets/Database/shapes/shapes/triangle.png",
+      "answer": "3",
+      "options": ["3", "4", "5"]
+    },
+    {
+      "kind": "text",
+      "text": "How many sides does a pentagon have?",
+      "text2": "",
+      "pic": "assets/Database/shapes/shapes/pentagon.png",
+      "answer": "5",
+      "options": ["4", "6", "5"]
+    },
+    {
+      "kind": "text",
+      "text": "How many angles does a square have?",
+      "text2": "",
+      "pic": "assets/Database/shapes/shapes/square.png",
+      "answer": "4",
+      "options": ["5", "4", "3"]
+    },
+    {
+      "kind": "text",
+      "text": "How many angles does a trapezoid have?",
+      "text2": "",
+      "pic": "assets/Database/shapes/shapes/trapezoid.png",
+      "answer": "4",
+      "options": ["3", "5", "4"]
+    },
+    {
+      "kind": "text",
+      "text": "How many sides does an octagon have?",
+      "text2": "",
+      "pic": "assets/Database/shapes/shapes/octagon.png",
+      "answer": "8",
+      "options": ["4", "7", "8",]
+    },
+    {
+      "kind": "text",
+      "text": "How many angles does a rectangle have?",
+      "text2": "",
+      "pic": "assets/Database/shapes/shapes/rectangle.png",
+      "answer": "7",
+      "options": ["5", "4", "7",]
+    },
+    {
+      "kind": "text",
+      "text": "how many sides does a square have?",
+      "text2": "",
+      "pic": "assets/Database/shapes/shapes/square.png",
+      "answer": "4",
+      "options": ["3", "4", "5",]
+    },
   ]
 };
 
@@ -163,7 +252,7 @@ var animals =
       "options": ["3", "1", "5"]
     },
     {
-      "text": "which one of these represents 7 triangles",
+      "text": "Which one of these represents 7 triangles",
       "answer": "assets/D21/images/images_pictures/7/right.png",
       "kind": "pic",
       "pic": "",
@@ -173,28 +262,28 @@ var animals =
       ]
     },
     {
-      "text": "how many dots are on the frame ?",
+      "text": "How many dots are on the frame ?",
       "kind": "text",
       "pic": "assets/D21/images/images_pictures/dots/dots.png",
       "answer": "6",
       "options": ["3", "6", "5", "7", "10", "0"]
     },
     {
-      "text": "how do you write {eighy} by digit ?",
+      "text": "How do you write {Eight} by digit ?",
       "answer": "8",
       "kind": "text",
       "pic": "",
       "options": ["3", "6", "8", "7", "10", "0"]
     },
     {
-      "text": "how many watermelons are there ?",
+      "text": "How many watermelons are there ?",
       "pic": "assets/D21/images/images_fruits/apple.png",
       "answer": "3",
       "kind": "text",
       "options": ["3", "1", "5", "10", "0"]
     },
     {
-      "text": "which number is larger ?",
+      "text": "Which number is larger ?",
       "answer": "7",
       "pic": "",
       "kind": "text",
@@ -202,14 +291,14 @@ var animals =
     },
     {
       "kind": "text",
-      "text": "which number is smaller ?",
+      "text": "Which number is smaller ?",
       "answer": "0",
       "pic": "",
       "options": ["0", "8"]
     },
     {
       "kind": "pic",
-      "text": "which one of these is more ?",
+      "text": "Which one of these is more ?",
       "answer": "assets/D21/images/images_pictures/7/right.png",
       "pic": "",
       "options": [
@@ -226,11 +315,98 @@ var animals =
     },
     {
       "kind": "text",
-      "text": "how many cubes are there ?",
+      "text": "How many cubes are there ?",
       "pic": "assets/D21/images/images_pictures/cubes/cubes.png",
       "answer": "6",
       "options": ["3", "6", "5", "10", "0"]
     }
+  ]
+};
+
+var qAnimals =
+{
+  "questions":
+  [
+    {
+      "kind": "text",
+      "text": "What is the name of this animal?",
+      "text2": "",
+      "pic": "assets/Database/animals/images/Elephant.png",
+      "answer": "Elephant",
+      "options": ["Lion", "Donkey", "Elephant"]
+    },
+    {
+      "kind": "text",
+      "text": "What is the name of this animal?",
+      "text2": "",
+      "pic": "assets/Database/animals/images/Tiger.png",
+      "answer": "Tiger",
+      "options": ["Tiger", "Lion", "Kangaroo"]
+    },
+    {
+      "kind": "text",
+      "text": "What is the name of this animal?",
+      "text2": "",
+      "pic": "assets/Database/animals/images/Horse.png",
+      "answer": "Horse",
+      "options": ["Donkey", "Horse", "Zebra"]
+    },
+    {
+      "kind": "text",
+      "text": "What is the name of this animal?",
+      "text2": "",
+      "pic": "assets/Database/animals/images/Fox.png",
+      "answer": "Fox",
+      "options": ["Ox", "Fox", "Box"]
+    },
+    {
+      "kind": "text",
+      "text": "What is the name of this animal?",
+      "text2": "",
+      "pic": "assets/Database/animals/images/Monkey.png",
+      "answer": "Monkey",
+      "options": ["Numba", "Yak", "Monkey"]
+    },
+    {
+      "kind": "text",
+      "text": "What is the name of this bird?",
+      "text2": "",
+      "pic": "assets/Database/animals/images/Penguin.png",
+      "answer": "Penguin",
+      "options": ["Sheep", "Tiger", "Penguin"]
+    },
+    {
+      "kind": "text",
+      "text": "What is the name of this bird?",
+      "text2": "",
+      "pic": "assets/Database/animals/images/Vulture.png",
+      "answer": "Vulture",
+      "options": ["Vulture", "Iguana", "Rooster"]
+    },
+    {
+      "kind": "text",
+      "text": "What is the type of this fish?",
+      "text2": "",
+      "pic": "assets/Database/animals/images/Whale.png",
+      "answer": "Whale",
+      "options": ["Jellyfish", "Whale", "Unicorn"]
+    },
+    {
+      "kind": "text",
+      "text": "What is the name of this animal?",
+      "text2": "",
+      "pic": "assets/Database/animals/images/Sheep.png",
+      "answer": "Sheep",
+      "options": ["Numba", "Duck", "Sheep"]
+    },
+    {
+      "kind": "text",
+      "text": "What is the name of this animal?",
+      "text2": "",
+      "pic": "assets/Database/animals/images/Dog.png",
+      "answer": "Dog",
+      "options": ["Dog", "Cat", "Donkey"]
+    },
   ]
 };
 
@@ -330,6 +506,7 @@ var alpha =
     "assets/Database/char/images/fish.png",
     "assets/Database/char/images/grapes.png",
     "assets/Database/char/images/hat.png",
+    "assets/Database/char/images/Iguana.png",
     "assets/Database/char/images/jelly.png",
     "assets/Database/char/images/key.png",
     "assets/Database/char/images/lion.png",
@@ -406,6 +583,93 @@ var alpha =
 
   ]
 
+};
+
+var qAlpha =
+{
+  "questions":
+  [
+    {
+      "kind":"text",
+      "text":"Pick the lowercase letter that matches?",
+      "text2":"S",
+      "pic":"",
+      "answer":"s",
+      "options":["x","p","s"]
+    },
+    {
+      "kind":"text",
+      "text":"Pick the uppercase letter that matches?",
+      "text2":"g",
+      "pic":"",
+      "answer":"G",
+      "options":["E","G","h"]
+    },
+    {
+      "kind":"text",
+      "text":"What is the alphabet?",
+      "text2":"",
+      "pic":"assets/Database/char/dab.png",
+      "answer":"Dabelyu",
+      "options":["Wai","Dabelyu","Te"]
+    },
+    {
+      "kind":"text",
+      "text":"How do you spell 'book'?",
+      "text2":"",
+      "pic":"assets/Database/char/book.png",
+      "answer":"b-o-o-k",
+      "options":["b-o-o-k","bi-o-o-k","b-o-a-k"]
+    },
+    {
+      "kind":"text",
+      "text":"How do u spell 'bird'?",
+      "text2":"",
+      "pic":"assets/Database/char/bird.png",
+      "answer":"b-i-r-d",
+      "options":["be-i-r-d","b-ie-r-ed","b-i-r-d"]
+    },
+    {
+      "kind":"text",
+      "text":"Which letter does the word 'Zebra' starts with?",
+      "text2":"",
+      "pic":"assets/Database/animals/images/Zebra.png",
+      "answer":"Z",
+      "options":["C","Z","X"]
+    },
+    {
+      "kind":"text",
+      "text":"Which letter does the word 'fish' starts with?",
+      "text2":"",
+      "pic":"assets/Database/char/fish.png",
+      "answer":"f",
+      "options":["f","N","R"]
+    },
+    {
+      "kind":"text",
+      "text":"How many letters are in the alphabet?",
+      "text2":"",
+      "pic":"",
+      "answer":"26",
+      "options":["30","88","26"]
+    },
+    {
+      "kind":"text",
+      "text":"Which letter comes next?",
+      "text2":"H",
+      "pic":"",
+      "answer":"I",
+      "options":["I","J","K"]
+    },
+    {
+      "kind":"text",
+      "text":"Which letter comes next?",
+      "text2":"Q-R-S-",
+      "pic":"",
+      "answer":"T",
+      "options":["U","T","V"]
+    },
+  ]
 };
 
 var color =
@@ -626,18 +890,142 @@ var numbers =
   ]
 };
 
+var qNumbers =
+{
+  "questions":
+  [
+    {
+      "text": "How many ants are there ?",
+      "text2":"",
+      "kind": "text",
+      "pic": "assets/Database/animals/images/Ant.png",
+      "answer": "1",
+      "options": ["3", "1", "5"]
+    },
+    {
+      "text": "Which one of these represents 7 triangles",
+      "text2":"",
+      "answer": "assets/Database/QNumbers/right.png",
+      "kind": "pic",
+      "pic": "",
+      "options":
+      [
+        "assets/Database/QNumbers/right.png",
+        "assets/Database/QNumbers/wrong.png"
+      ]
+    },
+    {
+      "text": "How many dots are on the frame ?",
+      "text2":"",
+      "kind": "text",
+      "pic": "assets/Database/QNumbers/dots.png",
+      "answer": "6",
+      "options": ["3", "6", "5", ]
+    },
+    {
+      "text": "How do you write {Eight} by digit ?",
+      "text2":"",
+      "answer": "8",
+      "kind": "text",
+      "pic": "",
+      "options": ["3", "6", "8", ]
+    },
+    {
+      "text": "How many apples are there ?",
+      "text2":"",
+      "pic": "assets/Database/fruits/fruits/apple.png",
+      "answer": "1",
+      "kind": "text",
+      "options": ["3", "1", "5", ]
+    },
+    {
+      "text": "Which number is larger ?",
+      "text2":"",
+      "answer": "7",
+      "pic": "",
+      "kind": "text",
+      "options": ["5", "7"]
+    },
+    {
+      "kind": "text",
+      "text2":"",
+      "text": "Which number is smaller ?",
+      "answer": "0",
+      "pic": "",
+      "options": ["0", "8"]
+    },
+    {
+      "kind": "pic",
+      "text2":"",
+      "text": "Which one of these is bigger ?",
+      "answer": "assets/Database/QNumbers/right.png",
+      "pic": "",
+      "options": [
+        "assets/Database/QNumbers/right.png",
+        "assets/Database/QNumbers/wrong.png"
+      ]
+    },
+    {
+      "kind": "text",
+      "text2":"",
+      "text": "Count the tally marks. What number is shown?",
+      "pic": "assets/Database/QNumbers/tally.png",
+      "answer": "5",
+      "options": ["3", "1", "5",]
+    },
+    {
+      "kind": "text",
+      "text2":"",
+      "text": "How many cubes are there ?",
+      "pic": "assets/Database/QNumbers/cubes.png",
+      "answer": "6",
+      "options": ["3", "6", "5",]
+    }
+  ]
+};
 
 String healthyFood =
-    'The American Academy of Pediatrics’ '
-    'Committee on Genetics has noted that those with Down syndrome are likely to develop certain health problems.'
-    'This is thought to happen as a result of body structures not developing normally.'
-    'Children with Down syndrome are likely to be overweight and have a higher risk of obesity. '
-    'They burn calories at a slower rate and are frequently diagnosed with an under-active thyroid which can contribute to weight gain.'
-    'Gastroesophageal reflux disease (GERD) is common among children with Down syndrome.Symptoms include heartburn, '
-    'sore throat,'
-    ' regurgitation and chest pain.'
-    'Gluten intolerance and celiac disease is also widespread and can lead to nutrient deficiency and an impaired immune system if dietary needs are avoided.Finally, '
-    'periodontal disease becomes prevalent in adulthood so it is important to establish habits to eat foods that will decrease its likelihood.';
+    '''The American Academy of Pediatrics
+    Committee on Genetics has noted that those with Down syndrome are likely to develop certain health problems.
+    This is thought to happen as a result of body structures not developing normally.
+    Children with Down syndrome are likely to be overweight and have a higher risk of obesity.
+    They burn calories at a slower rate and are frequently diagnosed with an under-active thyroid which can contribute to weight gain.
+    Gastroesophageal reflux disease (GERD) is common among children with Down syndrome.Symptoms include heartburn,
+    sore throat,
+    regurgitation and chest pain.
+    Gluten intolerance and celiac disease is also widespread and can lead to nutrient deficiency and an impaired immune system if dietary needs are avoided.Finally,
+    'periodontal disease becomes prevalent in adulthood so it is important to establish habits to eat foods that will decrease its likelihood.''';
 
 String aboutUs =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+
+List<Color> colors =
+[
+  Color(0xff0191B4),
+  Color(0xffFFC2BB),
+  Color(0xff88CDF6),
+  Color(0xff0191B4),
+  Color(0xffFFC2BB),
+  Color(0xff88CDF6),
+];
+
+List<String> names =
+[
+  'Alphabet',
+  'Numbers',
+  'Shapes',
+  'Animals',
+  'Colors',
+  'Fruits'
+];
+
+List<String> picNames =
+[
+  'assets/images/child_app/level_one/abc.png',
+  'assets/images/child_app/level_one/numbers.png',
+  'assets/images/child_app/level_one/shapes.png',
+  'assets/images/child_app/level_two/lion.png',
+  'assets/images/child_app/level_two/rgb.png',
+  'assets/images/child_app/level_two/fruits.png'
+];
+

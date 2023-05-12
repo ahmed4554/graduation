@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project/components/custom_color.dart';
-import 'package:project/models/animal.dart';
 
 import '../modules/child_app/content_screens/animals/animals.dart';
 
@@ -469,43 +467,43 @@ class BuildMultiShadowContainer extends StatelessWidget {
   }
 }
 
-class NumberComponent extends StatelessWidget {
-  const NumberComponent({
-    Key? key,
-    required this.numbersModel,
-    required this.index,
-  }) : super(key: key);
-  final AnimalsModel numbersModel;
-  final int index;
+// class NumberComponent extends StatelessWidget {
+//   const NumberComponent({
+//     Key? key,
+//     required this.numbersModel,
+//     required this.index,
+//   }) : super(key: key);
+//   final AnimalsModel numbersModel;
+//   final int index;
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return InkWell(
+//       enableFeedback: true,
+//       onTap: ()
+//       {
+//
+//       },
+//       child: Container(
+//         padding: const EdgeInsets.all(20),
+//         alignment: Alignment.center,
+//         decoration: BoxDecoration(
+//           color: Colors.white,
+//           borderRadius: BorderRadius.circular(15),
+//           boxShadow: const [
+//             BoxShadow(
+//               color: Colors.black26,
+//               blurRadius: 8,
+//             ),
+//           ],
+//         ),
+//         child: SvgPicture.asset(numbersModel.shapes[index]),
+//       ),
+//     );
+//   }
+// }
 
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      enableFeedback: true,
-      onTap: ()
-      {
-
-      },
-      child: Container(
-        padding: const EdgeInsets.all(20),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 8,
-            ),
-          ],
-        ),
-        child: SvgPicture.asset(numbersModel.shapes[index]),
-      ),
-    );
-  }
-}
-
-class PicAnswer extends StatelessWidget {
+class PicAnswer extends StatefulWidget {
   PicAnswer({
     Key? key,
     required this.index,
@@ -513,18 +511,27 @@ class PicAnswer extends StatelessWidget {
     this.right,
   }) : super(key: key);
 
-  final AnimalsQuestion model;
+  final dynamic model;
   final int index;
   bool? right;
 
   @override
+  State<PicAnswer> createState() => _PicAnswerState();
+}
+
+class _PicAnswerState extends State<PicAnswer> {
+  @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        if (model.answer == model.options[index]) {
-          right = true;
+        if (widget.model.answer == widget.model.options![widget.index]) {
+          setState(() {
+            widget.right = true;
+          });
         } else {
-          right = false;
+          setState(() {
+            widget.right = false;
+          });
         }
       },
       child: Container(
@@ -533,7 +540,7 @@ class PicAnswer extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(
-            color: model.answer == model.options[index]
+            color: widget.right==null?Colors.grey:widget.right==true
                 ? Colors.green
                 : Colors.red,
           ),
@@ -544,15 +551,20 @@ class PicAnswer extends StatelessWidget {
           children: [
             Image(
               image: AssetImage(
-                model.options[index],
+                widget.model.options![widget.index],
               ),
               width: 100,
               height: 100,
             ),
-            if (model.answer == model.options[index])
+            if (widget.right == true)
               const Icon(
                 Icons.check_circle,
                 color: Colors.green,
+              ),
+            if (widget.right == false)
+              const Icon(
+                Icons.close_rounded,
+                color: Colors.red,
               ),
           ],
         ),
@@ -569,7 +581,7 @@ class TextAnswer extends StatefulWidget {
     this.right,
   }) : super(key: key);
 
-  final AnimalsQuestion model;
+  final dynamic model;
   final int index;
   bool? right;
 
@@ -583,7 +595,7 @@ class _TextAnswerState extends State<TextAnswer> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        if (widget.model.answer == widget.model.options[widget.index]) {
+        if (widget.model.answer == widget.model.options![widget.index]) {
           setState(() {
             widget.right = true;
           });
@@ -611,9 +623,9 @@ class _TextAnswerState extends State<TextAnswer> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              widget.model.options[widget.index],
+              widget.model.options![widget.index],
               style: const TextStyle(
-                fontSize: 16,
+                fontSize: 24,
                 color: Colors.grey,
               ),
             ),
@@ -622,44 +634,73 @@ class _TextAnswerState extends State<TextAnswer> {
                 Icons.check_circle,
                 color: Colors.green,
               ),
-          ],
+            if (widget.right == false)
+              const Icon(
+                Icons.close_rounded,
+                color: Colors.red,
+              ),
+           ],
         ),
       ),
     );
   }
 }
 
-class MultiChoiseQuestionComponent extends StatelessWidget {
-  MultiChoiseQuestionComponent({
-    Key? key,
-    required this.model,
-  }) : super(key: key);
-  final AnimalsQuestion model;
+class MultiChoiseQuestionComponent extends StatefulWidget {
+  MultiChoiseQuestionComponent({Key? key, required this.model,}) : super(key: key);
+  final dynamic model;
 
+  @override
+  State<MultiChoiseQuestionComponent> createState() => _MultiChoiseQuestionComponentState();
+}
+
+class _MultiChoiseQuestionComponentState extends State<MultiChoiseQuestionComponent> {
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            model.text,
-            style: TextStyle(
-              fontSize: 22,
-              color: CustomColor.blue11,
-              fontWeight: FontWeight.bold,
+          Center(
+            child: Text(
+              widget.model.text as String,
+              style: TextStyle(
+                fontSize: 26,
+                color: CustomColor.blue11,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           SizedBox(
             height: 20.0,
           ),
-          if (model.pic.isNotEmpty)
+          if (widget.model.pic!.isNotEmpty)
             SizedBox(
               height: 200,
               child: Image(
-                image: AssetImage(model.pic),
+                image: AssetImage(widget.model.pic as String),
                 fit: BoxFit.fill,
               ),
+            ),
+          if(widget.model.text2!.isEmpty && widget.model.pic!.isEmpty)
+            SizedBox(
+              height: 50.0,
+            ),
+          if(widget.model.text2!.isNotEmpty)
+            SizedBox(
+              child: Text(
+                widget.model.text2!,
+                style: TextStyle(
+                  fontSize: 80.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          if(widget.model.text2!.isEmpty && widget.model.pic!.isEmpty)
+            SizedBox(
+              height: 50.0,
             ),
           const SizedBox(
             height: 15,
@@ -667,15 +708,15 @@ class MultiChoiseQuestionComponent extends StatelessWidget {
           Expanded(
             child: ListView(
               children: List.generate(
-                model.options.length,
-                    (index) => model.kind == 'text'
+                widget.model.options!.length,
+                    (index) => widget.model.kind == 'text'
                     ? TextAnswer(
                   index: index,
-                  model: model,
+                  model: widget.model,
                 )
                     : PicAnswer(
                   index: index,
-                  model: model,
+                  model: widget.model,
                 ),
               ),
             ),
@@ -765,6 +806,65 @@ class BotMessage extends StatelessWidget {
     );
   }
 }
+
+class CategoryComponent extends StatelessWidget {
+  const CategoryComponent({Key? key,required this.color,required this.name,required this.picName}) : super(key: key);
+
+  final Color color ;
+  final String name,picName;
+
+
+  @override
+  Widget build(BuildContext context) {
+    var radius = Radius.circular(100.0);
+    return Container(
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.only(
+          topLeft: radius,
+          bottomLeft: radius,
+          bottomRight: radius,
+        )
+      ),
+      child: Row(
+        children:
+        [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              width: 100.0,
+              height: 100.0,
+              padding: EdgeInsets.all(20.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(
+                  width: 2.0,
+                  color: color,
+                ),
+                borderRadius: BorderRadius.circular(100.0)
+              ),
+              child: Image.asset(
+                  picName,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 30.0
+          ),
+          Text( name,
+            style: TextStyle(
+              color: Color(0xffF5F6FA),
+              fontSize: 30.0,
+              fontWeight: FontWeight.bold
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 
 
 

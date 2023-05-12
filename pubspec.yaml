@@ -95,6 +95,7 @@ flutter:
      - assets/images/child_app/board/
      - assets/Database/shapes/names/
      - assets/Database/animals/images/
+     - assets/Database/char/
      - assets/Database/char/images/
      - assets/Database/char/words/
      - assets/Database/char/char/
@@ -105,6 +106,8 @@ flutter:
      - assets/Database/fruits/voice fruits/
      - assets/Database/numbers/shapes/
      - assets/Database/numbers/sounds/
+     - assets/Database/char/images/Iguana.png
+     - assets/Database/QNumbers/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project/components/custom_color.dart';
+import 'package:project/modules/child_app/activity_levels/activity_levels.dart';
 import 'package:project/modules/child_app/activity_screen/activity_screen.dart';
+import 'package:project/modules/child_app/category_screen/category_screen.dart';
 import 'package:project/modules/child_app/home_Screen/home_screen.dart';
 import 'package:project/modules/child_app/levelOne_screen/level1_screen.dart';
 import 'package:project/modules/child_app/levelTwo_screen/level2_screen.dart';
@@ -16,7 +18,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
   int currentStep = 0;
 
   continueStep() {
-    if (currentStep < 3)
+    if (currentStep < 2)
       setState(() {
         currentStep = currentStep + 1;
       });
@@ -41,12 +43,11 @@ class _LevelsScreenState extends State<LevelsScreen> {
       [
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: CustomColor.blue11.withOpacity(.8),
+            backgroundColor: CustomColor.blue11.withOpacity(.8),
             padding: const EdgeInsets.symmetric(horizontal: 50),
-
           ),
           onPressed: details.onStepContinue,
-          child: Text(
+          child: const Text(
             'Next',
             style: TextStyle(
               fontSize: 18.0,
@@ -54,12 +55,12 @@ class _LevelsScreenState extends State<LevelsScreen> {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 10.0,
         ),
         OutlinedButton(
           onPressed: details.onStepCancel,
-          child: Text(
+          child: const Text(
             'Back',
             style: TextStyle(
                 color: CustomColor.sky1
@@ -143,7 +144,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
                     ],
                     borderRadius: BorderRadius.circular(50.0),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Let\'s Study',
                     style: TextStyle(
                         fontSize: 26.0, fontWeight: FontWeight.w500),
@@ -410,111 +411,12 @@ class _LevelsScreenState extends State<LevelsScreen> {
                 fontWeight: FontWeight.w600
             ),
           ),
-          content: Container(
-            margin: const EdgeInsets.only(
-                top:10,
-                bottom: 10,
-            ),
-
-            child: Stack(
-              children:
-              [
-                Container(
-                  width: 319.0,
-                  height: 150.0,
-                  decoration: BoxDecoration(
-                    color: CustomColor.teal,
-                    borderRadius: BorderRadius.circular(15.0),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey.withOpacity(.6),
-                          spreadRadius: 5.0,
-                          blurRadius: 7.0,
-                          offset: Offset(1.5, 3)
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 90.0,
-                    left: 16.0,
-                  ),
-                  child: Text(
-                    'Level 3',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 28.0,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 15.0,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 120.0,
-                    left: 16.0,
-                  ),
-                  child: Text(
-                    'Basic',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15.0,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 7.0,
-                    left: 67.0,
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(15.0),
-                        bottomRight: Radius.circular(15.0)
-                    ),
-                    child: Image.asset(
-                      'assets/images/child_app/levels_screen/three.png',
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 20.0,
-                    left: 14.0,
-                  ),
-                  child: SizedBox(
-                    width: 280.0,
-                    child: LinearProgressIndicator(
-                      minHeight: 8.0,
-                      color: Colors.deepOrange.shade500.withOpacity(.9),
-                      backgroundColor: Colors.white,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          state: currentStep >= 2 ? StepState.complete : StepState.disabled,
-        ),
-        Step(
-          isActive: currentStep >= 3,
-          title: Text(
-            'Step 4',
-            style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.w600
-            ),
-          ),
           content: InkWell(
             onTap: ()
             {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => QuestionsScreen(),
+                  builder: (context) => CategoryScreen(),
                 ),
               );
             },
@@ -565,7 +467,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
                       left: 16.0,
                     ),
                     child: Text(
-                      'lvl 1,2,3',
+                      'lvl 1,2',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 15.0,
@@ -591,7 +493,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
               ),
             ),
           ),
-          state: currentStep >= 3 ? StepState.complete : StepState.disabled,
+          state: currentStep >= 2 ? StepState.complete : StepState.disabled,
         ),
       ];
 }

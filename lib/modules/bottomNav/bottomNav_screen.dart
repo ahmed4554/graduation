@@ -25,7 +25,6 @@ class _MainPageState extends State<MainPage> {
   ];
 
   void changeItem(int index) {
-    print(index);
     setState(() {
       currentIndex = index;
     });

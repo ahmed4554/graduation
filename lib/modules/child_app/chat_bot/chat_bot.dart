@@ -75,8 +75,9 @@ class ChatBot extends StatelessWidget {
                       Icons.mic,
                       color: Colors.blue[300],
                     ),
-                  )
-                ]),
+                   )
+                 ]
+                ),
               ),
             ],
           ),

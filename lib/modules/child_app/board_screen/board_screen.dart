@@ -1,15 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:project/modules/child_app/content_screens/animals/animals.dart';
-import 'package:project/modules/child_app/content_screens/shapes/shapes.dart';
-import 'package:project/modules/child_app/content_screens/shapes/shapes_screen.dart';
 import 'package:project/modules/child_app/levels_screen/levels_screen.dart';
 
 class BoardScreen extends StatefulWidget {
-  const BoardScreen({ Key? key, required this.board  , required this.index, }) : super(key: key);
+  BoardScreen({ Key? key, required this.board  , required this.index, }) : super(key: key);
   final dynamic board;
-  final int index ;
+  int index ;
 
   @override
   State<BoardScreen> createState() => _BoardScreenState();
@@ -17,6 +14,7 @@ class BoardScreen extends StatefulWidget {
 
 class _BoardScreenState extends State<BoardScreen> {
   bool show = false ;
+  PageController controller = PageController();
 
   @override
   void initState() {
@@ -54,23 +52,22 @@ class _BoardScreenState extends State<BoardScreen> {
           ),
           Padding(
             padding: const EdgeInsets.only(
-                top: 34.0,
-              left: 10.0
+                top: 40.0,
+               left: 5.0
             ),
             child: InkWell(
-              onTap: (){
-                Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) {
-                    SystemChrome.setPreferredOrientations(
-                        [
-                          DeviceOrientation.portraitUp,
-                        ]);
-                    return LevelsScreen();
-                  },
-                ),
-              );
-            },
+              onTap: ()
+              {
+                if(widget.index!=0){
+                  setState(() {
+                    widget.index--;
+                  });
+                  controller.previousPage(duration: const Duration(milliseconds: 300), curve: Curves.bounceInOut);
+                }else{
+                  Navigator.pop(context);
+                }
+
+              },
               child: Image.asset(
                   'assets/images/child_app/board/back.png',
               ),
@@ -91,14 +88,25 @@ class _BoardScreenState extends State<BoardScreen> {
               ),
             ),
           ),
-          Positioned(
-            top: MediaQuery.of(context).size.width / 7,
-            left: 140,
-            child: SizedBox(
-              width: 160.0,
-              height: 160.0,
-              child: Image.asset(
-                widget.board.shapes![widget.index],
+          Padding(
+            padding: const EdgeInsets.only(left: 65.0),
+            child: PageView.builder(
+              controller: controller,
+              itemCount: widget.board.names!.length,
+              itemBuilder:(context,index)=> Stack(
+                children: [
+                  Positioned(
+                    top: MediaQuery.of(context).size.width / 7,
+                    left: 70,
+                    child: SizedBox(
+                      width: 160.0,
+                      height: 160.0,
+                      child: Image.asset(
+                        widget.board.shapes![widget.index],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -108,7 +116,7 @@ class _BoardScreenState extends State<BoardScreen> {
             right: 150,
             child: Text(
               widget.board.names![widget.index],
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 70.0,
                 fontWeight: FontWeight.w900,
               ),
@@ -122,9 +130,12 @@ class _BoardScreenState extends State<BoardScreen> {
               child: InkWell(
                 onTap: ()
                 {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                    return BoardScreen(board: widget.board, index: widget.index+1);
-                  }));
+                  if(widget.index!=widget.board.shapes.length-1){
+                    setState(() {
+                      widget.index++;
+                    });
+                    controller.nextPage(duration: const Duration(milliseconds: 300), curve: Curves.bounceInOut);
+                  }
                 },
                 child: Image.asset(
                     'assets/images/child_app/board/next.png',

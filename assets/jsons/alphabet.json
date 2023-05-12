@@ -92,6 +92,7 @@
         "assets/Database/char/images/fish.png",
         "assets/Database/char/images/grapes.png",
         "assets/Database/char/images/hat.png",
+        "assets/Database/char/images/Iguana.png",
         "assets/Database/char/images/jelly.png",
         "assets/Database/char/images/key.png",
         "assets/Database/char/images/lion.png",
@@ -136,7 +137,7 @@
         "assets/Database/char/images/watermelon.png",
         "assets/Database/char/images/xylophone.png",
         "assets/Database/char/images/yoyo.png",
-        "assets/Database/char/images/zebra.png",
+        "assets/Database/char/images/zebra.png"
      ],
      "sounds": [
         "assets/Database/char/Voice/A apple.mp3",
