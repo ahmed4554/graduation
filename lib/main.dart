@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:project/components/dio_helper.dart';
 import 'package:project/modules/splash/splash_screen.dart';
 
 void main() {
+  DioHelper.init();
   runApp(const MyApp());
 }
 

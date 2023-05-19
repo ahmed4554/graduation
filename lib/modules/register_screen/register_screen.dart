@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:project/modules/login_screen/cubit/cubit.dart';
 import '../../components/components.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -72,30 +73,47 @@ class RegisterScreen extends StatelessWidget {
                         const SizedBox(
                           height: 30,
                         ),
-                        const CustomInputField(icon: Icons.person, label: 'User Name'),
+                        CustomInputField(
+                          icon: Icons.person,
+                          label: 'User Name',
+                          validate: (String? value) {},
+                          type: TextInputType.text,
+                          Controller: LoginCubit.get(context).userNameController,
+                        ),
                         const SizedBox(
                           height: 30,
                         ),
-                        const CustomInputField(icon: Icons.email, label: 'E-mail'),
+                        CustomInputField(
+                          icon: Icons.email,
+                          label: 'E-mail',
+                          validate: (String? value) {},
+                          type: TextInputType.emailAddress,
+                          Controller: LoginCubit.get(context).emailController,
+                        ),
                         const SizedBox(
                           height: 30,
                         ),
-                        const CustomInputField(icon: Icons.phone, label: 'Phone Number'),
+                        CustomInputField(
+                          icon: Icons.phone,
+                          label: 'Phone Number',
+                          validate: (String? value) {},
+                          type: TextInputType.phone,
+                          Controller: LoginCubit.get(context).phoneController,
+                        ),
                         const SizedBox(
                           height: 30,
                         ),
-                        const CustomInputField(icon: Icons.lock_open_rounded, label: 'Password'),
+                        CustomInputField(
+                          icon: Icons.lock_open_rounded,
+                          label: 'Password',
+                          validate: (String? value) {},
+                          type: TextInputType.visiblePassword,
+                          Controller: LoginCubit.get(context).passwordController,
+                        ),
                         const SizedBox(
                           height: 30,
                         ),
-                        MainButton(
-                          width: 290,
-                          onTap: ()
-                          {
-
-                          },
-                            label: 'Sign Up'
-                        ),
+                        MainButton(width: 290, onTap: () {}, label: 'Sign Up'),
                       ],
                     ),
                   ),

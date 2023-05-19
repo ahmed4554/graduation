@@ -36,20 +36,27 @@ class AppName extends StatelessWidget {
 }
 
 class CustomInputField extends StatelessWidget {
-  const CustomInputField({
+  CustomInputField({
     Key? key,
+    required this.type,
+    required this.validate,
     required this.icon,
     required this.label,
+    required this.Controller
   }) : super(key: key);
-  final IconData icon;
-  final String label;
+
+    TextInputType type;
+    final IconData icon;
+    final String label;
+    String? Function(String?)? validate;
+    var Controller ;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 50,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
               color: Colors.black12,
@@ -62,20 +69,86 @@ class CustomInputField extends StatelessWidget {
         decoration: InputDecoration(
           fillColor: Colors.white,
           filled: true,
-          hintText: label,
-          hintStyle: TextStyle(
-            fontSize: 18,
-            color: Colors.black.withOpacity(.2),
-          ),
+          labelText: label,
+          // labelStyle: TextStyle(
+          //   fontSize: 18,
+          //   color: Colors.black.withOpacity(.2),
+          // ),
           border: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(30),
+            // borderSide: BorderSide.none,
+            borderRadius: BorderRadius.circular(15),
           ),
           prefixIcon: Icon(
             icon,
-            color: Colors.black.withOpacity(.2),
+            color: Colors.black.withOpacity(.5),
+          ),
+          ),
+        controller: Controller,
+        validator: validate,
+        keyboardType: type,
+        ),
+      );
+   }
+}
+
+class CustomInputField2 extends StatelessWidget {
+  CustomInputField2({
+    Key? key,
+    this.icon2 = Icons.remove_red_eye,
+    required this.validate,
+    required this.type,
+    required this.icon,
+    required this.label,
+    required this.passwordController,
+  }) : super(key: key);
+
+
+    IconData icon2;
+    final IconData icon;
+    final String label;
+    TextInputType type;
+    String? Function(String?)? validate;
+    var passwordController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+              color: Colors.black12,
+              spreadRadius: 1,
+              blurRadius: 5,
+              offset: Offset(0 , 0))
+        ],
+      ),
+      child: TextFormField(
+        decoration: InputDecoration(
+          fillColor: Colors.white,
+          filled: true,
+          labelText: label,
+          // hintStyle: TextStyle(
+          //   fontSize: 18,
+          //   color: Colors.black.withOpacity(.2),
+          // ),
+          border: OutlineInputBorder(
+            //borderSide: BorderSide.none,
+            borderRadius: BorderRadius.circular(15),
+          ),
+          prefixIcon: Icon(
+            icon,
+            color: Colors.black.withOpacity(.5),
+          ),
+          suffixIcon: Icon(
+            icon2,
+            color: Colors.black.withOpacity(.5),
           ),
         ),
+        controller: passwordController,
+        keyboardType: type,
+        validator: validate,
       ),
     );
   }
@@ -93,7 +166,7 @@ class MainButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       clipBehavior: Clip.antiAliasWithSaveLayer,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
       width: width,
       child: MaterialButton(
         height: 50,

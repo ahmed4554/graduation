@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:project/modules/home/home_screen.dart';
 import '../../components/components.dart';
+import '../login_screen/cubit/cubit.dart';
 import '../login_screen/login_screen.dart';
 
 class NewPasswordScreen extends StatelessWidget {
@@ -25,23 +26,18 @@ class NewPasswordScreen extends StatelessWidget {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: 24.0
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              children:
-              [
+              children: [
                 SizedBox(
                   height: 50,
                 ),
                 Row(
-                  children:
-                  [
+                  children: [
                     GestureDetector(
                       child: Icon(Icons.arrow_back),
-                      onTap: ()
-                      {
+                      onTap: () {
                         Navigator.of(context).pop(
                           MaterialPageRoute(
                             builder: (context) {
@@ -106,6 +102,9 @@ class NewPasswordScreen extends StatelessWidget {
                 CustomInputField(
                   icon: Icons.lock_open_rounded,
                   label: 'Enter new password',
+                  validate: (String? value) {},
+                  type: TextInputType.text,
+                  Controller: LoginCubit.get(context).passwordController,
                 ),
                 SizedBox(
                   height: 30,
@@ -113,13 +112,15 @@ class NewPasswordScreen extends StatelessWidget {
                 CustomInputField(
                   icon: Icons.lock_open_rounded,
                   label: 'Confirm password',
+                  validate: (String? value) {},
+                  type: TextInputType.text,
+                  Controller: LoginCubit.get(context).passwordController,
                 ),
                 SizedBox(
                   height: 40,
                 ),
                 MainButton(
-                  onTap: ()
-                  {
+                  onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) {

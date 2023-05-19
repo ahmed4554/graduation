@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:dio/dio.dart';
 import 'package:floating_action_bubble/floating_action_bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -27,6 +28,8 @@ class _GallatyScreenState extends State<ObjectDetectionScreen>
       image = File(pickedImage!.path);
     }else{}
 
+    upload(image!);
+
   }
 
   uploadGImage() async {
@@ -35,6 +38,8 @@ class _GallatyScreenState extends State<ObjectDetectionScreen>
     if(pickedImage != null){
       image = File(pickedImage!.path);
     }else{}
+
+    upload(image!);
   }
 
 
@@ -140,5 +145,34 @@ class _GallatyScreenState extends State<ObjectDetectionScreen>
           backGroundColor: Colors.white,
         )
     );
+  }
+
+
+  void upload(File image) async{
+    String fileName = image.path.split('/').last;
+    
+    FormData data = FormData.fromMap(
+      {
+        "image": await MultipartFile.fromFile(
+          image.path,
+          filename: fileName,
+        ),
+      },
+    );
+    
+    Dio dio = Dio(
+      BaseOptions(
+        baseUrl: 'https://general-detection.p.rapidapi.com/v1/results?algo=algo1',
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'X-RapidAPI-Key': '42af000b0cmsh4fc716a1c4c8fc0p1a0ca7jsn7e5dbd62cad4',
+          'X-RapidAPI-Host': 'general-detection.p.rapidapi.com'
+        },
+      )
+    );
+
+    await dio.post ('',data: data)
+        .then((response) => print(response))
+        .catchError((error) => print(error));
   }
 }
