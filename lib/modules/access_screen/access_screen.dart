@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:project/components/custom_color.dart';
 import 'package:project/modules/child_app/home_Screen/home_screen.dart';
-import 'package:project/modules/home/home_screen.dart';
 import 'package:project/modules/login_screen/login_screen.dart';
 import '../../components/components.dart';
 
@@ -26,18 +25,18 @@ class _AccessScreenState extends State<AccessScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 height: 300,
                 child: Stack(
                   fit: StackFit.expand,
                   alignment: Alignment.bottomCenter,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(bottom: 20),
+                      margin: const EdgeInsets.only(bottom: 20),
                       height: 300,
                       width: double.infinity,
                       decoration: BoxDecoration(
@@ -132,7 +131,7 @@ class _AccessScreenState extends State<AccessScreen> {
                           });
                           Navigator.of(context).push(
                             MaterialPageRoute(builder:
-                                (context)=> LoginScreen()
+                                (context)=> const LoginScreen()
                             ),
                           );
                         },
@@ -176,7 +175,7 @@ class _AccessScreenState extends State<AccessScreen> {
                           });
                           Navigator.of(context).push(
                             MaterialPageRoute(builder:
-                                (context)=> ChildHomeScreen()
+                                (context)=> const ChildHomeScreen()
                             ),
                           );
                         },
@@ -192,9 +191,9 @@ class _AccessScreenState extends State<AccessScreen> {
                                    offset: const Offset(4, 4),
                                    blurRadius: 15,
                                    spreadRadius: 1),
-                               BoxShadow(
+                               const BoxShadow(
                                    color: CustomColor.sky,
-                                   offset: const Offset(-4, -4),
+                                   offset: Offset(-4, -4),
                                    blurRadius: 15,
                                    spreadRadius: 1,
                                )

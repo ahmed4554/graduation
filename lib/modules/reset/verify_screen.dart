@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:project/components/custom_color.dart';
 import 'package:project/modules/reset/newpass_screen.dart';
 
 import '../../components/components.dart';
@@ -34,31 +33,31 @@ class VerificationScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children:
               [
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 Row(
                   children:
                   [
                     GestureDetector(
-                      child: Icon(Icons.arrow_back),
+                      child: const Icon(Icons.arrow_back),
                       onTap: ()
                       {
                         Navigator.of(context).pop(
                           MaterialPageRoute(
                             builder: (context) {
-                              return LoginScreen();
+                              return const LoginScreen();
                             },
                           ),
                         );
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 8.0,
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 SvgPicture.asset(
@@ -66,7 +65,7 @@ class VerificationScreen extends StatelessWidget {
                   width: 150,
                   height: 100,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 Text(
@@ -77,10 +76,10 @@ class VerificationScreen extends StatelessWidget {
                     color: Colors.black.withOpacity(.9),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 26,
                 ),
-                Column(
+                const Column(
                   children: [
                     Text(
                       'The code has been sent to 010******21. ',
@@ -100,10 +99,10 @@ class VerificationScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
-                TextEditorForVerifyCode(),
+                const TextEditorForVerifyCode(),
                 // Row(
                 //   children:
                 //   [
@@ -197,7 +196,7 @@ class VerificationScreen extends StatelessWidget {
                 //     ),
                 //   ],
                 // ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 MainButton(
@@ -206,7 +205,7 @@ class VerificationScreen extends StatelessWidget {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) {
-                          return NewPasswordScreen();
+                          return const NewPasswordScreen();
                         },
                       ),
                     );
@@ -214,7 +213,7 @@ class VerificationScreen extends StatelessWidget {
                   label: 'Confirm',
                   width: 250,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 300,
                 ),
               ],

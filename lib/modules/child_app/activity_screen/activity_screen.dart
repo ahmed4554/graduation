@@ -52,7 +52,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
               child: Text(
                 'Question ${currentIndex + 1} / ${widget.quiz.questions.length}',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 23.0, fontWeight: FontWeight.w500),
+                style: const TextStyle(fontSize: 23.0, fontWeight: FontWeight.w500),
               ),
             ),
             SizedBox(
@@ -61,7 +61,6 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
                 child: SizedBox(
                   height: height * .67,
                   child: PageView.builder(
-                    physics: NeverScrollableScrollPhysics(),
                     controller: controller,
                     onPageChanged: (int index) {
                       currentIndex = index;

@@ -37,7 +37,7 @@ class _NumbersScreenState extends State<NumbersScreen> {
           {
             Navigator.of(context).pop(
               MaterialPageRoute(builder: (context) {
-                return LevelOneScreen();
+                return const LevelOneScreen();
               }),
             );
           },
@@ -72,7 +72,7 @@ class _NumbersScreenState extends State<NumbersScreen> {
               ),
             ),
           ),
-          Container(
+          SizedBox(
             height: MediaQuery.of(context).size.height,
             child: SingleChildScrollView(
               child: Column(
@@ -99,7 +99,7 @@ class _NumbersScreenState extends State<NumbersScreen> {
                       "assets/images/profile/eliza.png",
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15.0,
                   ),
                   Container(
@@ -116,7 +116,7 @@ class _NumbersScreenState extends State<NumbersScreen> {
                       ],
                       borderRadius: BorderRadius.circular(50.0),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'Numbers',
                         style: TextStyle(
@@ -181,7 +181,7 @@ class _NumbersScreenState extends State<NumbersScreen> {
                               child: Center(
                                 child: Column(
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: 90.0,
                                       height: 90.0,
                                       child: Image.asset(

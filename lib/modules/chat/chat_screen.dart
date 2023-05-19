@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project/components/components.dart';
 import 'package:project/components/custom_color.dart';
 
@@ -129,9 +128,8 @@ class Chat extends StatelessWidget {
                           const SizedBox(
                             height: 20,
                           ),
-                          Row(
-                            children: const
-                            [
+                          const Row(
+                            children: [
                               SizedBox(
                                 width: 10,
                               ),

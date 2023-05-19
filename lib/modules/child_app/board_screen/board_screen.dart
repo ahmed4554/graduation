@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:project/modules/child_app/levels_screen/levels_screen.dart';
 
 class BoardScreen extends StatefulWidget {
   BoardScreen({ Key? key, required this.board  , required this.index, }) : super(key: key);
@@ -18,7 +17,7 @@ class _BoardScreenState extends State<BoardScreen> {
 
   @override
   void initState() {
-    Timer(Duration(seconds: 2 ),
+    Timer(const Duration(seconds: 2 ),
         ()=> setState(() {
           show = true;
         })
@@ -42,7 +41,7 @@ class _BoardScreenState extends State<BoardScreen> {
       body: Stack(
         children:
         [
-          Container(
+          SizedBox(
             width: double.infinity,
             height: double.infinity,
             child: Image.asset(
@@ -79,7 +78,7 @@ class _BoardScreenState extends State<BoardScreen> {
                   top: 45.0,
                 right: 20.0
               ),
-              child: Container(
+              child: SizedBox(
                 width: 693.0,
                 height: 340.0,
                 child: Image.asset(

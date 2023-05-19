@@ -4,8 +4,6 @@ import 'package:project/components/components.dart';
 import 'package:project/modules/login_screen/login_screen.dart';
 import 'package:project/modules/reset/verify_screen.dart';
 
-import '../login_screen/cubit/cubit.dart';
-
 class ResetScreen extends StatelessWidget {
   const ResetScreen({Key? key}) : super(key: key);
 
@@ -27,33 +25,38 @@ class ResetScreen extends StatelessWidget {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            padding: const EdgeInsets.symmetric(
+                horizontal: 24.0
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
+              children:
+              [
+                const SizedBox(
                   height: 50,
                 ),
                 Row(
-                  children: [
+                  children:
+                  [
                     GestureDetector(
-                      child: Icon(Icons.arrow_back),
-                      onTap: () {
+                      child: const Icon(Icons.arrow_back),
+                      onTap: ()
+                      {
                         Navigator.of(context).pop(
                           MaterialPageRoute(
                             builder: (context) {
-                              return LoginScreen();
+                              return const LoginScreen();
                             },
                           ),
                         );
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 8.0,
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 SvgPicture.asset(
@@ -61,7 +64,7 @@ class ResetScreen extends StatelessWidget {
                   width: 150,
                   height: 100,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 Text(
@@ -72,10 +75,10 @@ class ResetScreen extends StatelessWidget {
                     color: Colors.black.withOpacity(.9),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 26,
                 ),
-                Column(
+                const Column(
                   children: [
                     Text(
                       'Enter the phone number linked to your account. ',
@@ -95,25 +98,23 @@ class ResetScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
-                CustomInputField(
+                const CustomInputField(
                   icon: Icons.phone,
                   label: 'Phone Number',
-                  validate: (String? value) {},
-                  type: TextInputType.phone,
-                  Controller: LoginCubit.get(context).phoneController,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 MainButton(
-                  onTap: () {
+                  onTap: ()
+                  {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) {
-                          return VerificationScreen();
+                          return const VerificationScreen();
                         },
                       ),
                     );
@@ -121,10 +122,10 @@ class ResetScreen extends StatelessWidget {
                   label: 'Send Code',
                   width: 250,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 285,
                 ),
               ],

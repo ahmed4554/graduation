@@ -64,7 +64,7 @@ class _FruitsScreenState extends State<FruitsScreen> {
               ),
             ),
           ),
-          Container(
+          SizedBox(
             height: MediaQuery.of(context).size.height,
             child: SingleChildScrollView(
               child: Column(
@@ -91,7 +91,7 @@ class _FruitsScreenState extends State<FruitsScreen> {
                       "assets/images/profile/eliza.png",
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15.0,
                   ),
                   Container(
@@ -108,7 +108,7 @@ class _FruitsScreenState extends State<FruitsScreen> {
                       ],
                       borderRadius: BorderRadius.circular(50.0),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'Fruits',
                         style: TextStyle(
@@ -171,7 +171,7 @@ class _FruitsScreenState extends State<FruitsScreen> {
                               child: Center(
                                 child: Column(
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: 85.0,
                                       height: 80.0,
                                       child: Image.asset(

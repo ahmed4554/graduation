@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project/components/custom_color.dart';
-import 'package:project/modules/child_app/activity_levels/activity_levels.dart';
-import 'package:project/modules/child_app/activity_screen/activity_screen.dart';
 import 'package:project/modules/child_app/category_screen/category_screen.dart';
 import 'package:project/modules/child_app/home_Screen/home_screen.dart';
 import 'package:project/modules/child_app/levelOne_screen/level1_screen.dart';
@@ -18,17 +16,19 @@ class _LevelsScreenState extends State<LevelsScreen> {
   int currentStep = 0;
 
   continueStep() {
-    if (currentStep < 2)
+    if (currentStep < 2) {
       setState(() {
         currentStep = currentStep + 1;
       });
+    }
   }
 
   cancelStep() {
-    if (currentStep > 0)
+    if (currentStep > 0) {
       setState(() {
         currentStep = currentStep - 1;
       });
+    }
   }
 
   tapStep(int value) {
@@ -85,7 +85,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
           {
             Navigator.of(context).pop(
               MaterialPageRoute(builder: (context) {
-                return ChildHomeScreen();
+                return const ChildHomeScreen();
               }),
             );
           },
@@ -195,7 +195,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
       [
         Step(
           isActive: currentStep >= 0,
-          title: Text(
+          title: const Text(
             'Step 1',
             style: TextStyle(
                 fontSize: 18.0,
@@ -205,7 +205,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
           content: InkWell(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => LevelOneScreen(),
+                builder: (context) => const LevelOneScreen(),
               ));
             },
             child: Container(
@@ -227,7 +227,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
                             color: Colors.grey.withOpacity(.6),
                             spreadRadius: 5.0,
                             blurRadius: 7.0,
-                            offset: Offset(1.5, 3)
+                            offset: const Offset(1.5, 3)
                         )
                       ],
                     ),
@@ -246,8 +246,8 @@ class _LevelsScreenState extends State<LevelsScreen> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
+                  const Padding(
+                    padding: EdgeInsets.only(
                       top: 90.0,
                       left: 16.0,
                     ),
@@ -260,11 +260,11 @@ class _LevelsScreenState extends State<LevelsScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15.0,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
+                  const Padding(
+                    padding: EdgeInsets.only(
                       top: 120.0,
                       left: 16.0,
                     ),
@@ -283,7 +283,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
                       left: 72.0,
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                           bottomRight: Radius.circular(15.0)
                       ),
                       child: Image.asset(
@@ -299,7 +299,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
         ),
         Step(
           isActive: currentStep >= 1,
-          title: Text(
+          title: const Text(
             'Step 2',
             style: TextStyle(
                 fontSize: 18.0,
@@ -309,7 +309,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
           content: InkWell(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => LevelTwoScreen(),
+                builder: (context) => const LevelTwoScreen(),
               ));
             },
             child: Container(
@@ -332,7 +332,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
                             color: Colors.grey.withOpacity(.6),
                             spreadRadius: 5.0,
                             blurRadius: 7.0,
-                            offset: Offset(1.5, 3)
+                            offset: const Offset(1.5, 3)
                         )
                       ],
                     ),
@@ -351,8 +351,8 @@ class _LevelsScreenState extends State<LevelsScreen> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
+                  const Padding(
+                    padding: EdgeInsets.only(
                       top: 90.0,
                       left: 16.0,
                     ),
@@ -365,11 +365,11 @@ class _LevelsScreenState extends State<LevelsScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15.0,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
+                  const Padding(
+                    padding: EdgeInsets.only(
                       top: 120.0,
                       left: 16.0,
                     ),
@@ -388,7 +388,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
                       left: 109.0,
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                           bottomRight: Radius.circular(15.0)
                       ),
                       child: Image.asset(
@@ -404,7 +404,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
         ),
         Step(
           isActive: currentStep >= 2,
-          title: Text(
+          title: const Text(
             'Step 3',
             style: TextStyle(
                 fontSize: 18.0,
@@ -416,7 +416,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
             {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => CategoryScreen(),
+                  builder: (context) => const CategoryScreen(),
                 ),
               );
             },
@@ -439,13 +439,13 @@ class _LevelsScreenState extends State<LevelsScreen> {
                             color: Colors.grey.withOpacity(.6),
                             spreadRadius: 5.0,
                             blurRadius: 7.0,
-                            offset: Offset(1.5, 3)
+                            offset: const Offset(1.5, 3)
                         )
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
+                  const Padding(
+                    padding: EdgeInsets.only(
                       top: 90.0,
                       left: 16.0,
                     ),
@@ -458,11 +458,11 @@ class _LevelsScreenState extends State<LevelsScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15.0,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
+                  const Padding(
+                    padding: EdgeInsets.only(
                       top: 120.0,
                       left: 16.0,
                     ),
@@ -481,7 +481,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
                       left: 72.0,
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                           bottomRight: Radius.circular(15.0)
                       ),
                       child: Image.asset(

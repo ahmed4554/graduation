@@ -1,5 +1,4 @@
 
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -957,15 +956,15 @@ var qFruit =
       "text2":"",
       "pic":"assets/Database/fruits/fruits/graps.png",
       "answer":"Yes,they are.",
-      "options":["No,they are not","No,it\'s not","Yes,they are."]
+      "options":["No,they are not","No,it's not","Yes,they are."]
     },
     {
       "kind":"text",
       "text":"Is this a jackfruit?",
       "text2":"",
       "pic":"assets/Database/fruits/fruits/sweet potato.png",
-      "answer":"No,it\s not",
-      "options":["No,it\s not","Yes,it is"]
+      "answer":"No,its not",
+      "options":["No,its not","Yes,it is"]
     },
     {
       "kind":"text",
@@ -1179,12 +1178,12 @@ String healthyFood =
     sore throat,
     regurgitation and chest pain.
     Gluten intolerance and celiac disease is also widespread and can lead to nutrient deficiency and an impaired immune system if dietary needs are avoided.Finally,
-    'periodontal disease becomes prevalent in adulthood so it is important to establish habits to eat foods that will decrease its likelihood.''';
+    periodontal disease becomes prevalent in adulthood so it is important to establish habits to eat foods that will decrease its likelihood.''';
 
 String aboutUs =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
-List<Color> colors =
+const List<Color> colors =
 [
   Color(0xff0191B4),
   Color(0xffFFC2BB),

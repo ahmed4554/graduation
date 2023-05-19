@@ -64,7 +64,7 @@ class DonorlistContact extends StatelessWidget {
               ),
               Expanded(
                 child: ListView.builder(
-                  itemBuilder: ((context, index) => DonorInfo(
+                  itemBuilder: ((context, index) => const DonorInfo(
                         contact: true,
                       )),
                   itemCount: 10,

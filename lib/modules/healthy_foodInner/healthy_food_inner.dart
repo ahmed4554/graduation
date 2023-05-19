@@ -21,7 +21,7 @@ class HealtyFoodInnerScreen extends StatelessWidget {
           {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (context) {
-                return HealthyFoodScreen();
+                return const HealthyFoodScreen();
               }),
             );
           },
@@ -37,7 +37,7 @@ class HealtyFoodInnerScreen extends StatelessWidget {
         padding: const EdgeInsets.all(15.0),
         child: ListView(
           children:
-          [
+          const [
             Text(
               'Eating nourishing foods can help reduce some of the physical symptoms and increase overall health.',
               style: TextStyle(
