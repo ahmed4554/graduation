@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project/components/components.dart';
 import 'package:project/components/custom_color.dart';
+import 'package:project/modules/login_screen/cubit/cubit.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -10,8 +11,14 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
+          width: MediaQuery
+              .of(context)
+              .size
+              .width,
+          height: MediaQuery
+              .of(context)
+              .size
+              .height,
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -25,9 +32,9 @@ class ProfileScreen extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.only(
-              top: 60.0,
-              left: 20.0,
-              right: 20.0
+                top: 60.0,
+                left: 20.0,
+                right: 20.0
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,7 +44,7 @@ class ProfileScreen extends StatelessWidget {
                   children:
                   [
                     const Icon(
-                        Icons.person_outline_rounded,
+                      Icons.person_outline_rounded,
                     ),
                     const SizedBox(
                       width: 5.0,
@@ -45,7 +52,7 @@ class ProfileScreen extends StatelessWidget {
                     const Text(
                       'Profile',
                       style: TextStyle(
-                          fontSize: 27.0,
+                        fontSize: 27.0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -54,7 +61,7 @@ class ProfileScreen extends StatelessWidget {
                       width: 31.0,
                       height: 30.0,
                       child: Image.asset(
-                          'assets/images/profile/check.png',
+                        'assets/images/profile/check.png',
                       ),
                     ),
                   ],
@@ -89,7 +96,7 @@ class ProfileScreen extends StatelessWidget {
                               width: 42.0,
                               height: 42.0,
                               decoration: BoxDecoration(
-                               // color: CustomColor.green1,
+                                // color: CustomColor.green1,
                                 gradient: const LinearGradient(
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
@@ -99,11 +106,11 @@ class ProfileScreen extends StatelessWidget {
                                   ],
                                 ),
                                 border: Border.all(
-                                  color: Colors.transparent
+                                    color: Colors.transparent
                                 ),
                                 borderRadius: BorderRadius.circular(30.0),
                               ),
-                              child:const Icon(
+                              child: const Icon(
                                 Icons.camera_alt,
                                 size: 30,
                               ),
@@ -115,7 +122,7 @@ class ProfileScreen extends StatelessWidget {
                         height: 20.0,
                       ),
                       const Text(
-                          'Elizabeth Alpy',
+                        'Elizabeth Alpy',
                         style: TextStyle(
                           fontSize: 27.0,
                         ),
@@ -125,49 +132,60 @@ class ProfileScreen extends StatelessWidget {
                         children:
                         [
                           TextButton(
-                            onPressed: ()
-                            {
+                            onPressed: () {
 
                             },
                             child: const Text(
                               'Edit profile',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              color: CustomColor.blue11,
+                              style: TextStyle(
+                                fontSize: 15.0,
+                                color: CustomColor.blue11,
+                              ),
                             ),
-                           ),
                           ),
                           const Icon(
-                              Icons.edit,
+                            Icons.edit,
                             color: CustomColor.blue11,
                             size: 20.0,
                           ),
                         ],
                       ),
-                      const CustomInputField(
-                          icon: Icons.person,
-                          label: 'User name',
+                      CustomInputField(
+                        icon: Icons.person,
+                        label: 'User name',
+                        type: TextInputType.text,
+                        Controller: LoginCubit.get(context).userNameController,
+                        validate: (String? value) {},
                       ),
                       const SizedBox(
                         height: 30.0,
                       ),
-                      const CustomInputField(
-                          icon: Icons.lock_open_rounded,
-                          label: 'Password',
+                      CustomInputField(
+                        icon: Icons.lock_open_rounded,
+                        label: 'Password',
+                        type: TextInputType.visiblePassword,
+                        Controller: LoginCubit.get(context).passwordController,
+                        validate: (String? value) {},
                       ),
                       const SizedBox(
                         height: 30.0,
                       ),
-                      const CustomInputField(
-                          icon: Icons.email_outlined,
-                          label: 'Email',
+                      CustomInputField(
+                        icon: Icons.email_outlined,
+                        label: 'Email',
+                        type: TextInputType.emailAddress,
+                        Controller: LoginCubit.get(context).emailController,
+                        validate: (String? value) {},
                       ),
                       const SizedBox(
                         height: 30.0,
                       ),
-                      const CustomInputField(
-                          icon: Icons.phone_android_rounded,
-                          label: 'Phone number',
+                      CustomInputField(
+                        icon: Icons.phone_android_rounded,
+                        label: 'Phone number',
+                        type: TextInputType.phone,
+                        Controller: LoginCubit.get(context).phoneController,
+                        validate: (String? value) {},
                       ),
                       const SizedBox(
                         height: 30.0,

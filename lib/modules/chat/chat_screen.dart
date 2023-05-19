@@ -128,7 +128,7 @@ class Chat extends StatelessWidget {
                           const SizedBox(
                             height: 20,
                           ),
-                          const Row(
+                           Row(
                             children: [
                               SizedBox(
                                 width: 10,

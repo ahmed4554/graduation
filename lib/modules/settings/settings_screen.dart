@@ -29,7 +29,7 @@ class SettingsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children:
             [
-              const Row(
+               Row(
                 children:
                 [
                   Icon(

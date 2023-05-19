@@ -46,7 +46,7 @@ class VerificationScreen extends StatelessWidget {
                         Navigator.of(context).pop(
                           MaterialPageRoute(
                             builder: (context) {
-                              return const LoginScreen();
+                              return LoginScreen();
                             },
                           ),
                         );
@@ -79,7 +79,7 @@ class VerificationScreen extends StatelessWidget {
                 const SizedBox(
                   height: 26,
                 ),
-                const Column(
+                 Column(
                   children: [
                     Text(
                       'The code has been sent to 010******21. ',

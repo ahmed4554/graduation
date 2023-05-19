@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:project/modules/home/home_screen.dart';
 import '../../components/components.dart';
+import '../login_screen/cubit/cubit.dart';
 import '../login_screen/login_screen.dart';
 
 class NewPasswordScreen extends StatelessWidget {
@@ -45,7 +46,7 @@ class NewPasswordScreen extends StatelessWidget {
                         Navigator.of(context).pop(
                           MaterialPageRoute(
                             builder: (context) {
-                              return const LoginScreen();
+                              return LoginScreen();
                             },
                           ),
                         );
@@ -78,7 +79,7 @@ class NewPasswordScreen extends StatelessWidget {
                 const SizedBox(
                   height: 26,
                 ),
-                const Center(
+                 Center(
                   child: Column(
                     children: [
                       Text(
@@ -103,16 +104,22 @@ class NewPasswordScreen extends StatelessWidget {
                 const SizedBox(
                   height: 24,
                 ),
-                const CustomInputField(
+                 CustomInputField(
                   icon: Icons.lock_open_rounded,
                   label: 'Enter new password',
+                   type: TextInputType.visiblePassword,
+                   Controller: LoginCubit.get(context).passwordController,
+                   validate: (String? value) {  },
                 ),
                 const SizedBox(
                   height: 30,
                 ),
-                const CustomInputField(
+                 CustomInputField(
                   icon: Icons.lock_open_rounded,
                   label: 'Confirm password',
+                   type: TextInputType.visiblePassword,
+                   Controller: LoginCubit.get(context).passwordController,
+                   validate: (String? value) {  },
                 ),
                 const SizedBox(
                   height: 40,

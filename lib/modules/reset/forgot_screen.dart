@@ -4,6 +4,8 @@ import 'package:project/components/components.dart';
 import 'package:project/modules/login_screen/login_screen.dart';
 import 'package:project/modules/reset/verify_screen.dart';
 
+import '../login_screen/cubit/cubit.dart';
+
 class ResetScreen extends StatelessWidget {
   const ResetScreen({Key? key}) : super(key: key);
 
@@ -45,7 +47,7 @@ class ResetScreen extends StatelessWidget {
                         Navigator.of(context).pop(
                           MaterialPageRoute(
                             builder: (context) {
-                              return const LoginScreen();
+                              return LoginScreen();
                             },
                           ),
                         );
@@ -78,7 +80,7 @@ class ResetScreen extends StatelessWidget {
                 const SizedBox(
                   height: 26,
                 ),
-                const Column(
+                 Column(
                   children: [
                     Text(
                       'Enter the phone number linked to your account. ',
@@ -101,9 +103,12 @@ class ResetScreen extends StatelessWidget {
                 const SizedBox(
                   height: 40,
                 ),
-                const CustomInputField(
+                CustomInputField(
                   icon: Icons.phone,
                   label: 'Phone Number',
+                  type: TextInputType.phone,
+                  Controller: LoginCubit.get(context).phoneController,
+                  validate: (String? value) {  },
                 ),
                 const SizedBox(
                   height: 40,
