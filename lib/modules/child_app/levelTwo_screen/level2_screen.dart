@@ -80,7 +80,7 @@ class LevelTwoScreen extends StatelessWidget {
                         ],
                         borderRadius: BorderRadius.circular(50.0),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Let\'s Study',
                         style: TextStyle(
                             fontSize: 26.0, fontWeight: FontWeight.w500),
@@ -107,7 +107,7 @@ class LevelTwoScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 26.0,
                 ),
                 Row(
@@ -118,7 +118,7 @@ class LevelTwoScreen extends StatelessWidget {
                       {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => AlphabetScreen(),
+                            builder: (context) => const AlphabetScreen(),
                           ),
                         );
                       },
@@ -136,7 +136,7 @@ class LevelTwoScreen extends StatelessWidget {
                                   color: Colors.grey.withOpacity(0.5),
                                   spreadRadius: 4,
                                   blurRadius: 7,
-                                  offset: Offset(1.5, 2), // changes position of shadow
+                                  offset: const Offset(1.5, 2), // changes position of shadow
                                 ),
                               ],
                             ),
@@ -166,8 +166,8 @@ class LevelTwoScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               top: 123.0,
                               left: 55.0,
                             ),
@@ -180,8 +180,8 @@ class LevelTwoScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               top: 143.0,
                               left: 55.0,
                             ),
@@ -211,7 +211,7 @@ class LevelTwoScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16.0,
                     ),
                     InkWell(
@@ -219,7 +219,7 @@ class LevelTwoScreen extends StatelessWidget {
                       {
                         Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) {
-                            return NumbersScreen();
+                            return const NumbersScreen();
                           }),
                         );
                       },
@@ -237,7 +237,7 @@ class LevelTwoScreen extends StatelessWidget {
                                   color: Colors.grey.withOpacity(0.5),
                                   spreadRadius: 4,
                                   blurRadius: 7,
-                                  offset: Offset(1.5, 2), // changes position of shadow
+                                  offset: const Offset(1.5, 2), // changes position of shadow
                                 ),
                               ],
                             ),
@@ -267,8 +267,8 @@ class LevelTwoScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               top: 123.0,
                               left: 55.0,
                             ),
@@ -281,8 +281,8 @@ class LevelTwoScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               top: 143.0,
                               left: 59.0,
                             ),
@@ -314,7 +314,7 @@ class LevelTwoScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16.0,
                 ),
                 Row(
@@ -325,7 +325,7 @@ class LevelTwoScreen extends StatelessWidget {
                       {
                         Navigator.of(context).push(
                           MaterialPageRoute(builder:
-                              (context)=>ShapesScreen(),
+                              (context)=>const ShapesScreen(),
                           ),
                         );
                       },
@@ -343,7 +343,7 @@ class LevelTwoScreen extends StatelessWidget {
                                   color: Colors.grey.withOpacity(0.5),
                                   spreadRadius: 4,
                                   blurRadius: 7,
-                                  offset: Offset(1.5, 2), // changes position of shadow
+                                  offset: const Offset(1.5, 2), // changes position of shadow
                                 ),
                               ],
                             ),
@@ -373,8 +373,8 @@ class LevelTwoScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               top: 123.0,
                               left: 59.0,
                             ),
@@ -387,8 +387,8 @@ class LevelTwoScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               top: 143.0,
                               left: 59.0,
                             ),
@@ -418,7 +418,7 @@ class LevelTwoScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16.0,
                     ),
                     InkWell(
@@ -426,7 +426,7 @@ class LevelTwoScreen extends StatelessWidget {
                       {
                         Navigator.of(context).push(
                           MaterialPageRoute(builder:
-                              (context)=>AnimalsScreen(),
+                              (context)=>const AnimalsScreen(),
                           ),
                         );
                       },
@@ -444,7 +444,7 @@ class LevelTwoScreen extends StatelessWidget {
                                   color: Colors.grey.withOpacity(0.5),
                                   spreadRadius: 4,
                                   blurRadius: 7,
-                                  offset: Offset(1.5, 2), // changes position of shadow
+                                  offset: const Offset(1.5, 2), // changes position of shadow
                                 ),
                               ],
                             ),
@@ -474,8 +474,8 @@ class LevelTwoScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               top: 123.0,
                               left: 59.0,
                             ),
@@ -488,8 +488,8 @@ class LevelTwoScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               top: 143.0,
                               left: 65.0,
                             ),
@@ -521,7 +521,7 @@ class LevelTwoScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16.0,
                 ),
                 Row(
@@ -532,7 +532,7 @@ class LevelTwoScreen extends StatelessWidget {
                       {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => ColorsScreen(),
+                            builder: (context) => const ColorsScreen(),
                           ),
                         );
                       },
@@ -550,7 +550,7 @@ class LevelTwoScreen extends StatelessWidget {
                                   color: Colors.grey.withOpacity(0.5),
                                   spreadRadius: 4,
                                   blurRadius: 7,
-                                  offset: Offset(1.5, 2), // changes position of shadow
+                                  offset: const Offset(1.5, 2), // changes position of shadow
                                 ),
                               ],
                             ),
@@ -580,8 +580,8 @@ class LevelTwoScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               top: 123.0,
                               left: 63.0,
                             ),
@@ -594,8 +594,8 @@ class LevelTwoScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               top: 143.0,
                               left: 61.0,
                             ),
@@ -625,7 +625,7 @@ class LevelTwoScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16.0,
                     ),
                     InkWell(
@@ -633,7 +633,7 @@ class LevelTwoScreen extends StatelessWidget {
                       {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => FruitsScreen(),
+                            builder: (context) => const FruitsScreen(),
                           ),
                         );
                       },
@@ -651,7 +651,7 @@ class LevelTwoScreen extends StatelessWidget {
                                   color: Colors.grey.withOpacity(0.5),
                                   spreadRadius: 4,
                                   blurRadius: 7,
-                                  offset: Offset(1.5, 2), // changes position of shadow
+                                  offset: const Offset(1.5, 2), // changes position of shadow
                                 ),
                               ],
                             ),
@@ -681,8 +681,8 @@ class LevelTwoScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               top: 123.0,
                               left: 66.0,
                             ),
@@ -695,8 +695,8 @@ class LevelTwoScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               top: 143.0,
                               left: 61.0,
                             ),

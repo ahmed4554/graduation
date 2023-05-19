@@ -22,7 +22,7 @@ class PrescriptionHistory extends StatelessWidget {
           {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => HomeScreen(),
+                builder: (context) => const HomeScreen(),
               ),
             );
           },
@@ -58,12 +58,12 @@ class PrescriptionHistory extends StatelessWidget {
                     borderSide: BorderSide.none,
                   ),
                   hintText: 'Search',
-                  prefixIcon: Icon(
+                  prefixIcon: const Icon(
                     Icons.search,
                     color: CustomColor.blue11,
                   ),
                   suffixIcon: IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.add,
                       color: CustomColor.blue11,
                     ),
@@ -71,7 +71,7 @@ class PrescriptionHistory extends StatelessWidget {
                     {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => PrescriptionScreen(),
+                          builder: (context) => const PrescriptionScreen(),
                         ),
                       );
                     },
@@ -137,7 +137,7 @@ class PrescriptionHistoryComponent extends StatelessWidget {
                 ),
                 Text(
                     'Date :  ${DateTime.now().toString().substring(0, 10)}',
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16.0
                   ),

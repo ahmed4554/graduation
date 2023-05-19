@@ -52,19 +52,19 @@ class ChildHomeScreen extends StatelessWidget {
                       {
                         Navigator.of(context).pop(
                           MaterialPageRoute(builder: (context) {
-                            return AccessScreen();
+                            return const AccessScreen();
                           }),
                         );
                       },
-                      child: Icon(
+                      child: const Icon(
                         Icons.arrow_back_ios_new,
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 122.0,
                     ),
-                    Text(
+                    const Text(
                       'Home',
                       style: TextStyle(
                         color: Colors.white,
@@ -117,7 +117,7 @@ class ChildHomeScreen extends StatelessWidget {
                       {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                              builder: (context) => LevelsScreen()
+                              builder: (context) => const LevelsScreen()
                           ),
                         );
                       },
@@ -134,7 +134,7 @@ class ChildHomeScreen extends StatelessWidget {
                                   color: Colors.grey.withOpacity(0.5),
                                   spreadRadius: 4,
                                   blurRadius: 7,
-                                  offset: Offset(1.5, 2), // changes position of shadow
+                                  offset: const Offset(1.5, 2), // changes position of shadow
                                 ),
                               ],
                             ),
@@ -150,8 +150,8 @@ class ChildHomeScreen extends StatelessWidget {
                               width: 142.0,
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                                 top: 170,
                                 left: 53.0,
                             ),
@@ -166,7 +166,7 @@ class ChildHomeScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 20.0,
                     ),
                     InkWell(
@@ -174,7 +174,7 @@ class ChildHomeScreen extends StatelessWidget {
                       {
                         Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) {
-                            return ObjectDetectionScreen();
+                            return const ObjectDetectionScreen();
                           }),
                         );
                       },
@@ -191,7 +191,7 @@ class ChildHomeScreen extends StatelessWidget {
                                   color: Colors.grey.withOpacity(0.5),
                                   spreadRadius: 4,
                                   blurRadius: 7,
-                                  offset: Offset(1.5, 2), // changes position of shadow
+                                  offset: const Offset(1.5, 2), // changes position of shadow
                                 ),
                               ],
                             ),
@@ -205,8 +205,8 @@ class ChildHomeScreen extends StatelessWidget {
                               'assets/images/child_app/child_home/recognition.png',
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                                 top: 170,
                                 left: 31.0,
                             ),
@@ -223,7 +223,7 @@ class ChildHomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16.0,
                 ),
                 Row(
@@ -251,7 +251,7 @@ class ChildHomeScreen extends StatelessWidget {
                                   color: Colors.grey.withOpacity(0.5),
                                   spreadRadius: 4,
                                   blurRadius: 7,
-                                  offset: Offset(1.5, 2), // changes position of shadow
+                                  offset: const Offset(1.5, 2), // changes position of shadow
                                 ),
                               ],
                             ),
@@ -265,8 +265,8 @@ class ChildHomeScreen extends StatelessWidget {
                               'assets/images/child_app/child_home/conversation.png',
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                                 top: 170,
                                 left: 53.0,
                             ),

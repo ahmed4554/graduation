@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:project/components/custom_color.dart';
 import 'package:project/modules/chat/chat_screen.dart';
 import 'package:project/modules/healthy_food/healthy_food.dart';
-import 'package:project/modules/reminder/reminder.dart';
 import 'package:project/modules/reminder_history/reminder_history.dart';
 import '../donor_info_screen/donor_info_screen.dart';
 
@@ -28,7 +27,7 @@ class HomeScreen extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                   color: Colors.white.withOpacity(.9),
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                       topRight: Radius.circular(50.0),
                       topLeft: Radius.circular(50.0),
                   )
@@ -44,9 +43,9 @@ class HomeScreen extends StatelessWidget {
                         child: Container(
                           width: 110.0,
                           height: 100.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: CustomColor.blue11,
-                              borderRadius: const BorderRadius.only(
+                              borderRadius: BorderRadius.only(
                                bottomLeft: Radius.circular(60.0),
                                bottomRight:Radius.circular(60.0) ,
                             )
@@ -54,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       Center(
-                        child: Container(
+                        child: SizedBox(
                           height: 90.0,
                           width: 100.0,
                           child: Image.asset(
@@ -64,10 +63,10 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10.0,
                   ),
-                  Center(
+                  const Center(
                     child: Text(
                       'Welcome',
                       style: TextStyle(
@@ -75,17 +74,17 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30.0,
                   ),
                   Expanded(
                     child: SingleChildScrollView(
-                      child: Container(
+                      child: SizedBox(
                         width: double.infinity,
                         child: Column(
                           children:
                           [
-                            SizedBox(
+                            const SizedBox(
                               height: 10.0,
                             ),
                             InkWell(
@@ -98,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                                 height: 97.29,
                                 decoration: BoxDecoration(
                                   color: Colors.white.withOpacity(.9),
-                                  borderRadius:BorderRadius.only(
+                                  borderRadius:const BorderRadius.only(
                                     topRight: Radius.circular(10.0),
                                     bottomRight: Radius.circular(10.0),
                                     topLeft: Radius.circular(30.0),
@@ -130,8 +129,8 @@ class HomeScreen extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    Spacer(),
-                                    Container(
+                                    const Spacer(),
+                                    SizedBox(
                                       width: 90.0,
                                       height: 112.0,
                                       child: Image.asset(
@@ -142,7 +141,7 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 24.0,
                             ),
                             InkWell(
@@ -150,7 +149,7 @@ class HomeScreen extends StatelessWidget {
                               {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(builder: (context) {
-                                    return DonorInfoScreen();
+                                    return const DonorInfoScreen();
                                   }),
                                 );
                               },
@@ -159,7 +158,7 @@ class HomeScreen extends StatelessWidget {
                                 height: 97.29,
                                 decoration: BoxDecoration(
                                   color: Colors.white.withOpacity(.9),
-                                  borderRadius:BorderRadius.only(
+                                  borderRadius:const BorderRadius.only(
                                     topRight: Radius.circular(10.0),
                                     bottomRight: Radius.circular(10.0),
                                     topLeft: Radius.circular(30.0),
@@ -177,14 +176,14 @@ class HomeScreen extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children:
                                   [
-                                    Container(
+                                    SizedBox(
                                       width: 90.0,
                                       height: 112.0,
                                       child: Image.asset(
                                           'assets/images/parentHome/blood.png'
                                       ),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     Padding(
                                       padding: const EdgeInsets.only(
                                         top: 36.0,
@@ -203,7 +202,7 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 24.0,
                             ),
                             Container(
@@ -243,14 +242,14 @@ class HomeScreen extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                   SizedBox(
                                     width: 179.0,
                                     height: 134.0,
                                     child: Row(
                                       children: [
-                                        Spacer(),
-                                        Container(
+                                        const Spacer(),
+                                        SizedBox(
                                           width: 150,
                                           height: 150,
                                           child: Image.asset(
@@ -264,7 +263,7 @@ class HomeScreen extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 24.0,
                             ),
                             InkWell(
@@ -272,7 +271,7 @@ class HomeScreen extends StatelessWidget {
                               {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
-                                    builder: (context) => PrescriptionHistory(),
+                                    builder: (context) => const PrescriptionHistory(),
                                   ),
                                 );
                               },
@@ -281,7 +280,7 @@ class HomeScreen extends StatelessWidget {
                                 height: 97.29,
                                 decoration: BoxDecoration(
                                   color: Colors.white.withOpacity(.9),
-                                  borderRadius:BorderRadius.only(
+                                  borderRadius:const BorderRadius.only(
                                     topRight: Radius.circular(10.0),
                                     bottomRight: Radius.circular(10.0),
                                     topLeft: Radius.circular(30.0),
@@ -299,14 +298,14 @@ class HomeScreen extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children:
                                   [
-                                    Container(
+                                    SizedBox(
                                       width: 110.0,
                                       height: 90.0,
                                       child: Image.asset(
                                           'assets/images/parentHome/board.png'
                                       ),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     Padding(
                                       padding: const EdgeInsets.only(
                                         top: 36.0,
@@ -325,7 +324,7 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 24.0,
                             ),
                             InkWell(
@@ -333,7 +332,7 @@ class HomeScreen extends StatelessWidget {
                               {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(builder: (context) {
-                                    return HealthyFoodScreen();
+                                    return const HealthyFoodScreen();
                                   }),
                                 );
                               },
@@ -342,7 +341,7 @@ class HomeScreen extends StatelessWidget {
                                 height: 97.29,
                                 decoration: BoxDecoration(
                                   color: Colors.white.withOpacity(.9),
-                                  borderRadius:BorderRadius.only(
+                                  borderRadius:const BorderRadius.only(
                                     topRight: Radius.circular(10.0),
                                     bottomRight: Radius.circular(10.0),
                                     topLeft: Radius.circular(30.0),
@@ -374,16 +373,16 @@ class HomeScreen extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     SizedBox(
                                       width: 179.0,
                                       height: 134.0,
                                       child: Row(
                                         children: [
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 79,
                                           ),
-                                          Container(
+                                          SizedBox(
                                             width: 100,
                                             height: 100,
                                             child: Image.asset(
@@ -398,7 +397,7 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 24.0,
                             ),
                             InkWell(
@@ -406,7 +405,7 @@ class HomeScreen extends StatelessWidget {
                               {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(builder: (context) {
-                                    return Chat();
+                                    return const Chat();
                                   }),
                                 );
                               },
@@ -415,7 +414,7 @@ class HomeScreen extends StatelessWidget {
                                 height: 97.29,
                                 decoration: BoxDecoration(
                                   color: Colors.white.withOpacity(.9),
-                                  borderRadius:BorderRadius.only(
+                                  borderRadius:const BorderRadius.only(
                                     topRight: Radius.circular(10.0),
                                     bottomRight: Radius.circular(10.0),
                                     topLeft: Radius.circular(30.0),
@@ -433,14 +432,14 @@ class HomeScreen extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children:
                                   [
-                                    Container(
+                                    SizedBox(
                                       width: 110.0,
                                       height: 90.0,
                                       child: Image.asset(
                                           'assets/images/parentHome/chat.png'
                                       ),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     Padding(
                                       padding: const EdgeInsets.only(
                                         top: 36.0,
@@ -459,7 +458,7 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40.0,
                             ),
                           ],

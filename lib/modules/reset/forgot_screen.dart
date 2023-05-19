@@ -32,31 +32,31 @@ class ResetScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children:
               [
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 Row(
                   children:
                   [
                     GestureDetector(
-                      child: Icon(Icons.arrow_back),
+                      child: const Icon(Icons.arrow_back),
                       onTap: ()
                       {
                         Navigator.of(context).pop(
                           MaterialPageRoute(
                             builder: (context) {
-                              return LoginScreen();
+                              return const LoginScreen();
                             },
                           ),
                         );
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 8.0,
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 SvgPicture.asset(
@@ -64,7 +64,7 @@ class ResetScreen extends StatelessWidget {
                   width: 150,
                   height: 100,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 Text(
@@ -75,10 +75,10 @@ class ResetScreen extends StatelessWidget {
                     color: Colors.black.withOpacity(.9),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 26,
                 ),
-                Column(
+                const Column(
                   children: [
                     Text(
                       'Enter the phone number linked to your account. ',
@@ -98,14 +98,14 @@ class ResetScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
-                CustomInputField(
+                const CustomInputField(
                   icon: Icons.phone,
                   label: 'Phone Number',
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 MainButton(
@@ -114,7 +114,7 @@ class ResetScreen extends StatelessWidget {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) {
-                          return VerificationScreen();
+                          return const VerificationScreen();
                         },
                       ),
                     );
@@ -122,10 +122,10 @@ class ResetScreen extends StatelessWidget {
                   label: 'Send Code',
                   width: 250,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 285,
                 ),
               ],

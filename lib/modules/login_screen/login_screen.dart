@@ -19,21 +19,21 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color(0xFF1CB0F6),
-                Color(0xffEEF8F2),
-                Color(0xffFFFFFF),
-              ],
-            ),
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFF1CB0F6),
+              Color(0xffEEF8F2),
+              Color(0xffFFFFFF),
+            ],
           ),
+        ),
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         icon: Icons.lock_open_rounded,
                         label: 'Password',
                       ),
-
+        
                       Row(
                         children: [
                           Checkbox(
@@ -124,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) {
-                                    return ResetScreen();
+                                    return const ResetScreen();
                                   },
                                 ),
                               );
@@ -155,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) {
-                                return MainPage();
+                                return const MainPage();
                               },
                             ),
                           );
@@ -180,7 +180,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) {
-                                    return RegisterScreen();
+                                    return const RegisterScreen();
                                   },
                                 ),
                               );
@@ -201,7 +201,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
             ],

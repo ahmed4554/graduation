@@ -34,9 +34,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var radius = Radius.circular(50);
+    var radius = const Radius.circular(50);
     return Scaffold(
-        backgroundColor: Color(0xffF5F6FA),
+        backgroundColor: const Color(0xffF5F6FA),
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.transparent,
@@ -45,7 +45,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(Icons.arrow_back_ios),
+            icon: const Icon(Icons.arrow_back_ios),
           ),
           title: const Text(
             'Category',
@@ -90,7 +90,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                           picName: picNames[index],
                         ),
                       ),
-                  separatorBuilder: (context, index) => SizedBox(
+                  separatorBuilder: (context, index) => const SizedBox(
                         height: 20.0,
                       ),
                   itemCount: 6,

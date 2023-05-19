@@ -29,7 +29,7 @@ class SettingsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children:
             [
-              Row(
+              const Row(
                 children:
                 [
                   Icon(
@@ -48,10 +48,10 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30.0,
               ),
-              Center(
+              const Center(
                 child: SizedBox(
                   width: 314.0,
                   child: Divider(
@@ -61,7 +61,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40.0,
               ),
               InkWell(
@@ -90,10 +90,10 @@ class SettingsScreen extends StatelessWidget {
                               'assets/images/settings/ring.png',
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 26.0,
                         ),
-                        Text(
+                        const Text(
                           'Notification',
                           style: TextStyle(
                               fontSize: 20.0
@@ -104,7 +104,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16.0,
               ),
               InkWell(
@@ -112,7 +112,7 @@ class SettingsScreen extends StatelessWidget {
                 {
                   Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) {
-                      return AboutUsScreen();
+                      return const AboutUsScreen();
                     }),
                   );
                 },
@@ -135,10 +135,10 @@ class SettingsScreen extends StatelessWidget {
                               'assets/images/settings/about.png',
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 26.0,
                         ),
-                        Text(
+                        const Text(
                           'About Us',
                           style: TextStyle(
                               fontSize: 20.0
@@ -149,7 +149,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16.0,
               ),
               InkWell(
@@ -178,10 +178,10 @@ class SettingsScreen extends StatelessWidget {
                               'assets/images/settings/help.png',
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 26.0,
                         ),
-                        Text(
+                        const Text(
                           'Help',
                           style: TextStyle(
                               fontSize: 20.0
@@ -192,7 +192,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16.0,
               ),
               InkWell(
@@ -221,10 +221,10 @@ class SettingsScreen extends StatelessWidget {
                               'assets/images/settings/friend.png',
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 26.0,
                         ),
-                        Text(
+                        const Text(
                           'Invite Friends',
                           style: TextStyle(
                               fontSize: 20.0
@@ -235,7 +235,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16.0,
               ),
               Container(
@@ -259,10 +259,10 @@ class SettingsScreen extends StatelessWidget {
                             'assets/images/settings/logout.png',
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 26.0,
                       ),
-                      Text(
+                      const Text(
                         'Log Out',
                         style: TextStyle(
                             fontSize: 20.0,
@@ -273,7 +273,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 36.0,
               ),
             ],

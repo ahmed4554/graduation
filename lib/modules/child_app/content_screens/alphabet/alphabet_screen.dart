@@ -38,7 +38,7 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
           {
             Navigator.of(context).pop(
               MaterialPageRoute(builder: (context) {
-                return LevelOneScreen();
+                return const LevelOneScreen();
               }),
             );
           },
@@ -73,7 +73,7 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
               ),
             ),
           ),
-          Container(
+          SizedBox(
             height: MediaQuery.of(context).size.height,
             child: SingleChildScrollView(
               child: Column(
@@ -100,7 +100,7 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
                       "assets/images/profile/eliza.png",
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15.0,
                   ),
                   Container(
@@ -117,7 +117,7 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
                       ],
                       borderRadius: BorderRadius.circular(50.0),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'Alphabet',
                         style: TextStyle(
@@ -182,7 +182,7 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
                               child: Center(
                                 child: Column(
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: 90.0,
                                       height: 90.0,
                                       child: Image.asset(

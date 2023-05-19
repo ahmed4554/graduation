@@ -10,6 +10,6 @@ class NotifyScreen extends StatefulWidget {
 class _NotifyScreenState extends State<NotifyScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Scaffold();
   }
 }

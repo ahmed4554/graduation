@@ -4,8 +4,6 @@ import 'package:project/components/custom_color.dart';
 import 'package:project/modules/access_screen/access_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../login_screen/login_screen.dart';
-
 class BoardingModel {
   final String image;
   final String image2;
@@ -23,6 +21,8 @@ class BoardingModel {
 }
 
 class OnBoardingScreen extends StatefulWidget {
+  const OnBoardingScreen({Key? key}) : super(key: key);
+
   @override
   State<OnBoardingScreen> createState() => _OnBoardingScreenState();
 }
@@ -118,7 +118,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) {
-                          return AccessScreen();
+                          return const AccessScreen();
                         },
                       ),
                     );
@@ -148,7 +148,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) {
-                              return AccessScreen();
+                              return const AccessScreen();
                             },
                           ),
                         );
@@ -161,7 +161,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         );
                       }
                     },
-                    child: Text(
+                    child: const Text(
                       'Next',
                       style: TextStyle(
                         color: Colors.white,
@@ -182,7 +182,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children:
         [
-          SizedBox(
+          const SizedBox(
             height: 60.0,
           ),
           Center(
@@ -204,13 +204,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           Center(
             child: Text(
               model.title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 30.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 65.0,
           ),
           Center(

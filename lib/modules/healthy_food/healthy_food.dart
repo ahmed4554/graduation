@@ -22,7 +22,7 @@ class HealthyFoodScreen extends StatelessWidget {
             {
               Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) {
-                  return HomeScreen();
+                  return const HomeScreen();
                 }),
               );
             },
@@ -67,7 +67,7 @@ class HealthyFoodScreen extends StatelessWidget {
                   {
                     Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) {
-                        return HealtyFoodInnerScreen();
+                        return const HealtyFoodInnerScreen();
                       }),
                     );
                   },

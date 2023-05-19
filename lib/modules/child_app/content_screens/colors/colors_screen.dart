@@ -63,7 +63,7 @@ class _ColorsScreenState extends State<ColorsScreen> {
               ),
             ),
           ),
-          Container(
+          SizedBox(
             height: MediaQuery.of(context).size.height,
             child: SingleChildScrollView(
               child: Column(
@@ -90,7 +90,7 @@ class _ColorsScreenState extends State<ColorsScreen> {
                       "assets/images/profile/eliza.png",
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15.0,
                   ),
                   Container(
@@ -107,7 +107,7 @@ class _ColorsScreenState extends State<ColorsScreen> {
                       ],
                       borderRadius: BorderRadius.circular(50.0),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'Colors',
                         style: TextStyle(
@@ -170,7 +170,7 @@ class _ColorsScreenState extends State<ColorsScreen> {
                               child: Center(
                                 child: Column(
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: 90.0,
                                       height: 90.0,
                                       child: Image.asset(

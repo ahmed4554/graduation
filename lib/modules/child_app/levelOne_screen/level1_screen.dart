@@ -51,19 +51,19 @@ class LevelOneScreen extends StatelessWidget {
                       {
                         Navigator.of(context).pop(
                           MaterialPageRoute(builder: (context) {
-                            return LevelsScreen();
+                            return const LevelsScreen();
                           }),
                         );
                       },
-                      child: Icon(
+                      child: const Icon(
                         Icons.arrow_back_ios_new,
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 120.0,
                     ),
-                    Text(
+                    const Text(
                       'Level 1',
                       style: TextStyle(
                         color: Colors.white,
@@ -73,7 +73,7 @@ class LevelOneScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 26.0,
                 ),
                 Row(
@@ -94,7 +94,7 @@ class LevelOneScreen extends StatelessWidget {
                         ],
                         borderRadius: BorderRadius.circular(50.0),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Let\'s Study',
                         style: TextStyle(
                             fontSize: 26.0, fontWeight: FontWeight.w500),
@@ -121,7 +121,7 @@ class LevelOneScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 55.0,
                 ),
                 Row(
@@ -132,7 +132,7 @@ class LevelOneScreen extends StatelessWidget {
                       {
                         Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) {
-                            return AlphabetScreen();
+                            return const AlphabetScreen();
                           }),
                         );
                       },
@@ -150,7 +150,7 @@ class LevelOneScreen extends StatelessWidget {
                                   color: Colors.grey.withOpacity(0.5),
                                   spreadRadius: 4,
                                   blurRadius: 7,
-                                  offset: Offset(1.5, 2), // changes position of shadow
+                                  offset: const Offset(1.5, 2), // changes position of shadow
                                 ),
                               ],
                             ),
@@ -180,8 +180,8 @@ class LevelOneScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               top: 123.0,
                               left: 55.0,
                             ),
@@ -194,8 +194,8 @@ class LevelOneScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               top: 143.0,
                               left: 55.0,
                             ),
@@ -225,7 +225,7 @@ class LevelOneScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16.0,
                     ),
                     InkWell(
@@ -233,7 +233,7 @@ class LevelOneScreen extends StatelessWidget {
                       {
                         Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) {
-                            return NumbersScreen();
+                            return const NumbersScreen();
                           }),
                         );
                       },
@@ -251,7 +251,7 @@ class LevelOneScreen extends StatelessWidget {
                                   color: Colors.grey.withOpacity(0.5),
                                   spreadRadius: 4,
                                   blurRadius: 7,
-                                  offset: Offset(1.5, 2), // changes position of shadow
+                                  offset: const Offset(1.5, 2), // changes position of shadow
                                 ),
                               ],
                             ),
@@ -281,8 +281,8 @@ class LevelOneScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               top: 123.0,
                               left: 55.0,
                             ),
@@ -295,8 +295,8 @@ class LevelOneScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               top: 143.0,
                               left: 59.0,
                             ),
@@ -328,7 +328,7 @@ class LevelOneScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16.0,
                 ),
                 Row(
@@ -339,7 +339,7 @@ class LevelOneScreen extends StatelessWidget {
                       {
                         Navigator.of(context).push(
                           MaterialPageRoute(builder:
-                              (context) => ShapesScreen()
+                              (context) => const ShapesScreen()
                           ),
                         );
                       },
@@ -357,7 +357,7 @@ class LevelOneScreen extends StatelessWidget {
                                   color: Colors.grey.withOpacity(0.5),
                                   spreadRadius: 4,
                                   blurRadius: 7,
-                                  offset: Offset(1.5, 2), // changes position of shadow
+                                  offset: const Offset(1.5, 2), // changes position of shadow
                                 ),
                               ],
                             ),
@@ -387,8 +387,8 @@ class LevelOneScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               top: 123.0,
                               left: 55.0,
                             ),
@@ -401,8 +401,8 @@ class LevelOneScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               top: 143.0,
                               left: 55.0,
                             ),
@@ -432,7 +432,7 @@ class LevelOneScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16.0,
                     ),
                     InkWell(
@@ -454,7 +454,7 @@ class LevelOneScreen extends StatelessWidget {
                                   color: Colors.grey.withOpacity(0.5),
                                   spreadRadius: 4,
                                   blurRadius: 7,
-                                  offset: Offset(1.5, 2), // changes position of shadow
+                                  offset: const Offset(1.5, 2), // changes position of shadow
                                 ),
                               ],
                             ),
@@ -484,8 +484,8 @@ class LevelOneScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               top: 123.0,
                               left: 55.0,
                             ),
@@ -498,8 +498,8 @@ class LevelOneScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               top: 143.0,
                               left: 61.0,
                             ),

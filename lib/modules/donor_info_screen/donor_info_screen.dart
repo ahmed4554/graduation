@@ -45,18 +45,18 @@ class DonorInfoScreen extends StatelessWidget {
                        {
                          Navigator.of(context).pop(
                          MaterialPageRoute(
-                          builder: (context) => HomeScreen(),
+                          builder: (context) => const HomeScreen(),
                         ),
                       );
                     },
-                     child: Icon(
+                     child: const Icon(
                            Icons.arrow_back_ios_new,
                        ),
                    ),
-                   SizedBox(
+                   const SizedBox(
                      width: 90.0,
                    ),
-                   Text(
+                   const Text(
                     'Find Donor',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -131,7 +131,7 @@ class DonorInfoScreen extends StatelessWidget {
                         ),
                         height: 60,
                         decoration: BoxDecoration(
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.grey,
                               blurRadius: 8,
@@ -172,7 +172,7 @@ class DonorInfoScreen extends StatelessWidget {
                       {
                         Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) {
-                            return DonorlistRequest();
+                            return const DonorlistRequest();
                           }),
                         );
                       },

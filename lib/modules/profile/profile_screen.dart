@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project/components/components.dart';
 import 'package:project/components/custom_color.dart';
-import 'package:project/modules/home/home_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -38,20 +36,20 @@ class ProfileScreen extends StatelessWidget {
                 Row(
                   children:
                   [
-                    Icon(
+                    const Icon(
                         Icons.person_outline_rounded,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 5.0,
                     ),
-                    Text(
+                    const Text(
                       'Profile',
                       style: TextStyle(
                           fontSize: 27.0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     SizedBox(
                       width: 31.0,
                       height: 30.0,
@@ -61,7 +59,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30.0,
                 ),
                 Center(
@@ -72,7 +70,7 @@ class ProfileScreen extends StatelessWidget {
                       Stack(
                         children:
                         [
-                          Container(
+                          SizedBox(
                             width: 125.0,
                             height: 125.0,
                             child: ClipRRect(
@@ -92,7 +90,7 @@ class ProfileScreen extends StatelessWidget {
                               height: 42.0,
                               decoration: BoxDecoration(
                                // color: CustomColor.green1,
-                                gradient: LinearGradient(
+                                gradient: const LinearGradient(
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
                                   colors: [
@@ -105,7 +103,7 @@ class ProfileScreen extends StatelessWidget {
                                 ),
                                 borderRadius: BorderRadius.circular(30.0),
                               ),
-                              child:Icon(
+                              child:const Icon(
                                 Icons.camera_alt,
                                 size: 30,
                               ),
@@ -113,10 +111,10 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20.0,
                       ),
-                      Text(
+                      const Text(
                           'Elizabeth Alpy',
                         style: TextStyle(
                           fontSize: 27.0,
@@ -131,7 +129,7 @@ class ProfileScreen extends StatelessWidget {
                             {
 
                             },
-                            child: Text(
+                            child: const Text(
                               'Edit profile',
                             style: TextStyle(
                               fontSize: 15.0,
@@ -139,39 +137,39 @@ class ProfileScreen extends StatelessWidget {
                             ),
                            ),
                           ),
-                          Icon(
+                          const Icon(
                               Icons.edit,
                             color: CustomColor.blue11,
                             size: 20.0,
                           ),
                         ],
                       ),
-                      CustomInputField(
+                      const CustomInputField(
                           icon: Icons.person,
                           label: 'User name',
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30.0,
                       ),
-                      CustomInputField(
+                      const CustomInputField(
                           icon: Icons.lock_open_rounded,
                           label: 'Password',
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30.0,
                       ),
-                      CustomInputField(
+                      const CustomInputField(
                           icon: Icons.email_outlined,
                           label: 'Email',
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30.0,
                       ),
-                      CustomInputField(
+                      const CustomInputField(
                           icon: Icons.phone_android_rounded,
                           label: 'Phone number',
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30.0,
                       ),
                     ],

@@ -64,7 +64,7 @@ class _AnimalsScreenState extends State<AnimalsScreen> {
               ),
             ),
           ),
-          Container(
+          SizedBox(
             height: MediaQuery.of(context).size.height,
             child: SingleChildScrollView(
               child: Column(
@@ -91,7 +91,7 @@ class _AnimalsScreenState extends State<AnimalsScreen> {
                       "assets/images/profile/eliza.png",
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15.0,
                   ),
                   Container(
@@ -108,7 +108,7 @@ class _AnimalsScreenState extends State<AnimalsScreen> {
                       ],
                       borderRadius: BorderRadius.circular(50.0),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'Animals',
                         style: TextStyle(
@@ -171,7 +171,7 @@ class _AnimalsScreenState extends State<AnimalsScreen> {
                               child: Center(
                                 child: Column(
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: 90.0,
                                       height: 90.0,
                                       child: Image.asset(

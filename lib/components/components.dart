@@ -2,18 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:project/components/custom_color.dart';
 import 'package:project/constants/constants.dart';
-import 'package:project/modules/child_app/activity_screen/activity_screen.dart';
-
-import '../modules/child_app/content_screens/animals/animals.dart';
 
 class AppName extends StatelessWidget {
   const AppName({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
+      children: [
         Text(
           'D',
           style: TextStyle(
@@ -50,7 +47,7 @@ class CustomInputField extends StatelessWidget {
       height: 50,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
               color: Colors.black12,
               spreadRadius: 1,
@@ -136,6 +133,8 @@ class TextEditorForPhoneVerify extends StatelessWidget {
   var last;
 
   var first;
+
+  TextEditorForPhoneVerify({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -291,7 +290,7 @@ class DonorInfo extends StatelessWidget {
                 ),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
+                      backgroundColor: Colors.white,
                     ),
                     onPressed: () {},
                     child: Row(
@@ -305,7 +304,7 @@ class DonorInfo extends StatelessWidget {
                         ),
                         Text(
                           contact ? 'Contact The Donor' : 'Request For Blood',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16,
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
@@ -339,8 +338,8 @@ class ChatItem extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10), color: Colors.black12),
-      child: Row(
-        children: const [
+      child: const Row(
+        children: [
           CircleAvatar(
             radius: 15,
             backgroundImage: AssetImage('assets/pic.png'),
@@ -404,8 +403,10 @@ class HealtyFoodComponent extends StatelessWidget {
 }
 
 class BuildMultiShadowContainer extends StatelessWidget {
-  const BuildMultiShadowContainer({Key? key, required this.child})
-      : super(key: key);
+  const BuildMultiShadowContainer({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
 
   final Widget child;
 
@@ -497,7 +498,7 @@ class BuildMultiShadowContainer extends StatelessWidget {
 // }
 
 class PicAnswer extends StatefulWidget {
-  PicAnswer({
+  const PicAnswer({
     Key? key,
     required this.index,
     required this.model,
@@ -510,18 +511,21 @@ class PicAnswer extends StatefulWidget {
   State<PicAnswer> createState() => _PicAnswerState();
 }
 
-class _PicAnswerState extends State<PicAnswer> {
+class _PicAnswerState extends State<PicAnswer>
+    with AutomaticKeepAliveClientMixin<PicAnswer> {
   bool? right;
-
+  @override
+  bool get wantKeepAlive => true;
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return InkWell(
       onTap: () {
         if (widget.model.answer == widget.model.options![widget.index]) {
           setState(() {
             right = true;
             controller.nextPage(
-                duration: Duration(milliseconds: 450),
+                duration: const Duration(milliseconds: 450),
                 curve: Curves.bounceInOut);
           });
         } else {
@@ -585,26 +589,25 @@ class TextAnswer extends StatefulWidget {
   State<TextAnswer> createState() => _TextAnswerState();
 }
 
-class _TextAnswerState extends State<TextAnswer> {
-
+class _TextAnswerState extends State<TextAnswer>
+    with AutomaticKeepAliveClientMixin<TextAnswer> {
   bool? right;
-
+  @override
+  bool get wantKeepAlive => true;
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return InkWell(
       onTap: () {
         if (widget.model.answer == widget.model.options![widget.index]) {
           right = true;
           controller.nextPage(
-              duration: const Duration(milliseconds: 450), curve: Curves.bounceInOut);
-          setState(() {
-
-          });
+              duration: const Duration(milliseconds: 450),
+              curve: Curves.bounceInOut);
+          setState(() {});
         } else {
           right = false;
-          setState(() {
-
-          });
+          setState(() {});
         }
       },
       child: Container(
@@ -648,20 +651,13 @@ class _TextAnswerState extends State<TextAnswer> {
   }
 }
 
-class MultiChoiseQuestionComponent extends StatefulWidget {
-  MultiChoiseQuestionComponent({
+class MultiChoiseQuestionComponent extends StatelessWidget {
+  const MultiChoiseQuestionComponent({
     Key? key,
     required this.model,
   }) : super(key: key);
   final dynamic model;
 
-  @override
-  State<MultiChoiseQuestionComponent> createState() =>
-      _MultiChoiseQuestionComponentState();
-}
-
-class _MultiChoiseQuestionComponentState
-    extends State<MultiChoiseQuestionComponent> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -671,56 +667,56 @@ class _MultiChoiseQuestionComponentState
         children: [
           Center(
             child: Text(
-              widget.model.text as String,
-              style: TextStyle(
+              model.text as String,
+              style: const TextStyle(
                 fontSize: 26,
                 color: CustomColor.blue11,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20.0,
           ),
-          if (widget.model.pic!.isNotEmpty)
+          if (model.pic!.isNotEmpty)
             SizedBox(
               height: 200,
               child: Image(
-                image: AssetImage(widget.model.pic as String),
+                image: AssetImage(model.pic as String),
                 fit: BoxFit.fill,
               ),
             ),
-          if (widget.model.text2!.isEmpty && widget.model.pic!.isEmpty)
-            SizedBox(
+          if (model.text2!.isEmpty && model.pic!.isEmpty)
+            const SizedBox(
               height: 30.0,
             ),
-          if (widget.model.text2!.isNotEmpty)
+          if (model.text2!.isNotEmpty)
             SizedBox(
               child: Text(
-                widget.model.text2!,
-                style: TextStyle(
+                model.text2!,
+                style: const TextStyle(
                   fontSize: 80.0,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                 ),
               ),
             ),
-          if (widget.model.text2!.isEmpty && widget.model.pic!.isEmpty)
-            SizedBox(
+          if (model.text2!.isEmpty && model.pic!.isEmpty)
+            const SizedBox(
               height: 50.0,
             ),
           Expanded(
             child: ListView(
               children: List.generate(
-                widget.model.options!.length,
-                (index) => widget.model.kind == 'text'
+                model.options!.length,
+                (index) => model.kind == 'text'
                     ? TextAnswer(
                         index: index,
-                        model: widget.model,
+                        model: model,
                       )
                     : PicAnswer(
                         index: index,
-                        model: widget.model,
+                        model: model,
                       ),
               ),
             ),
@@ -825,7 +821,7 @@ class CategoryComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var radius = Radius.circular(100.0);
+    var radius = const Radius.circular(100.0);
     return Container(
       decoration: BoxDecoration(
           color: color,
@@ -841,7 +837,7 @@ class CategoryComponent extends StatelessWidget {
             child: Container(
               width: 100.0,
               height: 99.0,
-              padding: EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(20.0),
               decoration: BoxDecoration(
                   color: Colors.white,
                   border: Border.all(
@@ -858,10 +854,11 @@ class CategoryComponent extends StatelessWidget {
           const SizedBox(width: 30.0),
           Text(
             name,
-            style: TextStyle(
-                color: Color(0xffF5F6FA),
-                fontSize: 30.0,
-                fontWeight: FontWeight.bold),
+            style: const TextStyle(
+              color: Color(0xffF5F6FA),
+              fontSize: 30.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ],
       ),

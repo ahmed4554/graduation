@@ -32,31 +32,31 @@ class NewPasswordScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children:
               [
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 Row(
                   children:
                   [
                     GestureDetector(
-                      child: Icon(Icons.arrow_back),
+                      child: const Icon(Icons.arrow_back),
                       onTap: ()
                       {
                         Navigator.of(context).pop(
                           MaterialPageRoute(
                             builder: (context) {
-                              return LoginScreen();
+                              return const LoginScreen();
                             },
                           ),
                         );
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 8.0,
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 SvgPicture.asset(
@@ -64,7 +64,7 @@ class NewPasswordScreen extends StatelessWidget {
                   width: 150,
                   height: 100,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 Text(
@@ -75,10 +75,10 @@ class NewPasswordScreen extends StatelessWidget {
                     color: Colors.black.withOpacity(.9),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 26,
                 ),
-                Center(
+                const Center(
                   child: Column(
                     children: [
                       Text(
@@ -100,21 +100,21 @@ class NewPasswordScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 24,
                 ),
-                CustomInputField(
+                const CustomInputField(
                   icon: Icons.lock_open_rounded,
                   label: 'Enter new password',
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
-                CustomInputField(
+                const CustomInputField(
                   icon: Icons.lock_open_rounded,
                   label: 'Confirm password',
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 MainButton(
@@ -123,7 +123,7 @@ class NewPasswordScreen extends StatelessWidget {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) {
-                          return HomeScreen();
+                          return const HomeScreen();
                         },
                       ),
                     );
@@ -131,7 +131,7 @@ class NewPasswordScreen extends StatelessWidget {
                   label: 'Reset Password',
                   width: 250,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 300,
                 ),
               ],

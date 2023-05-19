@@ -8,6 +8,8 @@ import 'package:project/modules/settings/settings_screen.dart';
 
 
 class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
+
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -17,11 +19,11 @@ class _MainPageState extends State<MainPage> {
 
   List<Widget> pages = <Widget>
   [
-    SettingsScreen(),
-    Chat(),
-    HomeScreen(),
-    NotifyScreen(),
-    ProfileScreen(),
+    const SettingsScreen(),
+    const Chat(),
+    const HomeScreen(),
+    const NotifyScreen(),
+    const ProfileScreen(),
   ];
 
   void changeItem(int index) {
@@ -38,23 +40,23 @@ class _MainPageState extends State<MainPage> {
       bottomNavigationBar: CurvedNavigationBar(
         items:
         [
-          Container(
+          SizedBox(
               width: 30.0,
               height: 30.0,
               child: Image.asset('assets/images/bottomNavBar/settings.png')),
-          Container(
+          SizedBox(
               width: 30.0,
               height: 30.0,
               child: Image.asset('assets/images/bottomNavBar/messages.png')),
-          Container(
+          SizedBox(
               width: 50.0,
               height: 50.0,
               child: Image.asset('assets/images/bottomNavBar/home.png')),
-          Container(
+          SizedBox(
               width: 30.0,
               height: 30.0,
               child: Image.asset('assets/images/bottomNavBar/ring.png',)),
-          Container(
+          SizedBox(
               width: 30.0,
               height: 30.0,
               child: Image.asset('assets/images/bottomNavBar/profile.png',)),

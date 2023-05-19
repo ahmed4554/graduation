@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project/modules/onboarding_screen/on_boarding_screen.dart';
 import '../../components/custom_color.dart';
 
@@ -16,11 +15,11 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
 
   NavigationFunction(context) async {
-    await Future.delayed(Duration(milliseconds: 3000));
+    await Future.delayed(const Duration(milliseconds: 3000));
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
         builder: (context) {
-          return OnBoardingScreen();
+          return const OnBoardingScreen();
         },
       ),
     );
@@ -36,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+        const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -44,14 +43,14 @@ class _SplashScreenState extends State<SplashScreen> {
               colors: [ Colors.white,CustomColor.blue11.withOpacity(.9)],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              stops: [ 0.0,1.0],
+              stops: const [ 0.0,1.0],
               tileMode: TileMode.clamp
           ),
         ),
         child: Column(
           children:
           [
-            SizedBox(
+            const SizedBox(
               height: 250.0,
             ),
             Center(
@@ -63,10 +62,10 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Text.rich(
+            const Text.rich(
               TextSpan(
                 children: [
                   TextSpan(

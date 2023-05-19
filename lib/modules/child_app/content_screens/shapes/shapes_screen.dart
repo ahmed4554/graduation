@@ -7,6 +7,8 @@ import 'package:project/modules/child_app/content_screens/shapes/shapes.dart';
 import 'package:project/modules/child_app/levelOne_screen/level1_screen.dart';
 
 class ShapesScreen extends StatefulWidget {
+  const ShapesScreen({Key? key}) : super(key: key);
+
 
   @override
   State<ShapesScreen> createState() => _ShapesScreenState();
@@ -42,7 +44,7 @@ class _ShapesScreenState extends State<ShapesScreen> {
           {
             Navigator.of(context).pop(
               MaterialPageRoute(builder: (context) {
-                return LevelOneScreen();
+                return const LevelOneScreen();
               }),
             );
           },
@@ -77,7 +79,7 @@ class _ShapesScreenState extends State<ShapesScreen> {
               ),
             ),
           ),
-          Container(
+          SizedBox(
             height: MediaQuery.of(context).size.height,
             child: SingleChildScrollView(
               child: Column(
@@ -104,7 +106,7 @@ class _ShapesScreenState extends State<ShapesScreen> {
                       "assets/images/profile/eliza.png",
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15.0,
                   ),
                   Container(
@@ -121,7 +123,7 @@ class _ShapesScreenState extends State<ShapesScreen> {
                       ],
                       borderRadius: BorderRadius.circular(50.0),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'Shapes',
                         style: TextStyle(
@@ -184,7 +186,7 @@ class _ShapesScreenState extends State<ShapesScreen> {
                               child: Center(
                                 child: Column(
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: 90.0,
                                       height: 90.0,
                                       child: Image.asset(
