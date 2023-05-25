@@ -14,6 +14,17 @@ List<String> bloodKinds =
   'AB-',
 ];
 
+List<String> weakDays =
+[
+  'Su',
+  'Mo',
+  'Tu',
+  'Wed',
+  'Th',
+  'Fr',
+  'Sat'
+];
+
 var shapes =
 {
   "activity": "shapes",
@@ -46,7 +57,8 @@ var shapes =
     "assets/Database/shapes/shapes/trapezoid.png",
     "assets/Database/shapes/shapes/triangle.png"
   ],
-  "sounds": [
+  "sounds":
+  [
     "Database/shapes/sounds/circle.mp3",
     "Database/shapes/sounds/heart.mp3",
     "Database/shapes/sounds/heptagon.mp3",
@@ -216,32 +228,32 @@ var animals =
   ],
   "sounds":
   [
-    "assets/Database/animals/Sounds/ant.mp3",
-    "assets/Database/animals/Sounds/bear.mp3",
-    "assets/Database/animals/Sounds/crocodile.mp3",
-    "assets/Database/animals/Sounds/dog.mp3",
-    "assets/Database/animals/Sounds/elephant.mp3",
-    "assets/Database/animals/Sounds/fox.mp3",
-    "assets/Database/animals/Sounds/giraffe.mp3",
-    "assets/Database/animals/Sounds/horse.mp3",
-    "assets/Database/animals/Sounds/iguana.mp3",
-    "assets/Database/animals/Sounds/jellyfish.mp3",
-    "assets/Database/animals/Sounds/kangaroo.mp3",
-    "assets/Database/animals/Sounds/lion.mp3",
-    "assets/Database/animals/Sounds/monkey.mp3",
-    "assets/Database/animals/Sounds/numba.mp3",
-    "assets/Database/animals/Sounds/owl.mp3",
-    "assets/Database/animals/Sounds/penguin.mp3",
-    "assets/Database/animals/Sounds/quail.mp3",
-    "assets/Database/animals/Sounds/rooster.mp3",
-    "assets/Database/animals/Sounds/sheep.mp3",
-    "assets/Database/animals/Sounds/tiger.mp3",
-    "assets/Database/animals/Sounds/unicorn.mp3",
-    "assets/Database/animals/Sounds/vulture.mp3",
-    "assets/Database/animals/Sounds/whale.mp3",
-    "assets/Database/animals/Sounds/xenops.mp3",
-    "assets/Database/animals/Sounds/yak.mp3",
-    "assets/Database/animals/Sounds/zebra.mp3"
+    "Database/animals/Sounds/ant.mp3",
+    "Database/animals/Sounds/bear.mp3",
+    "Database/animals/Sounds/crocodile.mp3",
+    "Database/animals/Sounds/dog.mp3",
+    "Database/animals/Sounds/elephent.mp3",
+    "Database/animals/Sounds/fox.mp3",
+    "Database/animals/Sounds/giraffe.mp3",
+    "Database/animals/Sounds/horse.mp3",
+    "Database/animals/Sounds/iguana.mp3",
+    "Database/animals/Sounds/jellyfish.mp3",
+    "Database/animals/Sounds/kongaro.mp3",
+    "Database/animals/Sounds/lion.mp3",
+    "Database/animals/Sounds/monkey.mp3",
+    "Database/animals/Sounds/numbat.mp3",
+    "Database/animals/Sounds/owl.mp3",
+    "Database/animals/Sounds/pinguin.mp3",
+    "Database/animals/Sounds/quail.mp3",
+    "Database/animals/Sounds/rooster.mp3",
+    "Database/animals/Sounds/sheep.mp3",
+    "Database/animals/Sounds/tiger.mp3",
+    "Database/animals/Sounds/unicorn.mp3",
+    "Database/animals/Sounds/vulture.mp3",
+    "Database/animals/Sounds/whale.mp3",
+    "Database/animals/Sounds/xenops.mp3",
+    "Database/animals/Sounds/yak.mp3",
+    "Database/animals/Sounds/zebra.mp3"
   ],
   "questions":
   [
@@ -444,7 +456,7 @@ var alpha =
   ],
   "names": [
     "apple",
-    "ball",
+    "balloon",
     "cat",
     "duck",
     "elephant",
@@ -500,7 +512,7 @@ var alpha =
   ],
   "shapes": [
     "assets/Database/char/images/apple.png",
-    "assets/Database/char/images/ball.png",
+    "assets/Database/char/images/balloon.png",
     "assets/Database/char/images/cat.png",
     "assets/Database/char/images/duck.png",
     "assets/Database/char/images/elephant.png",
@@ -528,10 +540,10 @@ var alpha =
   ],
   "images": [
     "assets/Database/char/images/apple.png",
-    "assets/Database/char/images/ball.png",
+    "assets/Database/char/images/balloon.png",
     "assets/Database/char/images/cat.png",
     "assets/Database/char/images/duck.png",
-    "assets/Database/char/images/elephant.png",
+    "assets/Database/char/images/egg.png",
     "assets/Database/char/images/fish.png",
     "assets/Database/char/images/grapes.png",
     "assets/Database/char/images/hat.png",
@@ -555,32 +567,32 @@ var alpha =
     "assets/Database/char/images/zebra.png",
   ],
   "sounds": [
-    "assets/Database/char/Voice/A apple.mp3",
-    "assets/Database/char/Voice/B Ballon.mp3",
-    "assets/Database/char/Voice/C cat.mp3",
-    "assets/Database/char/Voice/D Duck.mp3",
-    "assets/Database/char/Voice/E Egg.mp3",
-    "assets/Database/char/Voice/F Fish.mp3",
-    "assets/Database/char/Voice/G Glasses.mp3",
-    "assets/Database/char/Voice/H Heart.mp3",
-    "assets/Database/char/Voice/I Ice craem.mp3",
-    "assets/Database/char/Voice/J Jellyfish.mp3",
-    "assets/Database/char/Voice/K Key.mp3",
-    "assets/Database/char/Voice/L Lemon.mp3",
-    "assets/Database/char/Voice/M Moon.mp3",
-    "assets/Database/char/Voice/N Nest.mp3",
-    "assets/Database/char/Voice/O Orange.mp3",
-    "assets/Database/char/Voice/P Penguin.mp3",
-    "assets/Database/char/Voice/Q Queen.mp3",
-    "assets/Database/char/Voice/R Rainbow.mp3",
-    "assets/Database/char/Voice/S star.mp3",
-    "assets/Database/char/Voice/T Tooth.mp3",
-    "assets/Database/char/Voice/U Umbrella.mp3",
-    "assets/Database/char/Voice/V Volcano.mp3",
-    "assets/Database/char/Voice/W Watermelon.mp3",
-    "assets/Database/char/Voice/X Xylophone.mp3",
-    "assets/Database/char/Voice/Y Yellow.mp3",
-    "assets/Database/char/Voice/Z Zig Zag.mp3"
+    "Database/char/sounds/Aapple.mp3",
+    "Database/char/sounds/BBallon.mp3",
+    "Database/char/sounds/Ccat.mp3",
+    "Database/char/sounds/DDuck.mp3",
+    "Database/char/sounds/EElephant.mp3",
+    "Database/char/sounds/FFish.mp3",
+    "Database/char/sounds/GGrapes.mp3",
+    "Database/char/sounds/HHat.mp3",
+    "Database/char/sounds/IIguana.mp3",
+    "Database/char/sounds/JJelly.mp3",
+    "Database/char/sounds/KKey.mp3",
+    "Database/char/sounds/LLion.mp3",
+    "Database/char/sounds/MMoon.mp3",
+    "Database/char/sounds/NNest.mp3",
+    "Database/char/sounds/OOrange.mp3",
+    "Database/char/sounds/PPig.mp3",
+    "Database/char/sounds/QQuail.mp3",
+    "Database/char/sounds/RRocket.mp3",
+    "Database/char/sounds/SSnake.mp3",
+    "Database/char/sounds/TTurtle.mp3",
+    "Database/char/sounds/UUmbrella.mp3",
+    "Database/char/sounds/VVolcano.mp3",
+    "Database/char/sounds/WWatermelon.mp3",
+    "Database/char/sounds/XXylophone.mp3",
+    "Database/char/sounds/YYOYO.mp3",
+    "Database/char/sounds/ZZebra.mp3"
 
   ]
 
@@ -720,17 +732,17 @@ var color =
   ],
   "sounds":
   [
-    "assets/Database/colors/Sounds/black.mp3",
-    "assets/Database/colors/Sounds/blue.mp3",
-    "assets/Database/colors/Sounds/brown.mp3",
-    "assets/Database/colors/Sounds/green.mp3",
-    "assets/Database/colors/Sounds/grey.mp3",
-    "assets/Database/colors/Sounds/orange.mp3",
-    "assets/Database/colors/Sounds/pink.mp3",
-    "assets/Database/colors/Sounds/purple.mp3",
-    "assets/Database/colors/Sounds/red.mp3",
-    "assets/Database/colors/Sounds/white.mp3",
-    "assets/Database/colors/Sounds/yellow.mp3"
+    "Database/colors/Sounds/black.mp3",
+    "Database/colors/Sounds/blue.mp3",
+    "Database/colors/Sounds/brown.mp3",
+    "Database/colors/Sounds/green.mp3",
+    "Database/colors/Sounds/grey.mp3",
+    "Database/colors/Sounds/orange.mp3",
+    "Database/colors/Sounds/pink.mp3",
+    "Database/colors/Sounds/purple.mp3",
+    "Database/colors/Sounds/red.mp3",
+    "Database/colors/Sounds/white.mp3",
+    "Database/colors/Sounds/yellow.mp3"
   ],
   "questions":
   [
@@ -840,6 +852,7 @@ var fruit =
     "Imbe Fruit",
     "Jack Fruit",
     "Kiwi",
+    "Lemon",
     "Mango",
     "Nectarine",
     "Orange",
@@ -851,7 +864,7 @@ var fruit =
     "Ugli fruit",
     "Voavanga",
     "Watermelon",
-    "Ximenia Caffra fruit",
+    "Ximenia Caffra",
     "Yangmei",
     "Zwetschge"
   ],
@@ -867,6 +880,7 @@ var fruit =
     "assets/Database/fruits/fruits/imbe.png",
     "assets/Database/fruits/fruits/jackfruit.png",
     "assets/Database/fruits/fruits/kiwi.png",
+    "assets/Database/fruits/fruits/lemon.png",
     "assets/Database/fruits/fruits/mango.png",
     "assets/Database/fruits/fruits/nectarine.png",
     "assets/Database/fruits/fruits/orange.png",
@@ -883,33 +897,35 @@ var fruit =
     "assets/Database/fruits/fruits/z.png"
   ],
   "Sounds": [
-    "assets/Database/fruits/voice fruits/apple.mp3",
-    "assets/Database/fruits/voice fruits/banana.mp3",
-    "assets/Database/fruits/voice fruits/cherry.mp3",
-    "assets/Database/fruits/voice fruits/dragon.mp3",
-    "assets/Database/fruits/voice fruits/elderberry.mp3",
-    "assets/Database/fruits/voice fruits/fig.mp3",
-    "assets/Database/fruits/voice fruits/grapes.mp3",
-    "assets/Database/fruits/voice fruits/honeydew melon.mp3",
-    "assets/Database/fruits/voice fruits/imbe fruits.mp3",
-    "assets/Database/fruits/voice fruits/jackfruit.mp3",
-    "assets/Database/fruits/voice fruits/kiwi.mp3",
-    "assets/Database/fruits/voice fruits/mango.mp3",
-    "assets/Database/fruits/voice fruits/nectarine.mp3",
-    "assets/Database/fruits/voice fruits/orange.mp3",
-    "assets/Database/fruits/voice fruits/peach.mp3",
-    "assets/Database/fruits/voice fruits/quince.mp3",
-    "assets/Database/fruits/voice fruits/raspberries.mp3",
-    "assets/Database/fruits/voice fruits/strawberry.mp3",
-    "assets/Database/fruits/voice fruits/tangerine.mp3",
-    "assets/Database/fruits/voice fruits/ugli fruit.mp3",
-    "assets/Database/fruits/voice fruits/voavanga fruit.mp3",
-    "assets/Database/fruits/voice fruits/watermelon.mp3",
-    "assets/Database/fruits/voice fruits/ximenia caffra fruit.mp3",
-    "assets/Database/fruits/voice fruits/yangmei fruit.mp3",
-    "assets/Database/fruits/voice fruits/Zwetschge.mp3"
+    "Database/fruits/sounds/apple.mp3",
+    "Database/fruits/sounds/banana.mp3",
+    "Database/fruits/sounds/cherry.mp3",
+    "Database/fruits/sounds/dragon.mp3",
+    "Database/fruits/sounds/elderberry.mp3",
+    "Database/fruits/sounds/fig.mp3",
+    "Database/fruits/sounds/grapes.mp3",
+    "Database/fruits/sounds/honeydewmelon.mp3",
+    "Database/fruits/sounds/imbe.mp3",
+    "Database/fruits/sounds/jackfruit.mp3",
+    "Database/fruits/sounds/kiwi.mp3",
+    "Database/fruits/sounds/lemon.mp3",
+    "Database/fruits/sounds/mango.mp3",
+    "Database/fruits/sounds/nectarine.mp3",
+    "Database/fruits/sounds/orange.mp3",
+    "Database/fruits/sounds/peach.mp3",
+    "Database/fruits/sounds/quince.mp3",
+    "Database/fruits/sounds/raspberries.mp3",
+    "Database/fruits/sounds/strawberry.mp3",
+    "Database/fruits/sounds/tangerine.mp3",
+    "Database/fruits/sounds/uglifruit.mp3",
+    "Database/fruits/sounds/voavangafruit.mp3",
+    "Database/fruits/sounds/watermelon.mp3",
+    "Database/fruits/sounds/ximeniacaffrafruit.mp3",
+    "Database/fruits/sounds/yangmeifruit.mp3",
+    "Database/fruits/sounds/Zwetschge.mp3"
   ],
-  "Questions": [
+  "Questions":
+  [
     "What is this Fruit ?"
   ]
 };
@@ -1056,16 +1072,16 @@ var numbers =
 
   "sounds":
   [
-    "assets/Database/numbers/sounds/0.mp3",
-    "assets/Database/numbers/sounds/1.mp3",
-    "assets/Database/numbers/sounds/2.mp3",
-    "assets/Database/numbers/sounds/3.mp3",
-    "assets/Database/numbers/sounds/4.mp3",
-    "assets/Database/numbers/sounds/5.mp3",
-    "assets/Database/numbers/sounds/6.mp3",
-    "assets/Database/numbers/sounds/7.mp3",
-    "assets/Database/numbers/sounds/8.mp3",
-    "assets/Database/numbers/sounds/9.mp3"
+    "Database/numbers/sounds/0.mp3",
+    "Database/numbers/sounds/1.mp3",
+    "Database/numbers/sounds/2.mp3",
+    "Database/numbers/sounds/3.mp3",
+    "Database/numbers/sounds/4.mp3",
+    "Database/numbers/sounds/5.mp3",
+    "Database/numbers/sounds/6.mp3",
+    "Database/numbers/sounds/7.mp3",
+    "Database/numbers/sounds/8.mp3",
+    "Database/numbers/sounds/9.mp3"
   ],
 
   "questions":

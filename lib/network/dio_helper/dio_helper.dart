@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-class DioHelper {
+class DioDetectionHelper {
   static late Dio dio;
   static void initDio() {
     dio = Dio(

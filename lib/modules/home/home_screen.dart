@@ -1,476 +1,71 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:project/components/custom_color.dart';
 import 'package:project/modules/chat/chat_screen.dart';
-import 'package:project/modules/healthy_food/healthy_food.dart';
-import 'package:project/modules/reminder_history/reminder_history.dart';
-import '../donor_info_screen/donor_info_screen.dart';
+import 'package:project/modules/main_page/main_page.dart';
+import '../notification/notification_screen.dart';
+import '../profile/profile_screen.dart';
+import '../settings/settings_screen.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+   HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int currentIndex = 2;
+
+  List<Widget> pages = <Widget>
+  [
+    const SettingsScreen(),
+    const Chat(),
+    const MainPage(),
+     NotifyScreen(),
+    const ProfileScreen(),
+  ];
+
+  void changeItem(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children:
+      body: pages[currentIndex],
+      bottomNavigationBar: CurvedNavigationBar(
+        items:
         [
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            color: CustomColor.blue11,
-          ),
-
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 90.0,
-            ),
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(.9),
-                  borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(50.0),
-                      topLeft: Radius.circular(50.0),
-                  )
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children:
-                [
-                  Stack(
-                    children:
-                    [
-                      Center(
-                        child: Container(
-                          width: 110.0,
-                          height: 100.0,
-                          decoration: const BoxDecoration(
-                              color: CustomColor.blue11,
-                              borderRadius: BorderRadius.only(
-                               bottomLeft: Radius.circular(60.0),
-                               bottomRight:Radius.circular(60.0) ,
-                            )
-                          ),
-                        ),
-                      ),
-                      Center(
-                        child: SizedBox(
-                          height: 90.0,
-                          width: 100.0,
-                          child: Image.asset(
-                            'assets/images/logo.png',
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10.0,
-                  ),
-                  const Center(
-                    child: Text(
-                      'Welcome',
-                      style: TextStyle(
-                          fontSize: 38.0
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30.0,
-                  ),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: Column(
-                          children:
-                          [
-                            const SizedBox(
-                              height: 10.0,
-                            ),
-                            InkWell(
-                              onTap: ()
-                              {
-
-                              },
-                              child: Container(
-                                width: 343.0,
-                                height: 97.29,
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(.9),
-                                  borderRadius:const BorderRadius.only(
-                                    topRight: Radius.circular(10.0),
-                                    bottomRight: Radius.circular(10.0),
-                                    topLeft: Radius.circular(30.0),
-                                    bottomLeft: Radius.circular(30.0),
-                                  ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      spreadRadius: 3,
-                                      blurRadius: 9,
-                                    ),
-                                  ],
-                                ),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children:
-                                  [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        top: 36.0,
-                                        left: 30.0,
-                                      ),
-                                      child: Text(
-                                        'Follow Your Child',
-                                        style: TextStyle(
-                                          color: CustomColor.black1.withOpacity(0.8),
-                                          fontSize: 24.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                    const Spacer(),
-                                    SizedBox(
-                                      width: 90.0,
-                                      height: 112.0,
-                                      child: Image.asset(
-                                          'assets/images/parentHome/parents.png'
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 24.0,
-                            ),
-                            InkWell(
-                              onTap: ()
-                              {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(builder: (context) {
-                                    return const DonorInfoScreen();
-                                  }),
-                                );
-                              },
-                              child: Container(
-                                width: 343.0,
-                                height: 97.29,
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(.9),
-                                  borderRadius:const BorderRadius.only(
-                                    topRight: Radius.circular(10.0),
-                                    bottomRight: Radius.circular(10.0),
-                                    topLeft: Radius.circular(30.0),
-                                    bottomLeft: Radius.circular(30.0),
-                                  ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      spreadRadius: 3,
-                                      blurRadius: 9,
-                                    ),
-                                  ],
-                                ),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children:
-                                  [
-                                    SizedBox(
-                                      width: 90.0,
-                                      height: 112.0,
-                                      child: Image.asset(
-                                          'assets/images/parentHome/blood.png'
-                                      ),
-                                    ),
-                                    const Spacer(),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        top: 36.0,
-                                        right: 30.0,
-                                      ),
-                                      child: Text(
-                                        'Blood Donation',
-                                        style: TextStyle(
-                                          color: CustomColor.black1.withOpacity(0.8),
-                                          fontSize: 24.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 24.0,
-                            ),
-                            Container(
-                              width: double.infinity,
-                              height: 97.29,
-                              decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(.9),
-                                borderRadius:const BorderRadius.only(
-                                  topRight: Radius.circular(10.0),
-                                  bottomRight: Radius.circular(10.0),
-                                  topLeft: Radius.circular(30.0),
-                                  bottomLeft: Radius.circular(30.0),
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    spreadRadius: 3,
-                                    blurRadius: 9,
-                                  ),
-                                ],
-                              ),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children:
-                                [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                      top: 36.0,
-                                      left: 30.0,
-                                    ),
-                                    child: Text(
-                                      'Nearest Clinic',
-                                      style: TextStyle(
-                                        color: CustomColor.black1.withOpacity(0.8),
-                                        fontSize: 24.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                  const Spacer(),
-                                  SizedBox(
-                                    width: 179.0,
-                                    height: 134.0,
-                                    child: Row(
-                                      children: [
-                                        const Spacer(),
-                                        SizedBox(
-                                          width: 150,
-                                          height: 150,
-                                          child: Image.asset(
-                                            'assets/images/parentHome/map.png',
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 24.0,
-                            ),
-                            InkWell(
-                              onTap: ()
-                              {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => const PrescriptionHistory(),
-                                  ),
-                                );
-                              },
-                              child: Container(
-                                width: 343.0,
-                                height: 97.29,
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(.9),
-                                  borderRadius:const BorderRadius.only(
-                                    topRight: Radius.circular(10.0),
-                                    bottomRight: Radius.circular(10.0),
-                                    topLeft: Radius.circular(30.0),
-                                    bottomLeft: Radius.circular(30.0),
-                                  ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      spreadRadius: 3,
-                                      blurRadius: 9,
-                                    ),
-                                  ],
-                                ),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children:
-                                  [
-                                    SizedBox(
-                                      width: 110.0,
-                                      height: 90.0,
-                                      child: Image.asset(
-                                          'assets/images/parentHome/board.png'
-                                      ),
-                                    ),
-                                    const Spacer(),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        top: 36.0,
-                                        right: 30.0,
-                                      ),
-                                      child: Text(
-                                        'Reminder',
-                                        style: TextStyle(
-                                          color: CustomColor.black1.withOpacity(0.8),
-                                          fontSize: 24.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 24.0,
-                            ),
-                            InkWell(
-                              onTap: ()
-                              {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(builder: (context) {
-                                    return const HealthyFoodScreen();
-                                  }),
-                                );
-                              },
-                              child: Container(
-                                width: 343.0,
-                                height: 97.29,
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(.9),
-                                  borderRadius:const BorderRadius.only(
-                                    topRight: Radius.circular(10.0),
-                                    bottomRight: Radius.circular(10.0),
-                                    topLeft: Radius.circular(30.0),
-                                    bottomLeft: Radius.circular(30.0),
-                                  ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      spreadRadius: 3,
-                                      blurRadius: 9,
-                                    ),
-                                  ],
-                                ),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children:
-                                  [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        top: 36.0,
-                                        left: 30.0,
-                                      ),
-                                      child: Text(
-                                        'Healthy Food',
-                                        style: TextStyle(
-                                          color: CustomColor.black1.withOpacity(0.8),
-                                          fontSize: 24.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                    const Spacer(),
-                                    SizedBox(
-                                      width: 179.0,
-                                      height: 134.0,
-                                      child: Row(
-                                        children: [
-                                          const SizedBox(
-                                            width: 79,
-                                          ),
-                                          SizedBox(
-                                            width: 100,
-                                            height: 100,
-                                            child: Image.asset(
-                                              'assets/images/parentHome/salad.png',
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 24.0,
-                            ),
-                            InkWell(
-                              onTap: ()
-                              {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(builder: (context) {
-                                    return const Chat();
-                                  }),
-                                );
-                              },
-                              child: Container(
-                                width: 343.0,
-                                height: 97.29,
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(.9),
-                                  borderRadius:const BorderRadius.only(
-                                    topRight: Radius.circular(10.0),
-                                    bottomRight: Radius.circular(10.0),
-                                    topLeft: Radius.circular(30.0),
-                                    bottomLeft: Radius.circular(30.0),
-                                  ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      spreadRadius: 3,
-                                      blurRadius: 9,
-                                    ),
-                                  ],
-                                ),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children:
-                                  [
-                                    SizedBox(
-                                      width: 110.0,
-                                      height: 90.0,
-                                      child: Image.asset(
-                                          'assets/images/parentHome/chat.png'
-                                      ),
-                                    ),
-                                    const Spacer(),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        top: 36.0,
-                                        right: 30.0,
-                                      ),
-                                      child: Text(
-                                        'Chat Group',
-                                        style: TextStyle(
-                                          color: CustomColor.black1.withOpacity(0.8),
-                                          fontSize: 24.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 40.0,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          SizedBox(
+              width: 30.0,
+              height: 30.0,
+              child: Image.asset('assets/images/bottomNavBar/settings.png')),
+          SizedBox(
+              width: 30.0,
+              height: 30.0,
+              child: Image.asset('assets/images/bottomNavBar/messages.png')),
+          SizedBox(
+              width: 50.0,
+              height: 50.0,
+              child: Image.asset('assets/images/bottomNavBar/home.png')),
+          SizedBox(
+              width: 30.0,
+              height: 30.0,
+              child: Image.asset('assets/images/bottomNavBar/ring.png',)),
+          SizedBox(
+              width: 30.0,
+              height: 30.0,
+              child: Image.asset('assets/images/bottomNavBar/profile.png',)),
         ],
+        height: 60,
+        index: currentIndex,
+        color: Colors.white,
+        backgroundColor: Colors.white,
+        animationCurve: Curves.fastLinearToSlowEaseIn,
+        onTap: changeItem ,
       ),
     );
   }

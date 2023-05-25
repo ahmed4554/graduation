@@ -42,7 +42,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
           backgroundColor: Colors.transparent,
           centerTitle: true,
           leading: IconButton(
-            onPressed: () {
+            onPressed: ()
+            {
               Navigator.pop(context);
             },
             icon: const Icon(Icons.arrow_back_ios),

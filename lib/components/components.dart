@@ -3,6 +3,7 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:project/components/custom_color.dart';
 import 'package:project/constants/constants.dart';
 import 'package:project/modules/child_app/activity_screen/activity_screen.dart';
+import 'package:project/modules/login_screen/cubit/cubit.dart';
 
 import '../modules/child_app/content_screens/animals/animals.dart';
 
@@ -53,40 +54,27 @@ class CustomInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-              color: Colors.black12,
-              spreadRadius: 1,
-              blurRadius: 5,
-              offset: Offset(0, 0))
-        ],
-      ),
-      child: TextFormField(
-        decoration: InputDecoration(
-          fillColor: Colors.white,
-          filled: true,
-          labelText: label,
-          // labelStyle: TextStyle(
-          //   fontSize: 18,
-          //   color: Colors.black.withOpacity(.2),
-          // ),
-          border: OutlineInputBorder(
-            // borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(15),
-          ),
-          prefixIcon: Icon(
-            icon,
-            color: Colors.black.withOpacity(.5),
-          ),
-          ),
-        controller: Controller,
-        validator: validate,
-        keyboardType: type,
+    return TextFormField(
+      decoration: InputDecoration(
+        fillColor: Colors.white,
+        filled: true,
+        labelText: label,
+        // labelStyle: TextStyle(
+        //   fontSize: 18,
+        //   color: Colors.black.withOpacity(.2),
+        // ),
+        border: OutlineInputBorder(
+          // borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(15),
         ),
+        prefixIcon: Icon(
+          icon,
+          color: Colors.black.withOpacity(.5),
+        ),
+        ),
+      controller: Controller,
+      validator: validate,
+      keyboardType: type,
       );
    }
 }
@@ -100,64 +88,60 @@ class CustomInputField2 extends StatelessWidget {
     required this.icon,
     required this.label,
     required this.passwordController,
+    required this.suffixPressed,
+    required this.suffixColor,
   }) : super(key: key);
 
 
-    IconData icon2;
-    final IconData icon;
-    final String label;
-    TextInputType type;
-    String? Function(String?)? validate;
-    var passwordController;
+  IconData icon2;
+  final IconData icon;
+  final String label;
+  TextInputType type;
+  String? Function(String?)? validate;
+  var passwordController;
+  VoidCallback? suffixPressed;
+  Color suffixColor;
+
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-              color: Colors.black12,
-              spreadRadius: 1,
-              blurRadius: 5,
-              offset: Offset(0 , 0))
-        ],
-      ),
-      child: TextFormField(
-        decoration: InputDecoration(
-          fillColor: Colors.white,
-          filled: true,
-          labelText: label,
-          // hintStyle: TextStyle(
-          //   fontSize: 18,
-          //   color: Colors.black.withOpacity(.2),
-          // ),
-          border: OutlineInputBorder(
-            //borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(15),
-          ),
-          prefixIcon: Icon(
-            icon,
-            color: Colors.black.withOpacity(.5),
-          ),
-          suffixIcon: Icon(
-            icon2,
-            color: Colors.black.withOpacity(.5),
-          ),
+    return TextFormField(
+      decoration: InputDecoration(
+        fillColor: Colors.white,
+        filled: true,
+        labelText: label,
+        border: OutlineInputBorder(
+          //borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(15),
         ),
-        controller: passwordController,
-        keyboardType: type,
-        validator: validate,
+        prefixIcon: Icon(
+          icon,
+          color: Colors.black.withOpacity(.5),
+        ),
+        suffixIcon: IconButton(
+          onPressed:suffixPressed,
+          icon: Icon(
+            icon2,
+            color: suffixColor,
+          ),
+          color: Colors.black.withOpacity(.5),
+        ),
       ),
+      controller: passwordController,
+      keyboardType: type,
+      validator: validate,
+      obscureText: LoginCubit.get(context).isPassword,
     );
   }
 }
 
 class MainButton extends StatelessWidget {
-  MainButton(
-      {Key? key, required this.label, this.width = double.infinity, this.onTap})
-      : super(key: key);
+  MainButton({
+    Key? key,
+    required this.label,
+    this.width = 280.0,
+    this.onTap,
+  }) : super(key: key);
   final String label;
   double width;
   dynamic onTap;
@@ -258,43 +242,6 @@ class TextEditorForVerifyCode extends StatelessWidget {
       },
       //runs when every textfield is filled
       onSubmit: (String verificationCode) {}, // end onSubmit
-    );
-  }
-}
-
-class BloodKindBubble extends StatelessWidget {
-  const BloodKindBubble({
-    Key? key,
-    required this.title,
-  }) : super(key: key);
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(5),
-      alignment: Alignment.center,
-      width: 70,
-      height: 70,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: const [
-          BoxShadow(
-              color: Colors.black26,
-              blurRadius: 5,
-              spreadRadius: 1,
-              offset: Offset(0, 0)),
-        ],
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Text(
-        title,
-        style: const TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          color: Colors.red,
-        ),
-      ),
     );
   }
 }

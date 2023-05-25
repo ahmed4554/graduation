@@ -17,27 +17,26 @@ class LoginScreen extends StatelessWidget {
   @override
 
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (BuildContext context) => LoginCubit(),
-      child: BlocConsumer<LoginCubit, LoginCubitState>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          return Scaffold(
-            body: SingleChildScrollView(
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color(0xFF1CB0F6),
-                      Color(0xffEEF8F2),
-                      Color(0xffFFFFFF),
-                    ],
-                  ),
+    return BlocConsumer<LoginCubit, LoginCubitState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return Scaffold(
+          body: SingleChildScrollView(
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color(0xFF1CB0F6),
+                    Color(0xffEEF8F2),
+                    Color(0xffFFFFFF),
+                  ],
                 ),
+              ),
+              child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -72,7 +71,7 @@ class LoginScreen extends StatelessWidget {
                       height: 15,
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 48),
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: Form(
                         key: formKey,
                         child: Column(
@@ -83,7 +82,7 @@ class LoginScreen extends StatelessWidget {
                               label: 'Email Address',
                               validate: (String? value) {
                                 if (value!.isEmpty) {
-                                  return 'please enter your email address';
+                                  return 'Please enter your email address';
                                 }
                               },
                               type: TextInputType.emailAddress,
@@ -94,12 +93,17 @@ class LoginScreen extends StatelessWidget {
                             CustomInputField2(
                               passwordController: LoginCubit.get(context).passwordController,
                               icon: Icons.lock_open_rounded,
-                              icon2: Icons.visibility_outlined,
+                              icon2: LoginCubit.get(context).suffix,
+                              suffixPressed: ()
+                              {
+                                LoginCubit.get(context).changePasswordVisibility();
+                              },
+                              suffixColor: LoginCubit.get(context).isPassword ? Colors.grey : CustomColor.blue11 ,
                               label: 'Password',
                               type: TextInputType.visiblePassword,
                               validate: (String? value) {
                                 if (value!.isEmpty) {
-                                  return 'password is too short';
+                                  return 'Password is too short';
                                 }
                               },
                             ),
@@ -149,10 +153,7 @@ class LoginScreen extends StatelessWidget {
                               ],
                             ),
                             const SizedBox(
-                              height: 15,
-                            ),
-                            const SizedBox(
-                              height: 15,
+                              height: 20.0,
                             ),
                             ConditionalBuilder(
                               condition: state is! LoginLoadingState,
@@ -210,16 +211,13 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 50,
-                    ),
                   ],
                 ),
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

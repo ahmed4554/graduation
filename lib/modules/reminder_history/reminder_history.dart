@@ -22,7 +22,7 @@ class PrescriptionHistory extends StatelessWidget {
           {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => const HomeScreen(),
+                builder: (context) =>  HomeScreen(),
               ),
             );
           },

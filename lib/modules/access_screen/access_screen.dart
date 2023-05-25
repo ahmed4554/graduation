@@ -4,6 +4,7 @@ import 'package:project/components/custom_color.dart';
 import 'package:project/modules/child_app/home_Screen/home_screen.dart';
 import 'package:project/modules/login_screen/login_screen.dart';
 import '../../components/components.dart';
+import '../guest_screen/guest_screen.dart';
 
 class AccessScreen extends StatefulWidget {
   const AccessScreen({Key? key}) : super(key: key);
@@ -12,10 +13,9 @@ class AccessScreen extends StatefulWidget {
   State<AccessScreen> createState() => _AccessScreenState();
 }
 
-enum UserType{ child , parent }
+enum UserType { child, parent }
 
 class _AccessScreenState extends State<AccessScreen> {
-
   UserType userType = UserType.parent;
 
   @override
@@ -53,7 +53,7 @@ class _AccessScreenState extends State<AccessScreen> {
                         gradient: const LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
-                          stops: [.1,.7,1.0],
+                          stops: [.1, .7, 1.0],
                           colors: [
                             CustomColor.blue11,
                             Color(0xffEEF8F2),
@@ -116,105 +116,119 @@ class _AccessScreenState extends State<AccessScreen> {
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(
-                height: 60,
+                height: 40,
               ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Row(
-                    children: [
-                      InkWell(
-                        onTap: ()
-                        {
-                          setState(() {
-                            userType = UserType.parent;
-                          });
-                          Navigator.of(context).push(
-                            MaterialPageRoute(builder:
-                                (context)=>  LoginScreen()
-                            ),
-                          );
-                        },
-                        child: Container(
-                          height: 270.0,
-                          width: 150.0,
-                          //padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            boxShadow: userType == UserType.parent ? [
-                              BoxShadow(
-                                  color: Colors.grey[300]!,
-                                  offset: const Offset(4, 4),
-                                  blurRadius: 15,
-                                  spreadRadius: 1
-                              ),
-                              const BoxShadow(
-                                  color: CustomColor.sky,
-                                  offset: Offset(-4, -4),
-                                  blurRadius: 9,
-                                  spreadRadius: .5
-                              )
-                            ] : null,
-                            borderRadius: BorderRadius.circular(20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Row(
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          userType = UserType.parent;
+                        });
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()),
+                        );
+                      },
+                      child: Container(
+                        height: 270.0,
+                        width: 150.0,
+                        //padding: const EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: userType == UserType.parent
+                              ? [
+                                  BoxShadow(
+                                      color: Colors.grey[300]!,
+                                      offset: const Offset(4, 4),
+                                      blurRadius: 15,
+                                      spreadRadius: 1),
+                                  const BoxShadow(
+                                      color: CustomColor.sky,
+                                      offset: Offset(-4, -4),
+                                      blurRadius: 9,
+                                      spreadRadius: .5)
+                                ]
+                              : null,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: const Image(
+                          image: AssetImage(
+                            'assets/images/access/parent.png',
                           ),
-                          child: const Image(
-                            image: AssetImage(
-                              'assets/images/access/parent.png',
-                            ),
-                            fit: BoxFit.contain,
-                          ),
+                          fit: BoxFit.contain,
                         ),
                       ),
-                      const SizedBox(
-                        width: 25,
-                      ),
-                      InkWell(
-                        onTap: (){
-                          setState(() {
-                            userType = UserType.child;
-                          });
-                          Navigator.of(context).push(
-                            MaterialPageRoute(builder:
-                                (context)=> const ChildHomeScreen()
-                            ),
-                          );
-                        },
-                        child: Container(
-                          height: 270.0,
-                          width: 150.0,
-                          //padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            boxShadow: userType == UserType.child ? [
-                               BoxShadow(
-                                   color: Colors.grey[300]!,
-                                   offset: const Offset(4, 4),
-                                   blurRadius: 15,
-                                   spreadRadius: 1),
-                               const BoxShadow(
-                                   color: CustomColor.sky,
-                                   offset: Offset(-4, -4),
-                                   blurRadius: 15,
-                                   spreadRadius: 1,
-                               )
-                             ] : null,
-                            borderRadius: BorderRadius.circular(20),
+                    ),
+                    const SizedBox(
+                      width: 25,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          userType = UserType.child;
+                        });
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => const ChildHomeScreen()),
+                        );
+                      },
+                      child: Container(
+                        height: 270.0,
+                        width: 150.0,
+                        //padding: const EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: userType == UserType.child
+                              ? [
+                                  BoxShadow(
+                                      color: Colors.grey[300]!,
+                                      offset: const Offset(4, 4),
+                                      blurRadius: 15,
+                                      spreadRadius: 1),
+                                  const BoxShadow(
+                                    color: CustomColor.sky,
+                                    offset: Offset(-4, -4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1,
+                                  )
+                                ]
+                              : null,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: const Image(
+                          image: AssetImage(
+                            'assets/images/access/child.png',
                           ),
-                          child: const Image(
-                            image: AssetImage(
-                              'assets/images/access/child.png',
-                            ),
-                            fit: BoxFit.contain,
-                          ),
+                          fit: BoxFit.contain,
                         ),
                       ),
-                    ],
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20,),
+              OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => GuestScreen()));
+                },
+                child: const Text(
+                  'Continue As Guest',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              )
             ],
           ),
         ),

@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:lottie/lottie.dart';
 import 'package:project/components/components.dart';
 import 'package:project/components/custom_color.dart';
 import 'package:project/modules/donor_list/donor_list_request.dart';
 import 'package:project/modules/home/home_screen.dart';
+import 'package:project/modules/webview_screen/webview_screen.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../constants/constants.dart';
 
-class DonorInfoScreen extends StatelessWidget {
+class DonorInfoScreen extends StatefulWidget {
   const DonorInfoScreen({Key? key}) : super(key: key);
+
+  @override
+  State<DonorInfoScreen> createState() => _DonorInfoScreenState();
+}
+
+class _DonorInfoScreenState extends State<DonorInfoScreen> {
+
+  int? currentIndex;
+
 
   @override
   Widget build(BuildContext context) {
@@ -38,39 +50,37 @@ class DonorInfoScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 14.0),
               child: Row(
-                 children:
-                 [
-                   InkWell(
-                     onTap: ()
-                       {
-                         Navigator.of(context).pop(
-                         MaterialPageRoute(
-                          builder: (context) => const HomeScreen(),
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).pop(
+                        MaterialPageRoute(
+                          builder: (context) =>  HomeScreen(),
                         ),
                       );
                     },
-                     child: const Icon(
-                           Icons.arrow_back_ios_new,
-                       ),
-                   ),
-                   const SizedBox(
-                     width: 90.0,
-                   ),
-                   const Text(
+                    child: const Icon(
+                      Icons.arrow_back_ios_new,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 90.0,
+                  ),
+                  const Text(
                     'Find Donor',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 32,
                       color: Colors.black,
                     ),
+                  ),
+                ],
               ),
-                 ],
-               ),
             ),
             const SizedBox(
               height: 10,
             ),
-             Text(
+            Text(
               'Search for blood donors around you ',
               style: TextStyle(
                 fontSize: 19,
@@ -90,28 +100,55 @@ class DonorInfoScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 10,
+              height: 30,
             ),
             SizedBox(
               width: 320,
               child: Wrap(
                 children: List.generate(
-                    8, (index) => BloodKindBubble(title: bloodKinds[index])),
+                  8,
+                  (index) => InkWell(
+                    onTap: () {
+                      setState(() {
+                        currentIndex = index!;
+                        setState(() {});
+                      });
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.all(5),
+                      alignment: Alignment.center,
+                      width: 70,
+                      height: 70,
+                      decoration: BoxDecoration(
+                        color: currentIndex == index
+                            ? CustomColor.blue11
+                            : Colors.white,
+                        boxShadow: currentIndex == index
+                            ? const [
+                                BoxShadow(
+                                    color: Colors.black26,
+                                    blurRadius: 5,
+                                    spreadRadius: 1,
+                                    offset: Offset(0, 0)),
+                              ]
+                            : null,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        bloodKinds[index],
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
             const SizedBox(
-              height: 20,
-            ),
-            const Text(
-              'Location',
-              style: TextStyle(
-                fontSize: 25,
-                color: CustomColor.deepBlue,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
+              height: 50,
             ),
             Expanded(
               child: Padding(
@@ -120,59 +157,16 @@ class DonorInfoScreen extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    InkWell(
-                      onTap:()
-                      {
-
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                        ),
-                        height: 60,
-                        decoration: BoxDecoration(
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 8,
-                              offset: Offset(1.5, 1.5), // Shadow position
-                            ),
-                          ],
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.location_on,
-                              color: Colors.black.withOpacity(.3),
-                            ),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            Text(
-                              'Press To Get your location',
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.black.withOpacity(.3),
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
                     const SizedBox(
                       height: 20,
                     ),
                     MainButton(
                       label: 'Search Donor',
                       width: double.infinity,
-                      onTap: ()
-                      {
+                      onTap: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) {
-                            return const DonorlistRequest();
+                            return DonorlistRequest();
                           }),
                         );
                       },
@@ -185,9 +179,7 @@ class DonorInfoScreen extends StatelessWidget {
                       width: double.infinity,
                     ),
                     Expanded(
-                      child: Lottie.asset(
-                          'assets/lotties/blood_donation.json'
-                      ),
+                      child: Lottie.asset('assets/lotties/blood_donation.json'),
                     ),
                   ],
                 ),
