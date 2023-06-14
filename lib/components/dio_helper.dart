@@ -7,11 +7,11 @@ class DioHelper {
   {
     dio = Dio(
       BaseOptions(
-        baseUrl: 'https://donw-syndrome.onrender.com/',
+        baseUrl: 'https://7894-172-99-188-71.ngrok-free.app/',
         receiveDataWhenStatusError: true,
         headers: {
           'accept':'application/json',
-          'Content-Type':'application/json'
+          'Content-Type':'application/json',
         }
       ),
     );
@@ -19,7 +19,7 @@ class DioHelper {
 
   static Future<Response> getData({
     required String url,
-    required Map<String, dynamic> query,
+    Map<String, dynamic> ?query,
   }) async
      {
        return await dio.get(
@@ -30,7 +30,7 @@ class DioHelper {
 
   static Future<Response> postData({
     required String url,
-    required Map<String,dynamic> data,
+    required var data,
   }) async
   {
     return await dio.post(
@@ -38,4 +38,22 @@ class DioHelper {
       data: data
     );
   }
+
+
+  static Future<Response> postImage({
+    required String url,
+    required var data,
+  }) async
+  {
+    dio.options.headers['accept'] = 'application/json';
+    dio.options.headers["Content-Type"] = "multipart/form-data";
+
+    return await dio.post(
+        url,
+        data: data
+    );
+  }
+
+
+
 }

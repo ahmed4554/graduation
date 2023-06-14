@@ -140,7 +140,7 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
                       crossAxisCount: 3,
                       childAspectRatio: 1 / 1.1,
                       children: List.generate(
-                        char!.pictures!.length,
+                        char!.char!.length,
                             (index) => InkWell(
                           onTap: () {
                             Navigator.of(context).push(
@@ -186,7 +186,7 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
                                       width: 90.0,
                                       height: 90.0,
                                       child: Image.asset(
-                                        char!.pictures![index],
+                                        char!.char![index],
                                       ),
                                     ),
                                     // Text(

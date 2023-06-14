@@ -1,8 +1,8 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:project/modules/alarm_screen/alarm_screen.dart';
 import 'package:project/modules/chat/chat_screen.dart';
 import 'package:project/modules/main_page/main_page.dart';
-import '../notification/notification_screen.dart';
 import '../profile/profile_screen.dart';
 import '../settings/settings_screen.dart';
 
@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const SettingsScreen(),
     const Chat(),
     const MainPage(),
-     NotifyScreen(),
+     AlarmScreen(),
     const ProfileScreen(),
   ];
 
@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
         index: currentIndex,
         color: Colors.white,
         backgroundColor: Colors.white,
-        animationCurve: Curves.fastLinearToSlowEaseIn,
+        animationCurve: Curves.easeInOut,
         onTap: changeItem ,
       ),
     );

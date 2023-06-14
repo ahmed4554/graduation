@@ -15,7 +15,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
 
   NavigationFunction(context) async {
-    await Future.delayed(const Duration(milliseconds: 3000));
+    await Future.delayed(const Duration(milliseconds: 1400));
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
         builder: (context) {

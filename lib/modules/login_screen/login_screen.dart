@@ -55,7 +55,6 @@ class LoginScreen extends StatelessWidget {
                     const SizedBox(
                       height: 15,
                     ),
-                    // CustomBorder(),
                     const SizedBox(
                       height: 15,
                     ),
@@ -166,6 +165,7 @@ class LoginScreen extends StatelessWidget {
                                     LoginCubit.get(context).userLogin(
                                       email: LoginCubit.get(context).emailController.text,
                                       password: LoginCubit.get(context).passwordController.text,
+                                      context: context
                                     );
                                   }
                                 },

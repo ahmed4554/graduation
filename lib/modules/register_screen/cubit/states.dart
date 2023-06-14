@@ -14,3 +14,14 @@ class RegisterErrorState extends RegisterCubitState
 
 class ChangePasswordVisibility extends RegisterCubitState{}
 
+
+class UploadPhotoLoadingState extends RegisterCubitState{}
+
+class UploadPhotoSuccessState extends RegisterCubitState{}
+
+class UploadPhotoErrorState extends RegisterCubitState
+{
+  final String error;
+  UploadPhotoErrorState(this.error);
+}
+

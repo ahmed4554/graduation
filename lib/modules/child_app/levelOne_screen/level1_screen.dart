@@ -3,7 +3,10 @@ import 'package:project/components/custom_color.dart';
 import 'package:project/modules/child_app/content_screens/alphabet/alphabet_screen.dart';
 import 'package:project/modules/child_app/content_screens/numbers/numbers_screen.dart';
 import 'package:project/modules/child_app/content_screens/shapes/shapes_screen.dart';
+import 'package:project/modules/child_app/drawing_screen/drawing_screen.dart';
 import 'package:project/modules/child_app/levels_screen/levels_screen.dart';
+
+import '../content_screens/alphabet2/alphabet_screen.dart';
 
 class LevelOneScreen extends StatelessWidget {
   const LevelOneScreen({Key? key}) : super(key: key);
@@ -438,7 +441,11 @@ class LevelOneScreen extends StatelessWidget {
                     InkWell(
                       onTap: ()
                       {
-
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => DrawingScreen(),
+                          ),
+                        );
                       },
                       child: Stack(
                         children:

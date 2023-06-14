@@ -530,11 +530,16 @@ class PicAnswer extends StatefulWidget {
   State<PicAnswer> createState() => _PicAnswerState();
 }
 
-class _PicAnswerState extends State<PicAnswer> {
+class _PicAnswerState extends State<PicAnswer>
+    with AutomaticKeepAliveClientMixin<PicAnswer> {
   bool? right;
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return InkWell(
       onTap: () {
         if (widget.model.answer == widget.model.options![widget.index]) {
@@ -605,12 +610,17 @@ class TextAnswer extends StatefulWidget {
   State<TextAnswer> createState() => _TextAnswerState();
 }
 
-class _TextAnswerState extends State<TextAnswer> {
+class _TextAnswerState extends State<TextAnswer>
+    with AutomaticKeepAliveClientMixin<TextAnswer>{
 
   bool? right;
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return InkWell(
       onTap: () {
         if (widget.model.answer == widget.model.options![widget.index]) {
@@ -752,7 +762,9 @@ class _MultiChoiseQuestionComponentState
 }
 
 class UserMessage extends StatelessWidget {
-  const UserMessage({Key? key}) : super(key: key);
+  UserMessage({Key? key,required this.uMsg}) : super(key: key);
+
+   String uMsg = '';
 
   @override
   Widget build(BuildContext context) {
@@ -775,10 +787,10 @@ class UserMessage extends StatelessWidget {
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(10),
             ),
-            child: const Text(
-              'fine,thank you baby',
+            child: Text(
+              uMsg,
               style: TextStyle(
                 fontSize: 14,
                 color: Color(0xff192A3E),
@@ -792,7 +804,9 @@ class UserMessage extends StatelessWidget {
 }
 
 class BotMessage extends StatelessWidget {
-  const BotMessage({Key? key}) : super(key: key);
+   BotMessage({Key? key,required this.bMsg}) : super(key: key);
+
+   String bMsg = '';
 
   @override
   Widget build(BuildContext context) {
@@ -801,29 +815,31 @@ class BotMessage extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const CircleAvatar(
-            backgroundColor: Colors.blue,
-            backgroundImage:
-                AssetImage('assets/for_design/chat_bot_background.png'),
-          ),
-          const SizedBox(
-            width: 10,
-          ),
+        children:
+        [
+          Spacer(),
           Container(
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(10),
             ),
-            child: const Text(
-              'how you doing',
+            child: Text(
+            bMsg,
               style: TextStyle(
                 fontSize: 14,
                 color: Color(0xff192A3E),
               ),
             ),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          const CircleAvatar(
+            backgroundColor: Colors.blue,
+            backgroundImage:
+            AssetImage('assets/images/chatbot.png'),
           ),
         ],
       ),

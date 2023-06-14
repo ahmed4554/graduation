@@ -9,7 +9,7 @@ import 'package:project/modules/register_screen/cubit/states.dart';
 import '../../components/components.dart';
 
 class RegisterScreen extends StatelessWidget {
-   RegisterScreen({Key? key}) : super(key: key);
+  RegisterScreen({Key? key}) : super(key: key);
 
   var formKey = GlobalKey<FormState>();
 
@@ -18,7 +18,9 @@ class RegisterScreen extends StatelessWidget {
     return Scaffold(
       body: BlocConsumer<RegisterCubit, RegisterCubitState>(
         listener: (context, state) {},
-        builder: (context, state) => Container(
+        builder: (context, state) {
+          var c = RegisterCubit.get(context);
+          return Container(
           width: MediaQuery.of(context).size.width,
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -35,7 +37,7 @@ class RegisterScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
-                height: 100,
+                height: 115.0,
               ),
               SvgPicture.asset(
                 'assets/images/logo.svg',
@@ -58,7 +60,6 @@ class RegisterScreen extends StatelessWidget {
               ),
               Expanded(
                 child: Container(
-                  alignment: Alignment.center,
                   decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
@@ -73,11 +74,14 @@ class RegisterScreen extends StatelessWidget {
                         key: formKey,
                         child: Column(
                           children: [
+                            const SizedBox(
+                              height: 40.0,
+                            ),
                             const Text(
                               'Sign Up',
                               style: TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold,
+                                fontSize: 34,
+                                fontWeight: FontWeight.w900,
                                 color: Colors.black,
                               ),
                             ),
@@ -87,15 +91,14 @@ class RegisterScreen extends StatelessWidget {
                             CustomInputField(
                               icon: Icons.person,
                               label: 'User Name',
-                              validate: (String? value)
-                              {
-                                if(value!.isEmpty)
-                                    {
-                                       return'User name is already taken';
-                                    }
+                              validate: (String? value) {
+                                if (value!.isEmpty) {
+                                  return 'User name is already taken';
+                                }
                               },
                               type: TextInputType.text,
-                              Controller: RegisterCubit.get(context).userNameController,
+                              Controller:
+                                  RegisterCubit.get(context).userNameController,
                             ),
                             const SizedBox(
                               height: 30,
@@ -103,15 +106,14 @@ class RegisterScreen extends StatelessWidget {
                             CustomInputField(
                               icon: Icons.email,
                               label: 'E-mail',
-                              validate: (String? value)
-                              {
-                                if(value!.isEmpty)
-                                {
-                                  return'Please enter your email address';
+                              validate: (String? value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your email address';
                                 }
                               },
                               type: TextInputType.emailAddress,
-                              Controller: RegisterCubit.get(context).emailController,
+                              Controller:
+                                  RegisterCubit.get(context).emailController,
                             ),
                             const SizedBox(
                               height: 30,
@@ -119,15 +121,14 @@ class RegisterScreen extends StatelessWidget {
                             CustomInputField(
                               icon: Icons.phone,
                               label: 'Phone Number',
-                              validate: (String? value)
-                              {
-                                if(value!.isEmpty)
-                                {
-                                  return'Please enter your phone Number';
+                              validate: (String? value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your phone Number';
                                 }
                               },
                               type: TextInputType.phone,
-                              Controller: RegisterCubit.get(context).phoneController,
+                              Controller:
+                                  RegisterCubit.get(context).phoneController,
                             ),
                             const SizedBox(
                               height: 30,
@@ -136,20 +137,20 @@ class RegisterScreen extends StatelessWidget {
                               icon: Icons.lock_open_outlined,
                               icon2: RegisterCubit.get(context).suffix,
                               label: 'Password',
-                              validate: (String? value)
-                              {
-                                if(value!.isEmpty)
-                                {
-                                  return'Password is too short';
+                              validate: (String? value) {
+                                if (value!.isEmpty) {
+                                  return 'Password is too short';
                                 }
                               },
                               type: TextInputType.visiblePassword,
-                              passwordController:RegisterCubit.get(context).passwordController,
-                              suffixPressed: ()
-                              {
-                                RegisterCubit.get(context).changePasswordVisibility();
+                              passwordController:
+                                  RegisterCubit.get(context).passwordController,
+                              suffixPressed: () {
+                                RegisterCubit.get(context)
+                                    .changePasswordVisibility();
                               },
-                              suffixColor: RegisterCubit.get(context).isPassword ? Colors.grey
+                              suffixColor: RegisterCubit.get(context).isPassword
+                                  ? Colors.grey
                                   : CustomColor.blue11,
                             ),
                             const SizedBox(
@@ -159,21 +160,29 @@ class RegisterScreen extends StatelessWidget {
                               condition: state is! RegisterLoadingState,
                               builder: (context) => MainButton(
                                 width: 290,
-                                onTap: ()
-                                {
-                                  if(formKey.currentState!.validate())
-                                  {
+                                onTap: () {
+                                  if (formKey.currentState!.validate()) {
                                     RegisterCubit.get(context).userRegister(
-                                        email:RegisterCubit.get(context).emailController.text ,
-                                        password: RegisterCubit.get(context).passwordController.text,
-                                        //phoneNumber: RegisterCubit.get(context).phoneController.text,
-                                        userName: RegisterCubit.get(context).userNameController.text,
+                                      email: RegisterCubit.get(context)
+                                          .emailController
+                                          .text,
+                                      password: RegisterCubit.get(context)
+                                          .passwordController
+                                          .text,
+                                      phoneNumber: RegisterCubit.get(context)
+                                          .phoneController
+                                          .text,
+                                      userName: RegisterCubit.get(context)
+                                          .userNameController
+                                          .text,
+                                      context: context,
                                     );
                                   }
                                 },
                                 label: 'Sign Up',
                               ),
-                              fallback: (context) => CircularProgressIndicator(),
+                              fallback: (context) =>
+                                  CircularProgressIndicator(),
                             ),
                           ],
                         ),
@@ -184,7 +193,8 @@ class RegisterScreen extends StatelessWidget {
               ),
             ],
           ),
-        ),
+        );
+        },
       ),
     );
   }

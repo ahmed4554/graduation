@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.16.2 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -51,8 +51,8 @@ dependencies:
   audioplayers: ^4.0.1
   animated_custom_dropdown: ^1.5.0
   geolocator: ^9.0.2
-  url_launcher: ^6.1.11
   webview_flutter: ^4.2.1
+  alarm: ^1.0.4
 
 dev_dependencies:
   flutter_test:
@@ -101,10 +101,14 @@ flutter:
      - assets/Database/animals/Sounds/
      - assets/Database/char/
      - assets/Database/char/images/
-     - assets/Database/char/images/balloon.png
      - assets/Database/char/words/
      - assets/Database/char/char/
      - assets/Database/char/sounds/
+     - assets/Database/char2/
+     - assets/Database/char2/char/
+     - assets/Database/char2/images/
+     - assets/Database/char2/sounds/
+     - assets/Database/char2/words/
      - assets/Database/colors/
      - assets/Database/colors/color/
      - assets/Database/colors/names/
@@ -115,8 +119,12 @@ flutter:
      - assets/Database/numbers/shapes/
      - assets/Database/numbers/sounds/
      - assets/images/guest.png
-     - assets/Database/char/images/Iguana.png
      - assets/Database/QNumbers/
+     - assets/Database/char2/images/elephant.png
+     - assets/Database/char2/images/Iguana.png
+     - assets/alarm/music.mp3
+     - assets/images/child_app/drawing/
+     - assets/images/child_app/chatBot/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

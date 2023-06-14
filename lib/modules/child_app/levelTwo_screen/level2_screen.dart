@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:project/components/custom_color.dart';
-import 'package:project/modules/child_app/content_screens/alphabet/alphabet_screen.dart';
 import 'package:project/modules/child_app/content_screens/animals/animals_screen.dart';
 import 'package:project/modules/child_app/content_screens/colors/colors_screen.dart';
 import 'package:project/modules/child_app/content_screens/fruits/fruits_screen.dart';
 import 'package:project/modules/child_app/content_screens/numbers/numbers_screen.dart';
 import 'package:project/modules/child_app/content_screens/shapes/shapes_screen.dart';
+
+import '../content_screens/alphabet/alphabet_screen.dart';
+import '../content_screens/alphabet2/alphabet_screen.dart';
 
 class LevelTwoScreen extends StatelessWidget {
   const LevelTwoScreen({Key? key}) : super(key: key);
@@ -118,7 +120,7 @@ class LevelTwoScreen extends StatelessWidget {
                       {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => const AlphabetScreen(),
+                            builder: (context) => const AlphabetTwoScreen(),
                           ),
                         );
                       },

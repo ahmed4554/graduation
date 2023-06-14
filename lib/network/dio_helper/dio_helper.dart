@@ -16,7 +16,7 @@ class DioDetectionHelper {
     );
   }
 
-  static Future<Response> uploudImageToDetect(var data) async {
+  static Future<Response> uploadImageToDetect(var data) async {
     dio.options.headers = {
       'content-type': 'application/x-www-form-urlencoded',
       'X-RapidAPI-Key': '41a7efe98fmsh8a42ac345a26565p1d936djsnf1fdb70ef86c',

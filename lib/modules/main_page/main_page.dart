@@ -72,7 +72,7 @@ class _MainPageState extends State<MainPage> {
                     ),
                   ),
                   const SizedBox(
-                    height: 30.0,
+                    height: 14.0,
                   ),
                   Expanded(
                     child: SingleChildScrollView(
@@ -84,10 +84,13 @@ class _MainPageState extends State<MainPage> {
                               height: 10.0,
                             ),
                             InkWell(
-                              onTap: () {},
+                              onTap: ()
+                              {
+
+                              },
                               child: Container(
                                 width: 343.0,
-                                height: 97.29,
+                                height: 90.29,
                                 decoration: BoxDecoration(
                                   color: Colors.white.withOpacity(.9),
                                   borderRadius: const BorderRadius.only(
@@ -146,7 +149,7 @@ class _MainPageState extends State<MainPage> {
                               },
                               child: Container(
                                 width: 343.0,
-                                height: 97.29,
+                                height: 90.29,
                                 decoration: BoxDecoration(
                                   color: Colors.white.withOpacity(.9),
                                   borderRadius: const BorderRadius.only(
@@ -206,7 +209,7 @@ class _MainPageState extends State<MainPage> {
                               },
                               child: Container(
                                 width: 343.0,
-                                height: 97.29,
+                                height: 90.29,
                                 decoration: BoxDecoration(
                                   color: Colors.white.withOpacity(.9),
                                   borderRadius: const BorderRadius.only(
@@ -265,7 +268,7 @@ class _MainPageState extends State<MainPage> {
                               },
                               child: Container(
                                 width: 343.0,
-                                height: 97.29,
+                                height: 90.29,
                                 decoration: BoxDecoration(
                                   color: Colors.white.withOpacity(.9),
                                   borderRadius: const BorderRadius.only(
@@ -337,7 +340,7 @@ class _MainPageState extends State<MainPage> {
                               },
                               child: Container(
                                 width: 343.0,
-                                height: 97.29,
+                                height: 90.29,
                                 decoration: BoxDecoration(
                                   color: Colors.white.withOpacity(.9),
                                   borderRadius: const BorderRadius.only(
