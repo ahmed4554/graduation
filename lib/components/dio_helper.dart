@@ -7,7 +7,7 @@ class DioHelper {
   {
     dio = Dio(
       BaseOptions(
-        baseUrl: 'https://7894-172-99-188-71.ngrok-free.app/',
+        baseUrl: 'https://4c34-172-99-188-71.ngrok-free.app/',
         receiveDataWhenStatusError: true,
         headers: {
           'accept':'application/json',

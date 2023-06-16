@@ -65,21 +65,21 @@ class ChatBot extends StatelessWidget {
                     height: 16.0,
                     thickness: 1.4,
                   ),
-                  Expanded(
-                    child: ListView(
-                      children: List.generate(
-                        c.userMsg.length,
-                        (index) => c.isUser
-                            ? UserMessage(
-                                uMsg: c.userMsg[index],
-                              )
-                              : BotMessage(
-                                bMsg: c.botMsg[index],
-                              ),
-
-                      ),
-                    ),
-                  ),
+                  // Expanded(
+                  //   child: ListView(
+                  //     children: List.generate(
+                  //       c.userMsg.length,
+                  //       (index) => c.isUser
+                  //           ? UserMessage(
+                  //               uMsg: c.userMsg[index],
+                  //             )
+                  //             : BotMessage(
+                  //               bMsg: c.botMsg[index],
+                  //             ),
+                  //
+                  //     ),
+                  //   ),
+                  // ),
                   Container(
                     margin: const EdgeInsets.all(10),
                     color: Colors.transparent,

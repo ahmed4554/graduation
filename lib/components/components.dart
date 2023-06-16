@@ -1,7 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:project/components/custom_color.dart';
 import 'package:project/constants/constants.dart';
+import 'package:project/models/follow_child_model/follow_child_model.dart';
+import 'package:project/models/message_model/messages_model.dart';
 import 'package:project/modules/child_app/activity_screen/activity_screen.dart';
 import 'package:project/modules/login_screen/cubit/cubit.dart';
 
@@ -762,9 +765,11 @@ class _MultiChoiseQuestionComponentState
 }
 
 class UserMessage extends StatelessWidget {
-  UserMessage({Key? key,required this.uMsg}) : super(key: key);
-
-   String uMsg = '';
+  UserMessage({
+    Key? key,
+    required this.model,
+  }) : super(key: key);
+  MessagesModel? model;
 
   @override
   Widget build(BuildContext context) {
@@ -776,27 +781,42 @@ class UserMessage extends StatelessWidget {
         children: [
           const CircleAvatar(
             backgroundColor: Colors.blue,
-            backgroundImage:
-                AssetImage('assets/for_design/chat_bot_background.png'),
           ),
           const SizedBox(
             width: 10,
           ),
-          Container(
-            padding: const EdgeInsets.all(10),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Text(
-              uMsg,
-              style: TextStyle(
-                fontSize: 14,
-                color: Color(0xff192A3E),
+          if (model!.kind == 'text')
+            Container(
+              padding: const EdgeInsets.all(10),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Text(
+                '${model!.text}',
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: Color(0xff192A3E),
+                ),
               ),
             ),
-          ),
+          if (model!.kind == 'pic')
+            Container(
+              padding: const EdgeInsets.all(10),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: CachedNetworkImage(
+                imageUrl: '${model!.pic}',
+                progressIndicatorBuilder: (context, url, downloadProgress) =>
+                    LinearProgressIndicator(value: downloadProgress.progress),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+                width: 100,
+              ),
+            ),
         ],
       ),
     );
@@ -804,9 +824,11 @@ class UserMessage extends StatelessWidget {
 }
 
 class BotMessage extends StatelessWidget {
-   BotMessage({Key? key,required this.bMsg}) : super(key: key);
-
-   String bMsg = '';
+  BotMessage({
+    Key? key,
+    required this.model,
+  }) : super(key: key);
+  MessagesModel? model;
 
   @override
   Widget build(BuildContext context) {
@@ -815,44 +837,362 @@ class BotMessage extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children:
-        [
-          Spacer(),
-          Container(
-            padding: const EdgeInsets.all(10),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Text(
-            bMsg,
-              style: TextStyle(
-                fontSize: 14,
-                color: Color(0xff192A3E),
-              ),
-            ),
+        children: [
+          const CircleAvatar(
+            backgroundColor: Colors.blue,
           ),
           const SizedBox(
             width: 10,
           ),
-          const CircleAvatar(
-            backgroundColor: Colors.blue,
-            backgroundImage:
-            AssetImage('assets/images/chatbot.png'),
-          ),
+          if (model!.kind == 'text')
+            Container(
+              padding: const EdgeInsets.all(10),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Text(
+                '${model!.text}',
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: Color(0xff192A3E),
+                ),
+              ),
+            ),
+          if (model!.kind == 'pic')
+            Container(
+              padding: const EdgeInsets.all(10),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: CachedNetworkImage(
+                imageUrl: '${model!.pic}',
+                progressIndicatorBuilder: (context, url, downloadProgress) =>
+                    LinearProgressIndicator(value: downloadProgress.progress),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+                width: 100,
+              ),
+            ),
         ],
       ),
     );
   }
 }
 
+// class FollowChildComponent extends StatelessWidget {
+//   const FollowChildComponent({
+//     super.key,
+//     required this.model,
+//   });
+//   final Radius radius = const Radius.circular(25);
+//   final FollowChildModel model;
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       padding: const EdgeInsets.all(15),
+//       decoration: BoxDecoration(
+//         color: const Color(0xffE4E4E4),
+//         borderRadius: BorderRadius.only(
+//           topLeft: radius,
+//           topRight: radius,
+//           bottomLeft: radius,
+//           bottomRight: radius,
+//         ),
+//         boxShadow: const [
+//           BoxShadow(
+//             color: Colors.black26,
+//             blurRadius: 5,
+//             offset: Offset.zero,
+//             spreadRadius: 1,
+//           ),
+//         ],
+//       ),
+//       child: Column(
+//         children: [
+//           Row(
+//             children: [
+//               Expanded(
+//                 child: ClipRRect(
+//                   borderRadius: BorderRadius.circular(5),
+//                   child: LinearProgressIndicator(
+//                     minHeight: 18,
+//                     color: CustomColor.blue11,
+//                     backgroundColor: Colors.white,
+//                     value: model.progress!.toDouble(),
+//                   ),
+//                 ),
+//               ),
+//               const SizedBox(
+//                 width: 5,
+//               ),
+//               Text(
+//                 '${(model.progress! * 100).toInt()}%',
+//                 style: const TextStyle(
+//                   color: CustomColor.blue11,
+//                   fontWeight: FontWeight.bold,
+//                   fontSize: 22,
+//                 ),
+//               ),
+//             ],
+//           ),
+//           const SizedBox(
+//             height: 10,
+//           ),
+//           Container(
+//             height: 120,
+//             width: double.maxFinite,
+//             decoration: BoxDecoration(
+//               color: Colors.white,
+//               borderRadius: BorderRadius.only(
+//                 topLeft: const Radius.circular(40),
+//                 topRight: radius,
+//                 bottomLeft: radius,
+//                 bottomRight: radius,
+//               ),
+//             ),
+//             child: Stack(
+//               children: [
+//                 Align(
+//                   alignment: Alignment.topLeft,
+//                   child: Container(
+//                     padding: const EdgeInsets.symmetric(
+//                       horizontal: 18,
+//                       vertical: 7,
+//                     ),
+//                     decoration: BoxDecoration(
+//                       color: const Color(0xffF5F5F5),
+//                       borderRadius: BorderRadius.only(
+//                         topLeft: const Radius.circular(30),
+//                         topRight: Radius.zero,
+//                         bottomLeft: Radius.zero,
+//                         bottomRight: radius,
+//                       ),
+//                       boxShadow: const [
+//                         BoxShadow(
+//                           color: Colors.black26,
+//                           blurRadius: 5,
+//                           offset: Offset.zero,
+//                           spreadRadius: 1,
+//                         ),
+//                       ],
+//                     ),
+//                     child: Text(
+//                       '${model.activity}',
+//                       style: const TextStyle(
+//                         color: Colors.black,
+//                         fontWeight: FontWeight.bold,
+//                         fontSize: 18,
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//                 Padding(
+//                   padding: const EdgeInsets.symmetric(
+//                     horizontal: 15,
+//                   ),
+//                   child: Align(
+//                     alignment: Alignment.center,
+//                     child: Row(
+//                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                       children: [
+//                         const Text(
+//                           'your child progress ',
+//                           style: TextStyle(
+//                             color: Colors.black,
+//                             fontSize: 18,
+//                             fontWeight: FontWeight.bold,
+//                           ),
+//                         ),
+//                         Material(
+//                           elevation: 50,
+//                           shadowColor: Colors.black26,
+//                           borderRadius: BorderRadius.circular(40),
+//                           child: CircleAvatar(
+//                             radius: 40,
+//                             child: Image.asset(
+//                               model.pic!,
+//                               width: 50,
+//                             ),
+//                           ),
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                 )
+//               ],
+//             ),
+//           )
+//         ],
+//       ),
+//     );
+//   }
+// }
+
+class FollowChildComponent extends StatelessWidget {
+  const FollowChildComponent({Key? key , required this.model}) : super(key: key);
+
+  final FollowChildModel model;
+  final Radius radius = const Radius.circular(25);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        padding: const EdgeInsets.symmetric(
+          vertical: 20.0,
+          horizontal: 20.0
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20.0),
+          color: CustomColor.deepBlue.withOpacity(.9),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.white,
+              blurRadius: 2,
+              offset: Offset.zero,
+              spreadRadius: 2,
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children:
+          [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children:
+              [
+                const Text(
+                  'Education Study \n Record Report',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 32.0,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'NunitoB',
+                  ),
+                ),
+                const SizedBox(
+                  height: 30.0,
+                ),
+                Stack(
+                  children:
+                  [
+                    SizedBox(
+                      width: 120.0,
+                      height: 120.0,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 14.0,
+                        color: Colors.white,
+                        backgroundColor: CustomColor.blue11,
+                        value: model.progress!.toDouble(),
+                        valueColor: AlwaysStoppedAnimation<Color>(CustomColor.mastard),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        top: 45.0,
+                        left: 30.0
+                      ),
+                      child: Text(
+                        '${(model.progress! * 100).toInt()}%',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            const Spacer(),
+            Column(
+              children:
+              [
+                const SizedBox(
+                  height: 90.0,
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 18,
+                    vertical: 7,
+                  ),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10.0),
+                      topRight: Radius.circular(10.0),
+                      bottomLeft: Radius.circular(10.0),
+                      bottomRight: Radius.circular(10.0),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.white,
+                        blurRadius: 1,
+                        offset: Offset.zero,
+                        spreadRadius: 1,
+                      ),
+                    ],
+                  ),
+                  child: Text(
+                    '${model.activity}',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                Container(
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(50.0),
+                      topRight: Radius.circular(50.0),
+                      bottomLeft: Radius.circular(50.0),
+                      bottomRight: Radius.circular(50.0),
+                    ),
+                    boxShadow:
+                    [
+                      BoxShadow(
+                        color: Colors.white,
+                        blurRadius: 1,
+                        offset: Offset.zero,
+                        spreadRadius: 1,
+                      ),
+                    ],
+                  ),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 45,
+                    child: Image.asset(
+                      model.pic!,
+                      width: 52,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
 class CategoryComponent extends StatelessWidget {
-  const CategoryComponent(
-      {Key? key,
-      required this.color,
-      required this.name,
-      required this.picName})
+  const CategoryComponent({Key? key,
+    required this.color,
+    required this.name,
+    required this.picName})
       : super(key: key);
 
   final Color color;
@@ -898,6 +1238,123 @@ class CategoryComponent extends StatelessWidget {
                 color: Color(0xffF5F6FA),
                 fontSize: 30.0,
                 fontWeight: FontWeight.bold),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class BloodRequestComponent extends StatelessWidget {
+  const BloodRequestComponent({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(5),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(
+          10,
+        ),
+        color: Colors.white,
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 5,
+            offset: Offset.zero,
+          )
+        ],
+      ),
+      padding: const EdgeInsets.all(5),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          CircleAvatar(
+            radius: 35,
+            backgroundColor: Colors.grey.shade300,
+            child: Text(
+              'A+',
+              style: TextStyle(
+                fontSize: 35,
+                fontWeight: FontWeight.bold,
+                color: Color(0xffDF0913),
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  const Icon(
+                    Icons.person,
+                    color: Colors.black,
+                  ),
+                  const SizedBox(
+                    width: 7,
+                  ),
+                  Text(
+                    'Ahmed Mohamed',
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: [
+                  const Icon(
+                    Icons.phone,
+                    color: Colors.black,
+                  ),
+                  const SizedBox(
+                    width: 7,
+                  ),
+                  const Text(
+                    '01091857273',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              SizedBox(
+                width: 170,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.grey.shade300,
+                  ),
+                  onPressed: ()
+                  {
+
+                  },
+                  child: const Text('Show On Map',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      )),
+                ),
+              ),
+            ],
+          ),
+          const Spacer(),
+          Image.asset(
+            'assets/images/drop.png',
+            //color: CustomColor.blue11,
           ),
         ],
       ),

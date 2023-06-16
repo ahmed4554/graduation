@@ -1,4 +1,5 @@
 import 'package:alarm/alarm.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project/components/cache_helper.dart';
@@ -10,6 +11,7 @@ import 'package:project/modules/register_screen/cubit/cubit.dart';
 import 'package:project/modules/splash/splash_screen.dart';
 import 'package:project/utils/bloc_observer/bloc_observer.dart';
 import 'package:project/utils/cubits/data_cubit/data_cubit.dart';
+import 'package:project/utils/follow_child_cubit/follow_child_cubit.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,6 +20,7 @@ void main() async{
   runApp( MyApp());
   Bloc.observer = MyBlocObserver();
   await Alarm.init();
+  await Firebase.initializeApp();
 }
 
 class MyApp extends StatelessWidget {
@@ -43,6 +46,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (BuildContext context) => BotCubit()
         ),
+        BlocProvider(
+            create: (BuildContext context) => FollowChildCubit()
+        ),
+
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

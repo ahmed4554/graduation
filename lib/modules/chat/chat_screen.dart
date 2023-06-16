@@ -1,15 +1,57 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project/components/components.dart';
 import 'package:project/components/custom_color.dart';
+import 'package:project/models/message_model/messages_model.dart';
+import 'package:project/utils/cubits/data_cubit/data_cubit.dart';
+import 'package:project/utils/cubits/data_cubit/data_states.dart';
 
-class Chat extends StatelessWidget {
-  const Chat({Key? key}) : super(key: key);
+class ChatGroup extends StatefulWidget {
+  const ChatGroup({Key? key}) : super(key: key);
 
+  @override
+  State<ChatGroup> createState() => _ChatGroupState();
+}
+
+class _ChatGroupState extends State<ChatGroup> {
+  String currentGroup = 'Momys';
+  List<String> groups = [
+    'Momys',
+    'Share Experiece',
+    'Emergency',
+    'FAQ',
+  ];
+  List<String> groupIcons = [
+    'assets/images/groups_icons/mothers.png',
+    'assets/images/groups_icons/share_ex.jpg',
+    'assets/images/groups_icons/emergency.jpg',
+    'assets/images/groups_icons/faq.jpg',
+  ];
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      resizeToAvoidBottomInset: true,
+      appBar: AppBar(
+        backgroundColor: CustomColor.blue11,
+        elevation: 0,
+        leading: Image.asset(
+          'assets/images/logo.png',
+          width: 65,
+          height: 65,
+        ),
+        title: Text(
+          currentGroup,
+          style: const TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.bold,
+            color: Colors.black87,
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: Container(
         width: width,
         height: height,
@@ -25,146 +67,232 @@ class Chat extends StatelessWidget {
           ),
         ),
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 50,
-              ),
-              Row(
+          child: BlocConsumer<DataCubit, DataStates>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              var c = DataCubit.get(context);
+              return Stack(
                 children: [
-                  Image.asset(
-                    'assets/images/logo.png',
-                    width: 65,
-                    height: 65,
-                  ),
-                  const SizedBox(
-                    width: 22.0,
-                  ),
-                  const Text(
-                    'Direct messages',
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 235, 235, 235),
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(50),
-                          bottomRight: Radius.circular(50),
-                        ),
+                  Column(
+                    children: [
+                      const SizedBox(
+                        height: 10,
                       ),
-                      child: Column(
-                        children: List.generate(
-                          5,
-                              (index) => const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 10),
-                            child: CircleAvatar(
-                              radius: 30,
-                              backgroundColor: Colors.white,
-                              child: Text(
-                                'M',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.blue,
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 20),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(.7),
+                                borderRadius: const BorderRadius.only(
+                                  topRight: Radius.circular(20),
+                                  bottomRight: Radius.circular(20),
                                 ),
                               ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 4,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      width: width * .8,
-                      height: height * .7,
-                      child: Column(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 20,
-                            ),
-                            height: 60,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.search,
-                                  color: Colors.black.withOpacity(.3),
-                                ),
-                                const SizedBox(
-                                  width: 20,
-                                ),
-                                Text(
-                                  'Find or start conversation',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.black.withOpacity(.3),
-                                    fontWeight: FontWeight.bold,
+                              child: Column(
+                                children: List.generate(
+                                  4,
+                                      (index) => InkWell(
+                                    onTap: () {
+                                      currentGroup = groups[index];
+                                      setState(() {});
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 10),
+                                      child: CircleAvatar(
+                                        radius: 20,
+                                        backgroundColor: Colors.white,
+                                        backgroundImage:
+                                        AssetImage(groupIcons[index]),
+                                      ),
+                                    ),
                                   ),
-                                )
-                              ],
+                                ),
+                              ),
                             ),
                           ),
                           const SizedBox(
-                            height: 20,
+                            width: 5,
                           ),
-                           Row(
-                            children: [
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(Icons.people_alt_rounded),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                'Friends',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
-                              )
-                            ],
-                          ),
-
                           Expanded(
-                            child: ListView.separated(
-                              physics: const BouncingScrollPhysics(),
-                              itemBuilder: (context, index) => const ChatItem(),
-                              separatorBuilder: (context, index) =>
-                              const SizedBox(
-                                height: 10,
+                            flex: 7,
+                            child: Container(
+                              height: height - 180,
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  topRight: Radius.zero,
+                                  bottomLeft: Radius.zero,
+                                  bottomRight: Radius.zero,
+                                ),
+                                color: Colors.white,
                               ),
-                              itemCount: 20,
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 20,
+                                  horizontal: 10,
+                                ),
+                                child: Column(
+                                  children: [
+                                    Expanded(
+                                      flex: 7,
+                                      child: StreamBuilder<
+                                          QuerySnapshot<Map<String, dynamic>>>(
+                                        stream: c.chatGroup
+                                            .doc(currentGroup)
+                                            .collection('messages')
+                                            .orderBy(
+                                          'date',
+                                          descending: false,
+                                        )
+                                            .snapshots(),
+                                        builder: (context, snapshot) {
+                                          if (snapshot.hasData) {
+                                            return ListView.separated(
+                                              itemBuilder: (context, index) {
+                                                return snapshot.data!
+                                                    .docs[index]
+                                                    .data()[
+                                                'userName'] ==
+                                                    c.userName
+                                                    ? UserMessage(
+                                                  model: MessagesModel
+                                                      .fromJson(
+                                                    snapshot
+                                                        .data!.docs[index]
+                                                        .data(),
+                                                  ),
+                                                )
+                                                    : BotMessage(
+                                                  model: MessagesModel
+                                                      .fromJson(
+                                                    snapshot
+                                                        .data!.docs[index]
+                                                        .data(),
+                                                  ),
+                                                );
+                                              },
+                                              separatorBuilder:
+                                                  (context, index) =>
+                                              const SizedBox(
+                                                height: 15,
+                                              ),
+                                              itemCount:
+                                              snapshot.data!.docs.length,
+                                            );
+                                          } else if (snapshot.hasError) {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              const SnackBar(
+                                                content: Text(
+                                                  'error',
+                                                ),
+                                              ),
+                                            );
+                                            return const SizedBox.shrink();
+                                          } else {
+                                            return const SizedBox.shrink();
+                                          }
+                                        },
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 1,
+                                      child: Container(
+                                        margin: const EdgeInsets.all(10),
+                                        color: Colors.transparent,
+                                        child: Row(
+                                          children: [
+                                            Expanded(
+                                              child: TextFormField(
+                                                controller: c.controller,
+                                                decoration: InputDecoration(
+                                                  suffixIcon: IconButton(
+                                                    onPressed: ()
+                                                    {
+                                                      c.takePhoto(
+                                                        currentGroup:
+                                                        currentGroup,
+                                                      );
+                                                    },
+                                                    icon: const Icon(
+                                                      Icons.photo_camera,
+                                                    ),
+                                                  ),
+                                                  fillColor: Colors.white,
+                                                  filled: true,
+                                                  contentPadding:
+                                                  const EdgeInsets.only(
+                                                      left: 10),
+                                                  hintText: 'Ask Something ...',
+                                                  border:
+                                                  const OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      width: 2,
+                                                      color: Colors.black,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              width: 10,
+                                            ),
+                                            InkWell(
+                                              onTap: () {
+                                                c.sendMessage(
+                                                  kind: 'text',
+                                                  currentGroup: currentGroup,
+                                                );
+                                              },
+                                              child: Material(
+                                                elevation: 5,
+                                                shadowColor: Colors.black45,
+                                                borderRadius:
+                                                BorderRadius.circular(100),
+                                                child: CircleAvatar(
+                                                  radius: 25,
+                                                  backgroundColor: Colors.white,
+                                                  child: Icon(
+                                                    Icons.send,
+                                                    color: Colors.blue[300],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
                         ],
                       ),
-                    ),
+                    ],
                   ),
+                  if (c.imageToSendInChat != null)
+                    Positioned(
+                        bottom: 0 + 85,
+                        left: 150,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image(
+                            image: FileImage(
+                              c.imageToSendInChat!,
+                            ),
+                            width: 150,
+                          ),
+                        )),
                 ],
-              ),
-            ],
+              );
+            },
           ),
         ),
       ),

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:project/components/components.dart';
 import 'package:project/components/custom_color.dart';
+import 'package:project/modules/donor_list/donor_list_request.dart';
 import 'package:project/modules/guest_screen/donor_cubit.dart';
 import 'package:project/modules/guest_screen/donor_cubit_states.dart';
 import 'package:project/modules/home/home_screen.dart';
@@ -159,7 +160,7 @@ class _DonorInfoScreenState extends State<DonorInfoScreen> {
                       children:
                       [
                         const SizedBox(
-                          height: 20,
+                          height: 40,
                         ),
                         MainButton(
                           label: 'Search Donor',
@@ -167,22 +168,15 @@ class _DonorInfoScreenState extends State<DonorInfoScreen> {
                           onTap: ()
                           {
                               c.searchDonor(currentIndex!);
-                            // Navigator.of(context).push(
-                            //   MaterialPageRoute(builder: (context) {
-                            //     return DonorlistRequest();
-                            //   }),
-                            // );
+                            Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) {
+                                return const DonorListRequest();
+                              }),
+                            );
                           },
                         ),
                         const SizedBox(
                           height: 20,
-                        ),
-                        MainButton(
-                          onTap: (){
-
-                          },
-                          label: 'Emergency Search',
-                          width: double.infinity,
                         ),
                         Expanded(
                           child: Lottie.asset(

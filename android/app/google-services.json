@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "287100046559",
+    "project_id": "down-town-f2e8b",
+    "storage_bucket": "down-town-f2e8b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287100046559:android:44558bc6fc646449932d6a",
+        "android_client_info": {
+          "package_name": "com.example.project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "287100046559-91rmc9hb48h27toc8mjl1rlem673vtgt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.project",
+            "certificate_hash": "d9070e858bbd78f5f4221cb6717050274f843d60"
+          }
+        },
+        {
+          "client_id": "287100046559-tqmcsob7d9c23lckle50idjg7lsj62mu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBC_mR8WrfcMurWvHauEIYpXxlupqL5t7M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "287100046559-tqmcsob7d9c23lckle50idjg7lsj62mu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

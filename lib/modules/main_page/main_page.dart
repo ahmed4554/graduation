@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project/modules/chat/chat_screen.dart';
+import 'package:project/modules/follow_child/follow_child.dart';
 import '../../components/custom_color.dart';
 import '../donor_info_screen/donor_info_screen.dart';
 import '../healthy_food/healthy_food.dart';
@@ -86,7 +87,11 @@ class _MainPageState extends State<MainPage> {
                             InkWell(
                               onTap: ()
                               {
-
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (context) {
+                                    return const FollowChildProgress();
+                                  }),
+                                );
                               },
                               child: Container(
                                 width: 343.0,
@@ -334,7 +339,7 @@ class _MainPageState extends State<MainPage> {
                               onTap: () {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(builder: (context) {
-                                    return const Chat();
+                                    return const ChatGroup();
                                   }),
                                 );
                               },

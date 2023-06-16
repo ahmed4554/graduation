@@ -1,73 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:project/components/custom_color.dart';
+
 import '../../components/components.dart';
 
-class DonorlistRequest extends StatelessWidget {
-  const DonorlistRequest({Key? key}) : super(key: key);
+class DonorListRequest extends StatelessWidget {
+  const DonorListRequest({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: CustomColor.blue11,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon:const  Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          ),
+        ),
+        title: const Text(
+          'Donors List',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 27,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: Container(
         width: width,
         height: height,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color(0xff58bff1),
-              Color(0xffd0e7fc),
-              Colors.white,
-            ],
-          ),
-        ),
+        decoration: const BoxDecoration(),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 50,
+          padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 15,),
+          child: Expanded(
+            child: ListView.separated(
+              itemBuilder: ((context, index) => const BloodRequestComponent()),
+              separatorBuilder: (context, index) => const SizedBox(
+                height: 10,
               ),
-              Row(
-                children: [
-                  InkWell(
-                    onTap: () {},
-                    child: const Icon(
-                      Icons.arrow_back_ios,
-                    ),
-                  ),
-                  const Text(
-                    'Donors List',
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Text(
-                'Found 14 Donors with B- in your location',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xff4A4B4D),
-                ),
-              ),
-              Expanded(
-                child: ListView.builder(
-                  itemBuilder: ((context, index) => const DonorInfo()
-                  ),
-                  itemCount: 10,
-                ),
-              ),
-            ],
+              itemCount: 10,
+            ),
           ),
         ),
       ),

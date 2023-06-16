@@ -53,6 +53,11 @@ dependencies:
   geolocator: ^9.0.2
   webview_flutter: ^4.2.1
   alarm: ^1.0.4
+  firebase_core: ^2.13.1
+  cloud_firestore: ^4.8.0
+  firebase_storage: ^11.2.2
+  cached_network_image: ^3.2.3
+
 
 dev_dependencies:
   flutter_test:
@@ -78,53 +83,53 @@ flutter:
 
 
   assets:
-     - assets/images/
-     - assets/images/onBoarding/
-     - assets/images/logo.svg
-     - assets/images/access/
-     - assets/images/parentHome/
-     - assets/images/reminder/
-     - assets/images/healthy/
-     - assets/images/bottomNavBar/
-     - assets/images/settings/
-     - assets/images/profile/
-     - assets/images/profile/eliza.png
-     - assets/images/child_app/child_home/
-     - assets/images/child_app/levels_screen/
-     - assets/images/child_app/level_one/
-     - assets/images/child_app/level_two/
-     - assets/lotties/
-     - assets/Database/shapes/shapes/
-     - assets/images/child_app/board/
-     - assets/Database/shapes/names/
-     - assets/Database/animals/images/
-     - assets/Database/animals/Sounds/
-     - assets/Database/char/
-     - assets/Database/char/images/
-     - assets/Database/char/words/
-     - assets/Database/char/char/
-     - assets/Database/char/sounds/
-     - assets/Database/char2/
-     - assets/Database/char2/char/
-     - assets/Database/char2/images/
-     - assets/Database/char2/sounds/
-     - assets/Database/char2/words/
-     - assets/Database/colors/
-     - assets/Database/colors/color/
-     - assets/Database/colors/names/
-     - assets/Database/colors/Sounds/
-     - assets/Database/fruits/fruits/
-     - assets/Database/fruits/sounds/
-     - assets/Database/shapes/sounds/
-     - assets/Database/numbers/shapes/
-     - assets/Database/numbers/sounds/
-     - assets/images/guest.png
-     - assets/Database/QNumbers/
-     - assets/Database/char2/images/elephant.png
-     - assets/Database/char2/images/Iguana.png
-     - assets/alarm/music.mp3
-     - assets/images/child_app/drawing/
-     - assets/images/child_app/chatBot/
+    - assets/images/
+    - assets/images/onBoarding/
+    - assets/images/logo.svg
+    - assets/images/access/
+    - assets/images/parentHome/
+    - assets/images/reminder/
+    - assets/images/healthy/
+    - assets/images/bottomNavBar/
+    - assets/images/settings/
+    - assets/images/profile/
+    - assets/images/profile/eliza.png
+    - assets/images/child_app/child_home/
+    - assets/images/child_app/levels_screen/
+    - assets/images/child_app/level_one/
+    - assets/images/child_app/level_two/
+    - assets/lotties/
+    - assets/Database/shapes/shapes/
+    - assets/images/child_app/board/
+    - assets/Database/shapes/names/
+    - assets/Database/animals/images/
+    - assets/Database/animals/Sounds/
+    - assets/Database/char/
+    - assets/Database/char/images/
+    - assets/Database/char/words/
+    - assets/Database/char/char/
+    - assets/Database/char/sounds/
+    - assets/Database/char2/
+    - assets/Database/char2/char/
+    - assets/Database/char2/images/
+    - assets/Database/char2/sounds/
+    - assets/Database/char2/words/
+    - assets/Database/colors/
+    - assets/Database/colors/color/
+    - assets/Database/colors/names/
+    - assets/Database/colors/Sounds/
+    - assets/Database/fruits/fruits/
+    - assets/Database/fruits/sounds/
+    - assets/Database/shapes/sounds/
+    - assets/Database/numbers/shapes/
+    - assets/Database/numbers/sounds/
+    - assets/images/guest.png
+    - assets/Database/QNumbers/
+    - assets/Database/char2/images/elephant.png
+    - assets/Database/char2/images/Iguana.png
+    - assets/alarm/music.mp3
+    - assets/images/child_app/drawing/
+    - assets/images/child_app/chatBot/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
@@ -137,9 +142,12 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-   - family: Nunito
-     fonts:
-       - asset: assets/fonts/nunito/Nunito-Regular.ttf
+    - family: Nunito
+      fonts:
+        - asset: assets/fonts/nunito/Nunito-Regular.ttf
+    - family: NunitoB
+      fonts:
+        - asset: assets/fonts/nunito/Nunito-Bold.ttf
 
 
   #
