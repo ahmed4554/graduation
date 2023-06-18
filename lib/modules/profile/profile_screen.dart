@@ -14,15 +14,16 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  String? userName,email,password,phoneNumber;
+
+  //String? userName,email,password,phoneNumber;
 
 
   @override
   void initState() {
-    userName = CacheHelper.getData(key: 'userName');
-    email = CacheHelper.getData(key: 'email');
-    password = CacheHelper.getData(key: 'password');
-    phoneNumber = CacheHelper.getData(key: 'phone_number');
+    //userName = CacheHelper.getData(key: 'userName');
+    //email = CacheHelper.getData(key: 'email');
+    //password = CacheHelper.getData(key: 'password');
+    //phoneNumber = CacheHelper.getData(key: 'phone_number');
 
     super.initState();
   }
@@ -153,7 +154,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           const SizedBox(
                             height: 20.0,
                           ),
-                          if (userName != null)
+                         // if (userName != null)
                             Center(
                               child: Container(
                                 padding: EdgeInsets.all(.8),
@@ -170,7 +171,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    userName!,
+                                    //userName!,
+                                    '',
                                     style: const TextStyle(
                                       fontSize: 24.0,
                                       fontWeight: FontWeight.w500,
@@ -221,7 +223,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     width: 10.0,
                                   ),
                                   Text(
-                                    email!,
+                                   // email!,
+                                    '',
                                     style: TextStyle(
                                         fontSize: 16.0,
                                         fontWeight: FontWeight.bold,
@@ -273,7 +276,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     width: 10.0,
                                   ),
                                   Text(
-                                    password!,
+                                   // password!,
+                                    '',
                                     style: TextStyle(
                                         fontSize: 16.0,
                                         fontWeight: FontWeight.bold,
@@ -325,7 +329,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     width: 10.0,
                                   ),
                                   Text(
-                                    phoneNumber!,
+                                    //phoneNumber!,
+                                    '',
                                     style: TextStyle(
                                         fontSize: 16.0,
                                         fontWeight: FontWeight.bold,
