@@ -54,7 +54,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
                   const SizedBox(
                     width: 90.0,
                   ),
-                  Text(
+                  const Text(
                     'Donor Location',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -65,7 +65,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15.0,
             ),
             Expanded(
