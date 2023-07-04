@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:project/components/custom_color.dart';
@@ -43,9 +44,7 @@ class _ShapesScreenState extends State<ShapesScreen> {
           onPressed: ()
           {
             Navigator.of(context).pop(
-              MaterialPageRoute(builder: (context) {
-                return const LevelOneScreen();
-              }),
+              
             );
           },
         ),
@@ -102,8 +101,9 @@ class _ShapesScreenState extends State<ShapesScreen> {
                           )
                         ],
                         borderRadius: BorderRadius.circular(50.0)),
-                    child: Image.asset(
-                      "assets/images/profile/eliza.png",
+                    child: CachedNetworkImage(
+                      imageUrl:
+                      model!.image!,
                     ),
                   ),
                   const SizedBox(

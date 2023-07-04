@@ -2,24 +2,26 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project/utils/follow_child_cubit/follow_child_states.dart';
 
+import '../../constants/constants.dart';
+
 class FollowChildCubit extends Cubit<FollowChildStates> {
   FollowChildCubit() : super(FollowChildIitialState());
   static FollowChildCubit getInstance(context) => BlocProvider.of(context);
 
   CollectionReference users = FirebaseFirestore.instance.collection('users');
 
-  void boardProgressSending(dynamic model, int index) async {
+  void boardProgressSending(dynamic innerModel, int index) async {
     emit(FollowChildLoadingState());
     try {
       await users
           .doc('following')
           .collection('educationBoard')
-          .doc('levelOne')   
+          .doc(model!.id)   
           .set(
         {
-          'pic': model.shapes[index],
-          'progress': (index + 1 ) / model.shapes.length,
-          'category': model.activity
+          'pic': innerModel.shapes[index],
+          'progress': (index + 1 ) / innerModel.shapes.length,
+          'category': innerModel.activity
         },
       );
       emit(FollowChildSuccessState());

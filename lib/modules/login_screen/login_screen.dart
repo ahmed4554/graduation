@@ -3,22 +3,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project/components/custom_color.dart';
+import 'package:project/modules/access_screen/access_screen.dart';
 import 'package:project/modules/login_screen/cubit/cubit.dart';
 import 'package:project/modules/login_screen/cubit/states.dart';
 import 'package:project/modules/register_screen/register_screen.dart';
 import 'package:project/modules/reset/forgot_screen.dart';
 import '../../components/components.dart';
+import '../../constants/constants.dart';
+import '../home/home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
-  LoginScreen({Key? key,}) : super(key: key);
+  LoginScreen({
+    Key? key,
+  }) : super(key: key);
 
   var formKey = GlobalKey<FormState>();
 
   @override
-
   Widget build(BuildContext context) {
     return BlocConsumer<LoginCubit, LoginCubitState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is LoginSuccessState) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(showCustomSnackBar('Login Succes', false));
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => const AccessScreen()),
+              (route) => false);
+        }
+        if (state is LoginErrorState) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(showCustomSnackBar(state.error, true));
+        }
+      },
       builder: (context, state) {
         return Scaffold(
           body: SingleChildScrollView(
@@ -76,7 +92,8 @@ class LoginScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             CustomInputField(
-                              Controller: LoginCubit.get(context).emailController,
+                              Controller:
+                                  LoginCubit.get(context).emailController,
                               icon: Icons.email_outlined,
                               label: 'Email Address',
                               validate: (String? value) {
@@ -90,14 +107,17 @@ class LoginScreen extends StatelessWidget {
                               height: 30,
                             ),
                             CustomInputField2(
-                              passwordController: LoginCubit.get(context).passwordController,
+                              passwordController:
+                                  LoginCubit.get(context).passwordController,
                               icon: Icons.lock_open_rounded,
                               icon2: LoginCubit.get(context).suffix,
-                              suffixPressed: ()
-                              {
-                                LoginCubit.get(context).changePasswordVisibility();
+                              suffixPressed: () {
+                                LoginCubit.get(context)
+                                    .changePasswordVisibility();
                               },
-                              suffixColor: LoginCubit.get(context).isPassword ? Colors.grey : CustomColor.blue11 ,
+                              suffixColor: LoginCubit.get(context).isPassword
+                                  ? Colors.grey
+                                  : CustomColor.blue11,
                               label: 'Password',
                               type: TextInputType.visiblePassword,
                               validate: (String? value) {
@@ -106,71 +126,65 @@ class LoginScreen extends StatelessWidget {
                                 }
                               },
                             ),
-                            Row(
-                              children: [
-                                Checkbox(
-                                  value: LoginCubit.get(context).check,
-                                  onChanged: (bool? value)
-                                  {
-                                     LoginCubit.get(context).checkLog(value!);
-                                  },
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50),
-                                  ),
-                                ),
-                                // const SizedBox(
-                                //   width: 2,
-                                // ),
-                                Text(
-                                  'Stay signed in',
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black.withOpacity(.45),
-                                  ),
-                                ),
-                                const Spacer(),
-                                TextButton(
-                                  child: const Text(
-                                    'Forgot password ?',
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: CustomColor.blue11,
-                                      fontWeight: FontWeight.bold,
-                                      decoration: TextDecoration.underline,
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) {
-                                          return ResetScreen();
-                                        },
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ],
-                            ),
+                            // Row(
+                            //   children: [
+                            //     Checkbox(
+                            //       value: LoginCubit.get(context).check,
+                            //       onChanged: (bool? value) {
+                            //         LoginCubit.get(context).checkLog(value!);
+                            //       },
+                            //       shape: RoundedRectangleBorder(
+                            //         borderRadius: BorderRadius.circular(50),
+                            //       ),
+                            //     ),
+                            //     // const SizedBox(
+                            //     //   width: 2,
+                            //     // ),
+                            //     Text(
+                            //       'Stay signed in',
+                            //       style: TextStyle(
+                            //         fontSize: 15,
+                            //         color: Colors.black.withOpacity(.45),
+                            //       ),
+                            //     ),
+                            //     const Spacer(),
+                            //     TextButton(
+                            //       child: const Text(
+                            //         'Forgot password ?',
+                            //         style: TextStyle(
+                            //           fontSize: 15,
+                            //           color: CustomColor.blue11,
+                            //           fontWeight: FontWeight.bold,
+                            //           decoration: TextDecoration.underline,
+                            //         ),
+                            //       ),
+                            //       onPressed: () {
+                            //         Navigator.of(context).push(
+                            //           MaterialPageRoute(
+                            //             builder: (context) {
+                            //               return ResetScreen();
+                            //             },
+                            //           ),
+                            //         );
+                            //       },
+                            //     ),
+                            //   ],
+                            // ),
                             const SizedBox(
-                              height: 20.0,
+                              height: 60.0,
                             ),
                             ConditionalBuilder(
                               condition: state is! LoginLoadingState,
                               builder: (context) => MainButton(
                                 label: 'Log In',
-                                onTap: ()
-                                {
-                                  if(formKey.currentState!.validate())
-                                  {
-                                    LoginCubit.get(context).userLogin(
-                                      email: LoginCubit.get(context).emailController.text,
-                                      password: LoginCubit.get(context).passwordController.text,
-                                      context: context
-                                    );
+                                onTap: () {
+                                  if (formKey.currentState!.validate()) {
+                                    LoginCubit.get(context).userLogin(context);
                                   }
                                 },
                               ),
-                              fallback: (context) => CircularProgressIndicator(),
+                              fallback: (context) =>
+                                  const CircularProgressIndicator(),
                             ),
                             const SizedBox(
                               height: 15,

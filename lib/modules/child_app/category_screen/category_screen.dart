@@ -36,68 +36,65 @@ class _CategoryScreenState extends State<CategoryScreen> {
   Widget build(BuildContext context) {
     var radius = const Radius.circular(50);
     return Scaffold(
-        backgroundColor: const Color(0xffF5F6FA),
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          centerTitle: true,
-          leading: IconButton(
-            onPressed: ()
-            {
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.arrow_back_ios),
-          ),
-          title: const Text(
-            'Category',
-            style: TextStyle(
-              fontSize: 28.0,
-              fontWeight: FontWeight.bold,
-            ),
+      backgroundColor: const Color(0xffF5F6FA),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios),
+        ),
+        title: const Text(
+          'Category',
+          style: TextStyle(
+            fontSize: 28.0,
+            fontWeight: FontWeight.bold,
           ),
         ),
-        body: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 20.0,
-              horizontal: 15.0,
-            ),
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                vertical: 20.0,
-                horizontal: 15.0,
-              ),
-              decoration: BoxDecoration(
-                border: Border.all(color: colors[0], width: 2),
-                borderRadius: BorderRadius.only(
-                  topLeft: radius,
-                  bottomRight: radius,
-                  bottomLeft: radius,
-                ),
-              ),
-              child: ListView.separated(
-                  itemBuilder: (context, index) => InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) {
-                              return QuestionsScreen(
-                                  quiz: models[index], index: index);
-                             }
-                            ),
-                          );
-                        },
-                        child: CategoryComponent(
-                          color: colors[index],
-                          name: names[index],
-                          picName: picNames[index],
-                        ),
-                      ),
-                  separatorBuilder: (context, index) => const SizedBox(
-                        height: 20.0,
-                      ),
-                  itemCount: 6,
-              ),
-            ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 20.0,
+          horizontal: 15.0,
         ),
+        child: Container(
+          padding: const EdgeInsets.symmetric(
+            vertical: 20.0,
+            horizontal: 15.0,
+          ),
+          decoration: BoxDecoration(
+            border: Border.all(color: colors[0], width: 2),
+            borderRadius: BorderRadius.only(
+              topLeft: radius,
+              bottomRight: radius,
+              bottomLeft: radius,
+            ),
+          ),
+          child: ListView.separated(
+            itemBuilder: (context, index) => InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) {
+                    return QuestionsScreen(quiz: models[index], index: index);
+                  }),
+                );
+              },
+              child: CategoryComponent(
+                color: colors[index],
+                name: names[index],
+                picName: picNames[index],
+              ),
+            ),
+            separatorBuilder: (context, index) => const SizedBox(
+              height: 20.0,
+            ),
+            itemCount: 6,
+          ),
+        ),
+      ),
     );
   }
 }

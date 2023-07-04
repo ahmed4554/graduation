@@ -4,8 +4,21 @@ import 'package:project/components/components.dart';
 import 'package:project/modules/child_app/chat_bot/bot_cubit.dart';
 import 'package:project/modules/child_app/chat_bot/bot_cubit_states.dart';
 
-class ChatBot extends StatelessWidget {
-  ChatBot({Key? key,}) : super(key: key);
+class ChatBot extends StatefulWidget {
+  ChatBot({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<ChatBot> createState() => _ChatBotState();
+}
+
+class _ChatBotState extends State<ChatBot> {
+  @override
+  void dispose() {
+    BotCubit.get(context).messages = [];
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,21 +78,35 @@ class ChatBot extends StatelessWidget {
                     height: 16.0,
                     thickness: 1.4,
                   ),
-                  // Expanded(
-                  //   child: ListView(
-                  //     children: List.generate(
-                  //       c.userMsg.length,
-                  //       (index) => c.isUser
-                  //           ? UserMessage(
-                  //               uMsg: c.userMsg[index],
-                  //             )
-                  //             : BotMessage(
-                  //               bMsg: c.botMsg[index],
-                  //             ),
-                  //
-                  //     ),
-                  //   ),
-                  // ),
+                  Expanded(
+                    child: ListView.separated(
+                      itemCount: c.messages.length,
+                      itemBuilder: (context, index) {
+                        if (c.isUser == true) {
+                          return Column(
+                            children: [
+                              RightMessage(
+                                  msg: c.messages[index], isUser: c.isUser!),
+                              LeftMessage(
+                                  msg: c.messages[index], isUser: c.isUser!)
+                            ],
+                          );
+                        } else {
+                          return Column(
+                            children: [
+                              RightMessage(
+                                  msg: c.messages[index], isUser: c.isUser!),
+                              LeftMessage(
+                                  msg: c.messages[index], isUser: c.isUser!),
+                            ],
+                          );
+                        }
+                      },
+                      separatorBuilder: (context, index) => const SizedBox(
+                        height: 10,
+                      ),
+                    ),
+                  ),
                   Container(
                     margin: const EdgeInsets.all(10),
                     color: Colors.transparent,
@@ -104,7 +131,8 @@ class ChatBot extends StatelessWidget {
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10.0),
-                                borderSide: BorderSide(color: Colors.white),
+                                borderSide:
+                                    const BorderSide(color: Colors.white),
                               ),
                             ),
                             controller: c.sendMsgController,
@@ -114,9 +142,8 @@ class ChatBot extends StatelessWidget {
                           width: 8.0,
                         ),
                         InkWell(
-                          onTap: ()
-                          {
-                            c.sendMsg();
+                          onTap: () {
+                            c.sendMessage();
                           },
                           child: CircleAvatar(
                             radius: 25,

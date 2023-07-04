@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project/components/custom_color.dart';
 import 'package:project/modules/access_screen/access_screen.dart';
+import 'package:project/utils/cubits/data_cubit/data_cubit.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../../components/cache_helper.dart';
+import '../login_screen/login_screen.dart';
 
 class BoardingModel {
   final String image;
@@ -32,38 +36,37 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   List<BoardingModel> boarding = [
     BoardingModel(
-        image: 'assets/images/onBoarding/education.svg',
-        title: 'Education',
-        body : 'Helps The Child To Learn In A Simple And Funny Ways.',
-        body2:'Learning Him How To Pronounce Speech.',
+      image: 'assets/images/onBoarding/education.svg',
+      title: 'Education',
+      body: 'Helps The Child To Learn In A Simple And Funny Ways.',
+      body2: 'Learning Him How To Pronounce Speech.',
     ),
     BoardingModel(
         image: 'assets/images/onBoarding/face.svg',
         title: 'Face Recognition',
-        body : 'Helping The Child To Log In Without Writing The Account.',
-        body2: ' And Finding The Child In Case He Is Lost'
-    ),
+        body: 'Helping The Child To Log In Without Writing The Account.',
+        body2: ' And Finding The Child In Case He Is Lost'),
     BoardingModel(
         image2: 'assets/images/onBoarding/cloud.svg',
         image: 'assets/images/onBoarding/office.svg',
         title: 'Object Detection',
-        body : 'Enable The Child To Know The Names Of The Tools To',
-        body2: 'Facilitate Interaction And Integration Into Society.'
-    ),
+        body: 'Enable The Child To Know The Names Of The Tools To',
+        body2: 'Facilitate Interaction And Integration Into Society.'),
   ];
 
   bool isLast = false;
 
-  // void submit() {
-  //   CacheHelper.saveData(key: 'onBoarding', value: true).then((value) {
-  //     if (value) {
-  //       Navigator.of(context)
-  //           .pushReplacement(MaterialPageRoute(builder: (context) {
-  //         return LoginScreen();
-  //       }));
-  //     }
-  //   });
-  // }
+  void submit() async {
+    await CacheHelper.saveData(key: 'onBoarding', value: true).then((value) {
+      DataCubit.get(context).finishOnBoarding();
+      if (value) {
+        Navigator.of(context)
+            .pushReplacement(MaterialPageRoute(builder: (context) {
+          return const AccessScreen();
+        }));
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,6 +83,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   if (index == boarding.length - 1) {
                     setState(() {
                       isLast = true;
+                      CacheHelper.saveData(key: 'onBoarding', value: true);
                     });
                   } else {
                     setState(() {
@@ -110,11 +114,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               height: 90,
             ),
             Row(
-              children:
-              [
+              children: [
                 TextButton(
-                  onPressed: ()
-                  {
+                  onPressed: () {
+                    submit();
+                    isLast = true;
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) {
@@ -124,11 +128,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     );
                   },
                   child: const Text(
-                      'Skip',
-                    style: TextStyle(
-                        color: CustomColor.blue11,
-                        fontSize: 24.0
-                    ),
+                    'Skip',
+                    style: TextStyle(color: CustomColor.blue11, fontSize: 24.0),
                   ),
                 ),
                 const Spacer(),
@@ -136,15 +137,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   height: 45.0,
                   width: 90.0,
                   clipBehavior: Clip.antiAliasWithSaveLayer,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30.0)
-                  ),
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(30.0)),
                   child: MaterialButton(
                     color: CustomColor.blue11,
-                    onPressed: ()
-                    {
-                      if (isLast == true)
-                      {
+                    onPressed: () {
+                      if (isLast == true) {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) {
@@ -163,10 +161,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     },
                     child: const Text(
                       'Next',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20.0
-                      ),
+                      style: TextStyle(color: Colors.white, fontSize: 20.0),
                     ),
                   ),
                 ),
@@ -180,19 +175,19 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   Widget buildBoardingItem(BoardingModel model) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children:
-        [
+        children: [
           const SizedBox(
             height: 60.0,
           ),
           Center(
             child: Stack(
               children: [
-                Center(
-                  child: SvgPicture.asset(
-                    (model.image2),
+                if (model.image2.isNotEmpty)
+                  Center(
+                    child: SvgPicture.asset(
+                      (model.image2),
+                    ),
                   ),
-                ),
                 Center(
                   child: SvgPicture.asset(
                     (model.image),
@@ -215,8 +210,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           ),
           Center(
             child: Column(
-              children:
-              [
+              children: [
                 Text(
                   model.body,
                   textAlign: TextAlign.center,

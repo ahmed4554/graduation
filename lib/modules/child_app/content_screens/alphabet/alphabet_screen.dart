@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:project/components/custom_color.dart';
@@ -96,8 +97,9 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
                           )
                         ],
                         borderRadius: BorderRadius.circular(50.0)),
-                    child: Image.asset(
-                      "assets/images/profile/eliza.png",
+                    child: CachedNetworkImage(
+                      imageUrl:
+                      model!.image!,
                     ),
                   ),
                   const SizedBox(

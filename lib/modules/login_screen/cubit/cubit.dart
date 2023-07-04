@@ -1,13 +1,12 @@
-import 'package:bloc/bloc.dart';
-import 'package:dio/dio.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:project/components/cache_helper.dart';
-import 'package:project/components/dio_helper.dart';
-import 'package:project/components/end_points.dart';
-import 'package:project/modules/home/home_screen.dart';
+
+import 'package:project/models/user_model/user_model.dart';
+
 import 'package:project/modules/login_screen/cubit/states.dart';
-import 'package:project/modules/register_screen/cubit/cubit.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginCubit extends Cubit<LoginCubitState> {
   LoginCubit() : super(LoginInitialState());
@@ -22,43 +21,71 @@ class LoginCubit extends Cubit<LoginCubitState> {
   // Controllers for login
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
-  Response? loginData;
 
-  int? id;
+  UserModel? userModel;
 
-  void userLogin({
-    required String email,
-    required String password,
-    required context,
-  }) async {
-    emit(LoginLoadingState());
+  FirebaseAuth auth = FirebaseAuth.instance;
 
+  void userLogin(context) async {
     try {
-      loginData = await DioHelper.postData(
-          url: login,
-          data:  {
-                  'email': email,
-                  'password': password,
-                 }
-                ).then((value)async
-                 {
-                  id = value.data['user_id'];
-                  print(id);
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=> HomeScreen()));
-                  print(userNameController.text);
-
-                  emit(LoginSuccessState());
-                  emailController.clear();
-                  passwordController.clear();
-                 }
-               );
-
-    } on Exception catch (e) {
-      print(e);
+      await auth.signInWithEmailAndPassword(
+          email: emailController.text, password: passwordController.text);
+      emit(LoginSuccessState());
+    } on FirebaseException catch (e) {
       emit(LoginErrorState(e.toString()));
+
+      rethrow;
+    } catch (e) {
+      emit(LoginErrorState(e.toString()));
+
       rethrow;
     }
   }
+
+  // Response? loginData;
+  // void userLogin({
+  //   required String email,
+  //   required String password,
+  //   required context,
+  // }) async {
+  //   emit(LoginLoadingState());
+
+  //   try {
+  //     loginData = await DioHelper.postData(
+  //         url: login,
+  //         data:  {
+  //                 'email': email,
+  //                 'password': password,
+  //                }
+  //               ).then((value)async
+  //                {
+  //                 print(id);
+  //                 Navigator.of(context).push(MaterialPageRoute(builder: (context)=> HomeScreen()));
+  //                 print(userNameController.text);
+  //                 await CacheHelper.saveData(key: 'isLogged', value: true);
+  //                 userModel = UserModel(
+  //                   email: emailController.text,
+  //                   id: value.data['user_id'],
+  //                   pass: passwordController.text,
+  //                 );
+  //                 await DatabaseHelper.db.insertToDb(userModel!).then((value) {
+  //                   print('added');
+  //                 }).catchError((e) {
+  //                   print(e);
+  //                 });
+
+  //                 emit(LoginSuccessState());
+  //                 emailController.clear();
+  //                 passwordController.clear();
+  //                }
+  //              );
+
+  //   } on Exception catch (e) {
+  //     print(e);
+  //     emit(LoginErrorState(e.toString()));
+  //     rethrow;
+  //   }
+  // }
 
   void checkLog(bool value) {
     check = value;

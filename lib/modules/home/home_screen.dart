@@ -1,10 +1,9 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:project/components/custom_color.dart';
 import 'package:project/modules/alarm_screen/alarm_screen.dart';
-import 'package:project/modules/chat/chat_screen.dart';
 import 'package:project/modules/main_page/main_page.dart';
 import '../profile/profile_screen.dart';
-import '../settings/settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
    HomeScreen({Key? key}) : super(key: key);
@@ -14,14 +13,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int currentIndex = 2;
+  int currentIndex = 1;
 
   List<Widget> pages = <Widget>
   [
-    const SettingsScreen(),
-    const ChatGroup(),
+    const AlarmScreen(),
     const MainPage(),
-     AlarmScreen(),
     const ProfileScreen(),
   ];
 
@@ -39,31 +36,37 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: CurvedNavigationBar(
         items:
         [
-          SizedBox(
-              width: 30.0,
-              height: 30.0,
-              child: Image.asset('assets/images/bottomNavBar/settings.png')),
-          SizedBox(
-              width: 30.0,
-              height: 30.0,
-              child: Image.asset('assets/images/bottomNavBar/messages.png')),
-          SizedBox(
-              width: 50.0,
-              height: 50.0,
-              child: Image.asset('assets/images/bottomNavBar/home.png')),
-          SizedBox(
-              width: 30.0,
-              height: 30.0,
-              child: Image.asset('assets/images/bottomNavBar/ring.png',)),
-          SizedBox(
-              width: 30.0,
-              height: 30.0,
-              child: Image.asset('assets/images/bottomNavBar/profile.png',)),
+          // SizedBox(
+          //     width: 30.0,
+          //     height: 30.0,
+          //     child: Image.asset('assets/images/bottomNavBar/ring.png',)),
+          // SizedBox(
+          //     width: 50.0,
+          //     height: 50.0,
+          //     child: Image.asset('assets/images/bottomNavBar/home.png'),
+          // ),
+          // SizedBox(
+          //     width: 30.0,
+          //     height: 30.0,
+          //     child: Image.asset('assets/images/bottomNavBar/profile.png',),
+          // ),
+          Icon(
+              Icons.alarm,
+            size: 35.0,
+          ),
+          Icon(
+              Icons.home,
+            size: 35.0,
+          ),
+          Icon(
+            Icons.person_outline_outlined,
+            size: 35.0,
+          )
         ],
-        height: 60,
+        height: 60.0,
         index: currentIndex,
         color: Colors.white,
-        backgroundColor: Colors.white,
+        backgroundColor: CustomColor.blue11,
         animationCurve: Curves.easeInOut,
         onTap: changeItem ,
       ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project/components/components.dart';
 import 'package:project/components/custom_color.dart';
+import 'package:project/constants/constants.dart';
 import 'package:project/models/message_model/messages_model.dart';
 import 'package:project/utils/cubits/data_cubit/data_cubit.dart';
 import 'package:project/utils/cubits/data_cubit/data_states.dart';
@@ -95,7 +96,7 @@ class _ChatGroupState extends State<ChatGroup> {
                               child: Column(
                                 children: List.generate(
                                   4,
-                                      (index) => InkWell(
+                                  (index) => InkWell(
                                     onTap: () {
                                       currentGroup = groups[index];
                                       setState(() {});
@@ -107,7 +108,7 @@ class _ChatGroupState extends State<ChatGroup> {
                                         radius: 20,
                                         backgroundColor: Colors.white,
                                         backgroundImage:
-                                        AssetImage(groupIcons[index]),
+                                            AssetImage(groupIcons[index]),
                                       ),
                                     ),
                                   ),
@@ -121,7 +122,7 @@ class _ChatGroupState extends State<ChatGroup> {
                           Expanded(
                             flex: 7,
                             child: Container(
-                              height: height - 180,
+                              height: height - 100,
                               decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(20),
@@ -146,43 +147,45 @@ class _ChatGroupState extends State<ChatGroup> {
                                             .doc(currentGroup)
                                             .collection('messages')
                                             .orderBy(
-                                          'date',
-                                          descending: false,
-                                        )
+                                              'date',
+                                              descending: false,
+                                            )
                                             .snapshots(),
                                         builder: (context, snapshot) {
                                           if (snapshot.hasData) {
                                             return ListView.separated(
                                               itemBuilder: (context, index) {
                                                 return snapshot.data!
-                                                    .docs[index]
-                                                    .data()[
-                                                'userName'] ==
-                                                    c.userName
+                                                                .docs[index]
+                                                                .data()[
+                                                            'userName'] ==
+                                                        c.userName
                                                     ? UserMessage(
-                                                  model: MessagesModel
-                                                      .fromJson(
-                                                    snapshot
-                                                        .data!.docs[index]
-                                                        .data(),
-                                                  ),
-                                                )
+                                                        messagesModel:
+                                                            MessagesModel
+                                                                .fromJson(
+                                                          snapshot
+                                                              .data!.docs[index]
+                                                              .data(),
+                                                        ),
+                                                      )
                                                     : BotMessage(
-                                                  model: MessagesModel
-                                                      .fromJson(
-                                                    snapshot
-                                                        .data!.docs[index]
-                                                        .data(),
-                                                  ),
-                                                );
+                                                        messagesModel:
+                                                            MessagesModel
+                                                                .fromJson(
+                                                          snapshot
+                                                              .data!.docs[index]
+                                                              .data(),
+                                                        ),
+                                                      );
                                               },
                                               separatorBuilder:
                                                   (context, index) =>
-                                              const SizedBox(
+                                                      const SizedBox(
                                                 height: 15,
                                               ),
                                               itemCount:
-                                              snapshot.data!.docs.length,
+                                                  snapshot.data!.docs.length,
                                             );
                                           } else if (snapshot.hasError) {
                                             ScaffoldMessenger.of(context)
@@ -212,11 +215,10 @@ class _ChatGroupState extends State<ChatGroup> {
                                                 controller: c.controller,
                                                 decoration: InputDecoration(
                                                   suffixIcon: IconButton(
-                                                    onPressed: ()
-                                                    {
+                                                    onPressed: () {
                                                       c.takePhoto(
                                                         currentGroup:
-                                                        currentGroup,
+                                                            currentGroup,
                                                       );
                                                     },
                                                     icon: const Icon(
@@ -226,11 +228,11 @@ class _ChatGroupState extends State<ChatGroup> {
                                                   fillColor: Colors.white,
                                                   filled: true,
                                                   contentPadding:
-                                                  const EdgeInsets.only(
-                                                      left: 10),
+                                                      const EdgeInsets.only(
+                                                          left: 10),
                                                   hintText: 'Ask Something ...',
                                                   border:
-                                                  const OutlineInputBorder(
+                                                      const OutlineInputBorder(
                                                     borderSide: BorderSide(
                                                       width: 2,
                                                       color: Colors.black,
@@ -253,7 +255,7 @@ class _ChatGroupState extends State<ChatGroup> {
                                                 elevation: 5,
                                                 shadowColor: Colors.black45,
                                                 borderRadius:
-                                                BorderRadius.circular(100),
+                                                    BorderRadius.circular(100),
                                                 child: CircleAvatar(
                                                   radius: 25,
                                                   backgroundColor: Colors.white,

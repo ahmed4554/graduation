@@ -39,8 +39,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
 
   Widget controlsBuilder(context, details) {
     return Row(
-      children:
-      [
+      children: [
         ElevatedButton(
           style: ElevatedButton.styleFrom(
             backgroundColor: CustomColor.blue11.withOpacity(.8),
@@ -62,9 +61,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
           onPressed: details.onStepCancel,
           child: const Text(
             'Back',
-            style: TextStyle(
-                color: CustomColor.sky1
-            ),
+            style: TextStyle(color: CustomColor.sky1),
           ),
         ),
       ],
@@ -81,8 +78,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new),
           color: Colors.white,
-          onPressed: ()
-          {
+          onPressed: () {
             Navigator.of(context).pop(
               MaterialPageRoute(builder: (context) {
                 return const ChildHomeScreen();
@@ -101,8 +97,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
         ),
       ),
       body: Stack(
-        children:
-        [
+        children: [
           Container(
             width: double.infinity,
             height: MediaQuery.of(context).size.height * .6,
@@ -116,16 +111,14 @@ class _LevelsScreenState extends State<LevelsScreen> {
                   CustomColor.blue11.withOpacity(.8),
                   Colors.white,
                 ],
-                stops: const [.4,.6],
+                stops: const [.4, .6],
                 tileMode: TileMode.clamp,
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 30.0,
-              horizontal: 20.0
-            ),
+            padding:
+                const EdgeInsets.symmetric(vertical: 30.0, horizontal: 20.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -146,8 +139,8 @@ class _LevelsScreenState extends State<LevelsScreen> {
                   ),
                   child: const Text(
                     'Let\'s Study',
-                    style: TextStyle(
-                        fontSize: 26.0, fontWeight: FontWeight.w500),
+                    style:
+                        TextStyle(fontSize: 26.0, fontWeight: FontWeight.w500),
                   ),
                 ),
                 Container(
@@ -155,16 +148,14 @@ class _LevelsScreenState extends State<LevelsScreen> {
                   width: 102.0,
                   height: 102.0,
                   margin: const EdgeInsets.only(top: 10),
-                  decoration: BoxDecoration(
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.white,
-                          spreadRadius: 1,
-                          blurRadius: 10,
-                          offset: Offset.zero,
-                        )
-                      ],
-                      borderRadius: BorderRadius.circular(50.0)),
+                  decoration: BoxDecoration(boxShadow: const [
+                    BoxShadow(
+                      color: Colors.white,
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                      offset: Offset.zero,
+                    )
+                  ], borderRadius: BorderRadius.circular(50.0)),
                   child: Image.asset(
                     "assets/images/profile/eliza.png",
                   ),
@@ -191,16 +182,12 @@ class _LevelsScreenState extends State<LevelsScreen> {
     );
   }
 
-  List<Step> getSteps() =>
-      [
+  List<Step> getSteps() => [
         Step(
           isActive: currentStep >= 0,
           title: const Text(
             'Step 1',
-            style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.w600
-            ),
+            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
           ),
           content: InkWell(
             onTap: () {
@@ -211,11 +198,10 @@ class _LevelsScreenState extends State<LevelsScreen> {
             child: Container(
               margin: const EdgeInsets.only(
                 top: 10,
-                  bottom: 10,
+                bottom: 10,
               ),
               child: Stack(
-                children:
-                [
+                children: [
                   Container(
                     width: 319.0,
                     height: 150.0,
@@ -227,8 +213,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
                             color: Colors.grey.withOpacity(.6),
                             spreadRadius: 5.0,
                             blurRadius: 7.0,
-                            offset: const Offset(1.5, 3)
-                        )
+                            offset: const Offset(1.5, 3))
                       ],
                     ),
                   ),
@@ -241,6 +226,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
                       width: 280.0,
                       child: LinearProgressIndicator(
                         minHeight: 8.0,
+                        value: .5,
                         color: Colors.deepOrange.shade500.withOpacity(.9),
                         backgroundColor: Colors.white,
                       ),
@@ -284,8 +270,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
                     ),
                     child: ClipRRect(
                       borderRadius: const BorderRadius.only(
-                          bottomRight: Radius.circular(15.0)
-                      ),
+                          bottomRight: Radius.circular(15.0)),
                       child: Image.asset(
                         'assets/images/child_app/levels_screen/one.png',
                       ),
@@ -301,10 +286,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
           isActive: currentStep >= 1,
           title: const Text(
             'Step 2',
-            style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.w600
-            ),
+            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
           ),
           content: InkWell(
             onTap: () {
@@ -314,13 +296,11 @@ class _LevelsScreenState extends State<LevelsScreen> {
             },
             child: Container(
               margin: const EdgeInsets.only(
-                  top: 10,
-                  bottom: 10,
+                top: 10,
+                bottom: 10,
               ),
-
               child: Stack(
-                children:
-                [
+                children: [
                   Container(
                     width: 319.0,
                     height: 150.0,
@@ -332,8 +312,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
                             color: Colors.grey.withOpacity(.6),
                             spreadRadius: 5.0,
                             blurRadius: 7.0,
-                            offset: const Offset(1.5, 3)
-                        )
+                            offset: const Offset(1.5, 3))
                       ],
                     ),
                   ),
@@ -346,6 +325,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
                       width: 280.0,
                       child: LinearProgressIndicator(
                         minHeight: 8.0,
+                        value: 1,
                         color: Colors.deepOrange.shade500.withOpacity(.9),
                         backgroundColor: Colors.white,
                       ),
@@ -389,8 +369,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
                     ),
                     child: ClipRRect(
                       borderRadius: const BorderRadius.only(
-                          bottomRight: Radius.circular(15.0)
-                      ),
+                          bottomRight: Radius.circular(15.0)),
                       child: Image.asset(
                         'assets/images/child_app/levels_screen/two.png',
                       ),
@@ -406,14 +385,10 @@ class _LevelsScreenState extends State<LevelsScreen> {
           isActive: currentStep >= 2,
           title: const Text(
             'Step 3',
-            style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.w600
-            ),
+            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
           ),
           content: InkWell(
-            onTap: ()
-            {
+            onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => const CategoryScreen(),
@@ -422,12 +397,11 @@ class _LevelsScreenState extends State<LevelsScreen> {
             },
             child: Container(
               margin: const EdgeInsets.only(
-                  top:10,
-                  bottom: 10,
+                top: 10,
+                bottom: 10,
               ),
               child: Stack(
-                children:
-                [
+                children: [
                   Container(
                     width: 319.0,
                     height: 150.0,
@@ -439,8 +413,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
                             color: Colors.grey.withOpacity(.6),
                             spreadRadius: 5.0,
                             blurRadius: 7.0,
-                            offset: const Offset(1.5, 3)
-                        )
+                            offset: const Offset(1.5, 3))
                       ],
                     ),
                   ),
@@ -482,8 +455,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
                     ),
                     child: ClipRRect(
                       borderRadius: const BorderRadius.only(
-                          bottomRight: Radius.circular(15.0)
-                      ),
+                          bottomRight: Radius.circular(15.0)),
                       child: Image.asset(
                         'assets/images/child_app/levels_screen/one.png',
                       ),

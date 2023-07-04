@@ -7,10 +7,14 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:project/components/cache_helper.dart';
+import 'package:project/constants/constants.dart';
 import 'package:project/models/message_model/messages_model.dart';
 import 'package:project/models/object_detection/object_detection.dart';
+import 'package:project/models/user_model/user_model.dart';
 import '../../../network/dio_helper/dio_helper.dart';
 import 'data_states.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class DataCubit extends Cubit<DataStates> {
   DataCubit() : super(InitialDataState());
@@ -29,6 +33,48 @@ class DataCubit extends Cubit<DataStates> {
   TimeOfDay? time;
 
   DateTime? alarmDate;
+
+  String? userName;
+
+  FirebaseAuth auth = FirebaseAuth.instance;
+
+  bool IsLogged = false;
+  bool onBoarding = false;
+
+  void finishOnBoarding() async {
+    onBoarding = CacheHelper.getData(key: 'onBoarding') ?? false;
+    emit(OnBoardingScreenFinish());
+  }
+
+  void listenOnUserLogInState() {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user == null) {
+        IsLogged = false;
+        emit(UserLoggedOut());
+      } else {
+        IsLogged = true;
+        emit(UserLoggedIn());
+        getUserDataOnOpen(user);
+      }
+    });
+  }
+
+  void getUserDataOnOpen(User user) async {
+    emit(GetUserDataOnOpenLoading());
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user.uid)
+        .get()
+        .then((value) {
+      model = UserModel.fromJson(value.data()!);
+      userName = model!.id!;
+      log(model!.id!);
+      emit(GetUserDataOnOpenSUcces());
+    }).catchError((e) {
+      log(e.toString());
+      emit(GetUserDataOnOpenError(error: e.toString()));
+    });
+  }
 
   void setAlarm() async {
     if (alarmDate != null) {
@@ -99,6 +145,7 @@ class DataCubit extends Cubit<DataStates> {
       source: ImageSource.gallery,
       maxWidth: 400,
       maxHeight: 800,
+      imageQuality: 50
     );
 
     if (pickedImage != null) {
@@ -148,8 +195,6 @@ class DataCubit extends Cubit<DataStates> {
 // the progress is going like this [ takePhoto() = > uploudPhoto() = > getAllImages() ]
   File? imageToSendInChat;
   XFile? _image;
-
-  String userName = 'ahmed';
 
   final storage = FirebaseStorage.instance;
 
@@ -226,6 +271,7 @@ class DataCubit extends Cubit<DataStates> {
     required String kind,
     required String currentGroup,
   }) async {
+    printWarning(model!.id!);
     MessagesModel? message;
     if (imageToSendInChat != null) {
       await uploudPhoto(
@@ -239,14 +285,17 @@ class DataCubit extends Cubit<DataStates> {
         pic: currentImageToUploadURL,
         text: imageToSendInChat!.path.split('/').last,
         userName: userName,
+        senderImage: model!.image,
       );
     } else {
       message = MessagesModel(
-          date: Timestamp.now(),
-          kind: 'text',
-          pic: '',
-          text: controller.text,
-          userName: userName);
+        date: Timestamp.now(),
+        kind: 'text',
+        pic: '',
+        text: controller.text,
+        userName: userName,
+        senderImage: model!.image,
+      );
     }
     emit(SendMessageLoading());
     try {
@@ -254,7 +303,7 @@ class DataCubit extends Cubit<DataStates> {
           .doc(currentGroup)
           .collection('messages')
           .doc()
-          .set(message!.toMap())
+          .set(message.toMap())
           .then((value) {});
       controller.clear();
       message = null;

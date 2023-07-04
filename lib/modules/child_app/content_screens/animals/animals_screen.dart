@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:project/components/custom_color.dart';
@@ -32,7 +33,9 @@ class _AnimalsScreenState extends State<AnimalsScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new),
           color: Colors.white,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
         ),
         centerTitle: true,
         title: const Text(
@@ -59,7 +62,7 @@ class _AnimalsScreenState extends State<AnimalsScreen> {
                   CustomColor.blue11.withOpacity(.8),
                   Colors.white,
                 ],
-                stops: const [.4,.6],
+                stops: const [.4, .6],
                 tileMode: TileMode.clamp,
               ),
             ),
@@ -71,24 +74,21 @@ class _AnimalsScreenState extends State<AnimalsScreen> {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-
                   Container(
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     width: 102.0,
                     height: 102.0,
                     margin: const EdgeInsets.only(top: 10),
-                    decoration: BoxDecoration(
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.white,
-                            spreadRadius: 1,
-                            blurRadius: 10,
-                            offset: Offset.zero,
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(50.0)),
-                    child: Image.asset(
-                      "assets/images/profile/eliza.png",
+                    decoration: BoxDecoration(boxShadow: const [
+                      BoxShadow(
+                        color: Colors.white,
+                        spreadRadius: 1,
+                        blurRadius: 10,
+                        offset: Offset.zero,
+                      )
+                    ], borderRadius: BorderRadius.circular(50.0)),
+                    child: CachedNetworkImage(
+                      imageUrl: model!.image!,
                     ),
                   ),
                   const SizedBox(
@@ -133,20 +133,18 @@ class _AnimalsScreenState extends State<AnimalsScreen> {
                         (index) => InkWell(
                           onTap: () {
                             Navigator.of(context).push(
-                            MaterialPageRoute(builder:
-                                (context) {
-                              SystemChrome.setPreferredOrientations(
-                                  [
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  SystemChrome.setPreferredOrientations([
                                     DeviceOrientation.landscapeLeft,
-                                  ]
-                              );
-                              return BoardScreen(
-                                board: animalsC ,
-                                index: index,
-                              );
-                             },
-                            ),
-                           );
+                                  ]);
+                                  return BoardScreen(
+                                    board: animalsC,
+                                    index: index,
+                                  );
+                                },
+                              ),
+                            );
                           },
                           child: Container(
                             height: 140.0,

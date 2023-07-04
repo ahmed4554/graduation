@@ -1,10 +1,19 @@
+import 'dart:ui';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project/modules/reminder_history/reminder_history.dart';
+import 'package:project/utils/reminder_cubit/reminder_cubit.dart';
+import 'package:project/utils/reminder_cubit/reminder_states.dart';
 
 class PrescriptionScreen extends StatelessWidget {
   const PrescriptionScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -17,45 +26,239 @@ class PrescriptionScreen extends StatelessWidget {
           onPressed: () {},
         ),
         title: Text(
-          'Prescription',
+          'Add Event To Patient History',
           style: Theme.of(context).textTheme.titleLarge!.copyWith(
-            color: Colors.black,
-          ),
+                color: Colors.black,
+              ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: ListView(
-          children: [
-            const Image(
-              image: AssetImage('assets/images/reminder/rosheta.png'),
-              width: 150,
-              height: 300,
-              fit: BoxFit.contain,
+      body: BlocConsumer<ReminderCubit, ReminderStates>(
+        listener: (context, state) {
+          if (state is SetPrescriptionDataSuccess) {
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                    builder: (context) => const PrescriptionHistory()),
+                (route) => false);
+          }
+        },
+        builder: (context, state) {
+          var c = ReminderCubit.get(context);
+          return Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: ListView(
+              children: [
+                if (c.prescriptionImage != null)
+                  Image(
+                    image: FileImage(c.prescriptionImage!),
+                    width: 150,
+                    height: 300,
+                    fit: BoxFit.contain,
+                  ),
+                if (c.prescriptionImage == null)
+                  Center(
+                    child: InkWell(
+                      onTap: () {
+                        ReminderCubit.get(context).takePhoto().then((value) {
+                          ReminderCubit.get(context)
+                              .uploudPrescriptionPhoto(context);
+                          showBottomSheet(
+                            constraints:
+                                BoxConstraints.tight(Size(width, height * .35)),
+                            backgroundColor: Colors.transparent,
+                            enableDrag: true,
+                            context: context,
+                            builder: (context) => ClipRRect(
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(40),
+                                topRight: Radius.circular(40),
+                              ),
+                              child: BackdropFilter(
+                                filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                                child: BottomSheet(
+                                  backgroundColor: Colors.red.withOpacity(.3),
+                                  onClosing: () {},
+                                  builder: (context) => Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15, vertical: 20),
+                                    child: Column(
+                                      children: [
+                                        const Text(
+                                          'Enter The prescription Data',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 30,
+                                        ),
+                                        TextFormField(
+                                          controller: ReminderCubit.get(context)
+                                              .titleController,
+                                          decoration: InputDecoration(
+                                            hintText:
+                                                'Enter The title of the Prescription',
+                                            fillColor:
+                                                Colors.white.withOpacity(.5),
+                                            filled: true,
+                                            border: OutlineInputBorder(
+                                              borderSide: BorderSide.none,
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        TextFormField(
+                                          controller: ReminderCubit.get(context)
+                                              .descController,
+                                          decoration: InputDecoration(
+                                            hintText:
+                                                'Enter The description of the Prescription',
+                                            fillColor:
+                                                Colors.white.withOpacity(.5),
+                                            filled: true,
+                                            border: OutlineInputBorder(
+                                              borderSide: BorderSide.none,
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            textStyle: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            c.setPrescriptionData(context);
+                                          },
+                                          child: const Text(
+                                              'add this prescription'),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        });
+                      },
+                      child: Stack(
+                        children: [
+                          SizedBox(
+                            width: 125.0,
+                            height: 125.0,
+                            child: c.prescriptionImage == null
+                                ? const CircleAvatar(
+                                    //backgroundColor: Colors.grey.shade200,
+                                    radius: 50.0,
+                                    child: Text(
+                                      'Upload your \n child photo',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  )
+                                : Container(
+                                    width: 150,
+                                    height: 300,
+                                    decoration: ShapeDecoration(
+                                      color: Colors.white,
+                                      image: DecorationImage(
+                                        image: FileImage(
+                                          c.prescriptionImage!,
+                                        ),
+                                        fit: BoxFit.contain,
+                                      ),
+                                      shape: const RoundedRectangleBorder(
+                                        side: BorderSide(color: Colors.white),
+                                        //the outline color
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(
+                                            70.0,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              top: 82.0,
+                              left: 84.0,
+                            ),
+                            child: Container(
+                              width: 42.0,
+                              height: 42.0,
+                              decoration: BoxDecoration(
+                                // color: CustomColor.green1,
+                                gradient: const LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    Color(0xffbce1ec),
+                                    Color(0xffbce1ec),
+                                  ],
+                                ),
+                                border:
+                                    Border.all(color: Colors.white, width: 3),
+                                borderRadius: BorderRadius.circular(30.0),
+                              ),
+                              child: const Icon(
+                                Icons.camera_alt,
+                                size: 26,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                const SizedBox(
+                  height: 15,
+                ),
+                PrescriptionDataInner(
+                  title: 'Date',
+                  desc: DateTime.now().toString().substring(0, 10),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                PrescriptionDataInner(
+                  title: 'Specialist',
+                  desc: c.titleController.text.isEmpty
+                      ? 'click the camera Icon to add information'
+                      : c.titleController.text,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                PrescriptionDataInner(
+                  title: 'Description',
+                  desc: c.descController.text.isEmpty
+                      ? 'click the camera Icon to add information'
+                      : c.descController.text,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+              ],
             ),
-            const SizedBox(
-              height: 15,
-            ),
-            PrescriptionDataInner(
-              title: 'Date',
-              desc: DateTime.now().toString().substring(0, 10),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            const PrescriptionDataInner(
-              title: 'Specialist',
-              desc: 'Heart Diseases',
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            const PrescriptionDataInner(
-              title: 'Description',
-              desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
@@ -81,7 +284,9 @@ class PrescriptionDataInner extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        const SizedBox(height: 10,),
+        const SizedBox(
+          height: 10,
+        ),
         Container(
           decoration: BoxDecoration(
             color: Colors.white,

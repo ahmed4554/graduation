@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:project/modules/control_view/control_view.dart';
 import 'package:project/modules/onboarding_screen/on_boarding_screen.dart';
 import '../../components/custom_color.dart';
 
@@ -19,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
         builder: (context) {
-          return const OnBoardingScreen();
+          return const ControlView();
         },
       ),
     );

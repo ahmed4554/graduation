@@ -15,6 +15,10 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   @override
+  void initState() {
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
@@ -26,7 +30,7 @@ class _MainPageState extends State<MainPage> {
           ),
           Padding(
             padding: const EdgeInsets.only(
-              top: 90.0,
+              top: 60.0,
             ),
             child: Container(
               decoration: BoxDecoration(
@@ -39,7 +43,8 @@ class _MainPageState extends State<MainPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Stack(
-                    children: [
+                    children:
+                    [
                       Center(
                         child: Container(
                           width: 110.0,
@@ -80,7 +85,8 @@ class _MainPageState extends State<MainPage> {
                       child: SizedBox(
                         width: double.infinity,
                         child: Column(
-                          children: [
+                          children:
+                          [
                             const SizedBox(
                               height: 10.0,
                             ),
@@ -206,68 +212,8 @@ class _MainPageState extends State<MainPage> {
                             InkWell(
                               onTap: () {
                                 Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const PrescriptionHistory(),
-                                  ),
-                                );
-                              },
-                              child: Container(
-                                width: 343.0,
-                                height: 90.29,
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(.9),
-                                  borderRadius: const BorderRadius.only(
-                                    topRight: Radius.circular(10.0),
-                                    bottomRight: Radius.circular(10.0),
-                                    topLeft: Radius.circular(30.0),
-                                    bottomLeft: Radius.circular(30.0),
-                                  ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      spreadRadius: 3,
-                                      blurRadius: 9,
-                                    ),
-                                  ],
-                                ),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      width: 110.0,
-                                      height: 90.0,
-                                      child: Image.asset(
-                                          'assets/images/parentHome/board.png'),
-                                    ),
-                                    const Spacer(),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        top: 36.0,
-                                        right: 30.0,
-                                      ),
-                                      child: Text(
-                                        'Reminder',
-                                        style: TextStyle(
-                                          color: CustomColor.black1
-                                              .withOpacity(0.8),
-                                          fontSize: 24.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 24.0,
-                            ),
-                            InkWell(
-                              onTap: () {
-                                Navigator.of(context).push(
                                   MaterialPageRoute(builder: (context) {
-                                    return const HealthyFoodScreen();
+                                    return  HealthyFoodScreen();
                                   }),
                                 );
                               },
@@ -338,9 +284,10 @@ class _MainPageState extends State<MainPage> {
                             InkWell(
                               onTap: () {
                                 Navigator.of(context).push(
-                                  MaterialPageRoute(builder: (context) {
-                                    return const ChatGroup();
-                                  }),
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                    const PrescriptionHistory(),
+                                  ),
                                 );
                               },
                               child: Container(
@@ -369,13 +316,67 @@ class _MainPageState extends State<MainPage> {
                                       width: 110.0,
                                       height: 90.0,
                                       child: Image.asset(
-                                          'assets/images/parentHome/chat.png'),
+                                          'assets/images/parentHome/board.png'),
                                     ),
                                     const Spacer(),
                                     Padding(
                                       padding: const EdgeInsets.only(
                                         top: 36.0,
                                         right: 30.0,
+                                      ),
+                                      child: Text(
+                                        'Patient History',
+                                        style: TextStyle(
+                                          color: CustomColor.black1
+                                              .withOpacity(0.8),
+                                          fontSize: 24.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 24.0,
+                            ),
+                            InkWell(
+                              onTap: ()
+                              {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (context) {
+                                    return const ChatGroup();
+                                  }),
+                                );
+                              },
+                              child: Container(
+                                width: 343.0,
+                                height: 90.29,
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(.9),
+                                  borderRadius: const BorderRadius.only(
+                                    topRight: Radius.circular(10.0),
+                                    bottomRight: Radius.circular(10.0),
+                                    topLeft: Radius.circular(30.0),
+                                    bottomLeft: Radius.circular(30.0),
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      spreadRadius: 3,
+                                      blurRadius: 9,
+                                    ),
+                                  ],
+                                ),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children:
+                                  [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                        top: 36.0,
+                                        left: 30.0,
                                       ),
                                       child: Text(
                                         'Chat Group',
@@ -386,6 +387,13 @@ class _MainPageState extends State<MainPage> {
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
+                                    ),
+                                    const Spacer(),
+                                    SizedBox(
+                                      width: 110.0,
+                                      height: 90.0,
+                                      child: Image.asset(
+                                          'assets/images/parentHome/chat.png'),
                                     ),
                                   ],
                                 ),

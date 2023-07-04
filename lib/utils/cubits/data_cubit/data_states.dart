@@ -28,7 +28,6 @@ class AlarmSetFailded extends DataStates {
   AlarmSetFailded({required this.error});
 }
 
-
 class SendMessageLoading extends DataStates {}
 
 class SendMessageSuccess extends DataStates {}
@@ -72,3 +71,19 @@ class GetAllImageFailded extends DataStates {
     required this.error,
   });
 }
+
+class UserLoggedIn extends DataStates {}
+
+class UserLoggedOut extends DataStates {}
+
+class GetUserDataOnOpenSUcces extends DataStates {}
+
+class GetUserDataOnOpenLoading extends DataStates {}
+
+class GetUserDataOnOpenError extends DataStates {
+  String? error;
+  GetUserDataOnOpenError({required this.error});
+}
+
+class OnBoardingScreenFinish extends DataStates {}
+

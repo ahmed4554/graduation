@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:project/components/components.dart';
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
+import 'package:project/constants/constants.dart';
+import 'package:project/modules/access_screen/access_screen.dart';
 import 'package:project/modules/guest_screen/donor_cubit.dart';
 import 'package:project/modules/guest_screen/donor_cubit_states.dart';
 import 'package:project/modules/login_screen/cubit/states.dart';
@@ -70,7 +72,7 @@ class _GuestScreenState extends State<GuestScreen> {
                     top: MediaQuery.of(context).size.height * 0.46),
                 child: BlocConsumer<DonorCubit, DonorCubitStates>(
                   listener: (context, state) {
-                    if (state is GuestSuccessState) {
+                    if (state is DonorSuccessState) {
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
@@ -100,9 +102,12 @@ class _GuestScreenState extends State<GuestScreen> {
                             ],
                           );
                         },
-                      );
+                      ).then((value) {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const AccessScreen()));
+                      });
                     }
-                    if (state is GuestErrorState) {
+                    if (state is DonorErrorState) {
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
@@ -234,16 +239,7 @@ class _GuestScreenState extends State<GuestScreen> {
                             hintText: 'Select Your Blood Type',
                             selectedStyle: const TextStyle(
                                 fontSize: 18.0, fontWeight: FontWeight.bold),
-                            items: const [
-                              'A+',
-                              'A-',
-                              'B+',
-                              'B-',
-                              'O+',
-                              'O-',
-                              'AB+',
-                              'AB-'
-                            ],
+                            items: bloodKinds,
                             listItemStyle: const TextStyle(
                                 fontSize: 18.0, fontWeight: FontWeight.bold),
                             controller: c.bloodTypeController,
@@ -255,13 +251,7 @@ class _GuestScreenState extends State<GuestScreen> {
                             label: 'Be A Donor',
                             onTap: () {
                               if (formKey.currentState!.validate()) {
-                                c.addDonor(
-                                  name: c.nameController.text,
-                                  phoneNumber: c.phoneNumberController.text,
-                                  long: c.long!,
-                                  lat: c.lat!,
-                                  bloodType: c.bloodTypeController.text,
-                                );
+                                c.addDonor();
                               }
                             },
                           ),

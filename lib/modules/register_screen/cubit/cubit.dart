@@ -1,14 +1,21 @@
 import 'dart:developer';
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:project/components/dio_helper.dart';
-import 'package:project/components/end_points.dart';
-import 'package:project/modules/login_screen/cubit/cubit.dart';
+
+import 'package:project/models/user_model/user_model.dart';
+import 'package:project/modules/access_screen/access_screen.dart';
 import 'package:project/modules/register_screen/cubit/states.dart';
-import '../../../components/cache_helper.dart';
+import 'package:project/utils/cubits/data_cubit/data_cubit.dart';
+
+import '../../../constants/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import '../../home/home_screen.dart';
 
 class RegisterCubit extends Cubit<RegisterCubitState> {
   RegisterCubit() : super(RegisterInitialState());
@@ -23,44 +30,41 @@ class RegisterCubit extends Cubit<RegisterCubitState> {
   var phoneController = TextEditingController();
   var userNameController = TextEditingController();
   var passwordController = TextEditingController();
-  File? image;
+  File? userImage;
+  String? userImageUrl;
+
+  final storage = FirebaseStorage.instance;
 
   Response? uploadPhoto;
+  FirebaseAuth auth = FirebaseAuth.instance;
+  CollectionReference database = FirebaseFirestore.instance.collection('users');
 
-  void userRegister({
-    required String email,
-    required String password,
-    required String phoneNumber,
-    required String userName,
-    context,
-  }) {
-    emit(RegisterInitialState());
-
-    DioHelper.postData(
-      url: register,
-      data: {
-        'email': email,
-        'password': password,
-        'user_name': userName,
-        "phone_number": phoneNumber,
-      },
-    ).then((value)async {
-      log(value.data.toString());
-      await CacheHelper.saveData(key: 'userName', value: userNameController.text);
-      await CacheHelper.saveData(key: 'email', value: emailController.text);
-      await CacheHelper.saveData(key: 'password', value: passwordController.text);
-      await CacheHelper.saveData(key: 'phone_number', value: phoneController.text);
+  void userRegister(context) async {
+    try {
+      await auth
+          .createUserWithEmailAndPassword(
+              email: emailController.text, password: passwordController.text)
+          .then((value) async {
+        model = UserModel(
+          email: emailController.text,
+          phoneNumber: phoneController.text,
+          userName: userNameController.text,
+          id: value.user!.uid,
+          image: userImageUrl,
+        );
+        await database.doc(value.user!.uid).set(model!.toJson());
+      });
 
       emit(RegisterSuccessState());
-      emailController.clear();
-      userNameController.clear();
-      phoneController.clear();
-      passwordController.clear();
+    } on FirebaseException catch (e) {
+      emit(RegisterErrorState(e.toString()));
 
-    }).catchError((error) {
-      log(error.toString());
-      emit(RegisterErrorState(error.toString()));
-    });
+      rethrow;
+    } catch (e) {
+      emit(RegisterErrorState(e.toString()));
+
+      rethrow;
+    }
   }
 
   void changePasswordVisibility() {
@@ -71,58 +75,139 @@ class RegisterCubit extends Cubit<RegisterCubitState> {
     emit(ChangePasswordVisibility());
   }
 
-  void _upload(File file) async {
-    String fileName = file.path.split('/').last;
-
-    FormData data = FormData.fromMap({
-      "file": await MultipartFile.fromFile(
-        file.path,
-        filename: fileName,
-      ),
-    });
-
-    Dio dio = Dio();
-
-    dio
-        .post("http://192.168.43.225/api/media", data: data)
-        .then((response) => print(response))
-        .catchError((error) => print(error));
-  }
-
-  Future getImage(context) async {
+  Future<void> getImage(context) async {
     final picker = ImagePicker();
 
     dynamic _pickedFile = await picker.pickImage(
-        source: ImageSource.gallery,
-        imageQuality: 50, // <- Reduce Image quality
-        maxHeight: 500, // <- reduce the image size
-        maxWidth: 500);
+      source: ImageSource.gallery,
+      imageQuality: 50, // <- Reduce Image quality
+      maxHeight: 500, // <- reduce the image size
+      maxWidth: 500,
+    );
 
-    image = File(_pickedFile.path);
-
-    uploadProfilePhoto(context: context);
+    userImage = File(_pickedFile.path);
+    uploudUserImagePhoto(context);
   }
 
-  void uploadProfilePhoto({
-    required context
-}) async {
-    emit(UploadPhotoLoadingState());
-
-    FormData photoData = FormData.fromMap({
-      'file': await MultipartFile.fromFile(
-        image!.path,
-        filename: image!.path.split('/').last,
-      )
+  void uploudUserImagePhoto(context) async {
+    emit(UploadUserPhotoLoadingState());
+    await storage
+        .ref('Profile_images/${userImage!.path.split('/').last}')
+        .putFile(userImage!)
+        .then((value) async {
+      userImageUrl = await value.ref.getDownloadURL();
+      emit(UploadUserPhotoSuccessState());
+    }).catchError((e) {
+      log(e.toString());
+      emit(UploadUserPhotoErrorState(e.toString()));
     });
-    try{
-      uploadPhoto = await DioHelper.postImage(
-          url: 'upload-photo/${LoginCubit.get(context).id}',
-          data: photoData
-      );
-      emit(UploadPhotoSuccessState());
-    }catch(e){
-      emit(UploadPhotoErrorState(e.toString()));
+  }
+
+  void logOut(context) async {
+    emit(LogOutLoading());
+    try {
+      await auth.signOut();
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => const AccessScreen()),
+          (route) => false);
+      model = null;
+      emit(LogOutSucces());
+    } on FirebaseAuthException catch (e) {
+      emit(LogOutError(e.toString()));
+      rethrow;
+    } on FirebaseException catch (e) {
+      emit(LogOutError(e.toString()));
+      rethrow;
+    } catch (e) {
+      emit(LogOutError(e.toString()));
       rethrow;
     }
   }
+
+  // void uploadProfilePhoto({required context}) async {
+  //   emit(UploadPhotoLoadingState());
+
+  //   FormData photoData = FormData.fromMap({
+  //     'file': await MultipartFile.fromFile(
+  //       image!.path,
+  //       filename: image!.path.split('/').last,
+  //     )
+  //   });
+  //   try {
+  //     uploadPhoto = await DioHelper.postImage(
+  //         url: 'upload-photo/${model!.id}', data: photoData);
+
+  //     getUserPhoto(context);
+
+  //     emit(UploadPhotoSuccessState());
+  //   } catch (e) {
+  //     emit(UploadPhotoErrorState(e.toString()));
+  //     rethrow;
+  //   }
+  // }
+
+  // Response? userImageResponse;
+
+  // var userImage;
+
+  // void getUserImage() async {
+  //   final Directory appDocumentsDir = await getApplicationDocumentsDirectory();
+
+  //   printWarning(model!.email!);
+  //   printWarning(model!.image!.toString());
+
+  //   if (model != null) {
+  //     emit(PrepareImageAsBytesAndGetLoading());
+
+  //     Directory imageDirectory =
+  //         await Directory('${appDocumentsDir.path}/images/')
+  //             .create(recursive: true);
+
+  //     userImage = await File('${imageDirectory.path}/${model!.email}.jpg')
+  //         .writeAsBytes(model!.image!);
+  //     printWarning('this is user image $userImage');
+  //     emit(PrepareImageAsBytesAndGetSuccess());
+  //   }
+  //     emit(PrepareImageAsBytesAndGetSuccess());
+  // }
+
+  // void getUserPhoto(context) async {
+  //   emit(GetUserImageLoading());
+  //   try {
+  //     // get the profile photo from the api
+  //     userImageResponse =
+  //         await DioHelper.getData(url: 'uploaded-photos/${model!.id}');
+  //     print(userImageResponse!.data);
+  //     // preparing the image to insert in the database
+  //     var base64Image = image!.readAsBytesSync();
+  //     model!.image = base64Image;
+  //     emit(AddImageBytesInTheModel());
+
+  //     try {
+  //       // insert into the databse
+  //       emit(UpdateUserDataInTheDataBaseLoading());
+  //       await DatabaseHelper.db.updateDb(model!);
+  //       getUserData(context);
+  //       getUserImage();
+  //       emit(UpdateUserDataInTheDataBaseSuccess());
+  //       emit(GetUserImageSuccess());
+
+  //     } catch (e) {
+  //       emit(UpdateUserDataInTheDataBaseError());
+  //       rethrow;
+  //     }
+  //     emit(GetUserImageSuccess());
+  //   } catch (e) {
+  //     emit(GetUserImageFailded(error: e.toString()));
+  //     rethrow;
+  //   }
+  // }
+
+  // void logOut(context) async {
+  //   await CacheHelper.removeData(key: 'isLogged');
+  //   Navigator.of(context).pushAndRemoveUntil(
+  //       MaterialPageRoute(builder: (context) => const AccessScreen()),
+  //       (route) => false);
+  //   emit(UserLoggedOut());
+  // }
 }

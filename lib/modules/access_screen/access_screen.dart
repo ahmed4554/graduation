@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lottie/lottie.dart';
 import 'package:project/components/custom_color.dart';
 import 'package:project/modules/child_app/home_Screen/home_screen.dart';
+import 'package:project/modules/home/home_screen.dart';
 import 'package:project/modules/login_screen/login_screen.dart';
 import '../../components/components.dart';
+import '../../constants/constants.dart';
 import '../guest_screen/guest_screen.dart';
 
 class AccessScreen extends StatefulWidget {
@@ -129,7 +132,8 @@ class _AccessScreenState extends State<AccessScreen> {
                         });
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                              builder: (context) => LoginScreen()),
+                              builder: (context) =>
+                                  model == null ? LoginScreen() : HomeScreen()),
                         );
                       },
                       child: Container(
@@ -167,13 +171,69 @@ class _AccessScreenState extends State<AccessScreen> {
                     ),
                     InkWell(
                       onTap: () {
-                        setState(() {
-                          userType = UserType.child;
-                        });
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) => const ChildHomeScreen()),
-                        );
+                        if (model != null) {
+                          setState(() {
+                            userType = UserType.child;
+                          });
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => const ChildHomeScreen()),
+                          );
+                        } else {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return SimpleDialog(
+                                backgroundColor: Colors.grey.shade100,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
+                                children: [
+                                  Center(
+                                    child: LottieBuilder.asset(
+                                        'assets/lotties/error.json'),
+                                  ),
+                                  const SizedBox(
+                                    height: 10.0,
+                                  ),
+                                  const Center(
+                                    child: Text(
+                                      'You Must Login First',
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 10.0,
+                                  ),
+                                  Center(
+                                    child: TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) => LoginScreen(),
+                                          ),
+                                        );
+                                      },
+                                      child: const Text(
+                                        "Login Now",
+                                        style: TextStyle(
+                                          color: Colors.black54,
+                                          fontSize: 22,
+                                          decoration: TextDecoration.underline,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }
                       },
                       child: Container(
                         height: 270.0,
@@ -209,10 +269,12 @@ class _AccessScreenState extends State<AccessScreen> {
                   ],
                 ),
               ),
-              const SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
               OutlinedButton(
                 style: OutlinedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),

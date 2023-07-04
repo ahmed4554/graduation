@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:project/components/custom_color.dart';
@@ -7,7 +8,6 @@ import 'package:project/modules/child_app/content_screens/alphabet/alphabet.dart
 import 'package:project/modules/child_app/content_screens/alphabet2/alphabet2.dart';
 import 'package:project/modules/child_app/levelOne_screen/level1_screen.dart';
 
-
 class AlphabetTwoScreen extends StatefulWidget {
   const AlphabetTwoScreen({Key? key}) : super(key: key);
 
@@ -16,7 +16,6 @@ class AlphabetTwoScreen extends StatefulWidget {
 }
 
 class _AlphabetTwoScreenState extends State<AlphabetTwoScreen> {
-
   Alphabet2? char2;
 
   @override
@@ -36,13 +35,8 @@ class _AlphabetTwoScreenState extends State<AlphabetTwoScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new),
           color: Colors.white,
-          onPressed: ()
-          {
-            Navigator.of(context).pop(
-              MaterialPageRoute(builder: (context) {
-                return const LevelOneScreen();
-              }),
-            );
+          onPressed: () {
+            Navigator.of(context).pop();
           },
         ),
         centerTitle: true,
@@ -70,7 +64,7 @@ class _AlphabetTwoScreenState extends State<AlphabetTwoScreen> {
                   CustomColor.blue11.withOpacity(.8),
                   Colors.white,
                 ],
-                stops: const [.4,.6],
+                stops: const [.4, .6],
                 tileMode: TileMode.clamp,
               ),
             ),
@@ -82,24 +76,21 @@ class _AlphabetTwoScreenState extends State<AlphabetTwoScreen> {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-
                   Container(
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     width: 102.0,
                     height: 102.0,
                     margin: const EdgeInsets.only(top: 10),
-                    decoration: BoxDecoration(
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.white,
-                            spreadRadius: 1,
-                            blurRadius: 10,
-                            offset: Offset.zero,
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(50.0)),
-                    child: Image.asset(
-                      "assets/images/profile/eliza.png",
+                    decoration: BoxDecoration(boxShadow: const [
+                      BoxShadow(
+                        color: Colors.white,
+                        spreadRadius: 1,
+                        blurRadius: 10,
+                        offset: Offset.zero,
+                      )
+                    ], borderRadius: BorderRadius.circular(50.0)),
+                    child: CachedNetworkImage(
+                      imageUrl: model!.image!,
                     ),
                   ),
                   const SizedBox(
@@ -123,7 +114,7 @@ class _AlphabetTwoScreenState extends State<AlphabetTwoScreen> {
                       child: Text(
                         'Alphabet',
                         style: TextStyle(
-                            fontSize: 26.0,
+                          fontSize: 26.0,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -143,21 +134,19 @@ class _AlphabetTwoScreenState extends State<AlphabetTwoScreen> {
                       childAspectRatio: 1 / 1.1,
                       children: List.generate(
                         char2!.char!.length,
-                            (index) => InkWell(
+                        (index) => InkWell(
                           onTap: () {
                             Navigator.of(context).push(
-                              MaterialPageRoute(builder:
-                                  (context) {
-                                SystemChrome.setPreferredOrientations(
-                                    [
-                                      DeviceOrientation.landscapeLeft,
-                                    ]
-                                );
-                                return BoardScreen(
-                                  board: char2 ,
-                                  index: index,
-                                );
-                              },
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  SystemChrome.setPreferredOrientations([
+                                    DeviceOrientation.landscapeLeft,
+                                  ]);
+                                  return BoardScreen(
+                                    board: char2,
+                                    index: index,
+                                  );
+                                },
                               ),
                             );
                           },

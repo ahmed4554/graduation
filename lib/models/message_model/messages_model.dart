@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MessagesModel {
-  String? text, kind, pic, userName;
+  String? text, kind, pic, userName, senderImage;
   Timestamp? date;
 
   MessagesModel({
@@ -9,6 +9,7 @@ class MessagesModel {
     required this.kind,
     required this.pic,
     required this.text,
+    required this.senderImage,
     required this.userName,
   });
 
@@ -18,6 +19,7 @@ class MessagesModel {
     pic = json['pic'];
     date = json['date'] ?? Timestamp.now();
     userName = json['userName'];
+    senderImage = json['senderImage'];
   }
 
   Map<String, dynamic> toMap() => {
@@ -26,5 +28,6 @@ class MessagesModel {
         'pic': pic,
         'date': date,
         'userName': userName,
+        'senderImage': senderImage,
       };
 }

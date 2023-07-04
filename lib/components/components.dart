@@ -3,12 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:project/components/custom_color.dart';
 import 'package:project/constants/constants.dart';
+import 'package:project/models/blood_donor_info/blood_donor_info.dart';
 import 'package:project/models/follow_child_model/follow_child_model.dart';
 import 'package:project/models/message_model/messages_model.dart';
+import 'package:project/models/prescription_model/prescription_model.dart';
 import 'package:project/modules/child_app/activity_screen/activity_screen.dart';
+import 'package:project/modules/donor_list/blood.dart';
+import 'package:project/modules/healthy_foodInner/healthy_food_inner.dart';
 import 'package:project/modules/login_screen/cubit/cubit.dart';
 
+import '../models/chat_bot_model.dart';
 import '../modules/child_app/content_screens/animals/animals.dart';
+import '../modules/webview_screen/webview_screen.dart';
 
 class AppName extends StatelessWidget {
   const AppName({Key? key}) : super(key: key);
@@ -40,20 +46,20 @@ class AppName extends StatelessWidget {
 }
 
 class CustomInputField extends StatelessWidget {
-  CustomInputField({
-    Key? key,
-    required this.type,
-    required this.validate,
-    required this.icon,
-    required this.label,
-    required this.Controller
-  }) : super(key: key);
+  CustomInputField(
+      {Key? key,
+      required this.type,
+      required this.validate,
+      required this.icon,
+      required this.label,
+      required this.Controller})
+      : super(key: key);
 
-    TextInputType type;
-    final IconData icon;
-    final String label;
-    String? Function(String?)? validate;
-    var Controller ;
+  TextInputType type;
+  final IconData icon;
+  final String label;
+  String? Function(String?)? validate;
+  var Controller;
 
   @override
   Widget build(BuildContext context) {
@@ -74,12 +80,12 @@ class CustomInputField extends StatelessWidget {
           icon,
           color: Colors.black.withOpacity(.5),
         ),
-        ),
+      ),
       controller: Controller,
       validator: validate,
       keyboardType: type,
-      );
-   }
+    );
+  }
 }
 
 class CustomInputField2 extends StatelessWidget {
@@ -95,7 +101,6 @@ class CustomInputField2 extends StatelessWidget {
     required this.suffixColor,
   }) : super(key: key);
 
-
   IconData icon2;
   final IconData icon;
   final String label;
@@ -104,7 +109,6 @@ class CustomInputField2 extends StatelessWidget {
   var passwordController;
   VoidCallback? suffixPressed;
   Color suffixColor;
-
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +126,7 @@ class CustomInputField2 extends StatelessWidget {
           color: Colors.black.withOpacity(.5),
         ),
         suffixIcon: IconButton(
-          onPressed:suffixPressed,
+          onPressed: suffixPressed,
           icon: Icon(
             icon2,
             color: suffixColor,
@@ -385,43 +389,93 @@ class ChatItem extends StatelessWidget {
   }
 }
 
-class HealtyFoodComponent extends StatelessWidget {
-  const HealtyFoodComponent({
+class HealthyFoodComponent extends StatelessWidget {
+  const HealthyFoodComponent({
     Key? key,
+    required this.controller,
     required this.data,
     required this.pic,
   }) : super(key: key);
   final String data;
   final String pic;
+  final dynamic controller;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          data,
-          style: const TextStyle(
-            fontSize: 19,
-            color: Colors.black54,
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 14.0,
+      ),
+      child: Stack(
+        children: [
+          Column(
+            children: [
+              Row(
+                children: [
+                  Image(
+                    image: AssetImage(pic),
+                    width: 300.0,
+                    height: 192.0,
+                    fit: BoxFit.contain,
+                  ),
+                  IconButton(
+                    onPressed: () =>
+                        HealthyFoodInnerScreen.pageController.nextPage(
+                      duration: const Duration(milliseconds: 250),
+                      curve: Curves.bounceInOut,
+                    ),
+                    icon: const Icon(
+                      Icons.arrow_forward_rounded,
+                      color: CustomColor.blue11,
+                      size: 35.0,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Icon(
+                    Icons.circle_rounded,
+                    color: CustomColor.blue11,
+                    size: 15.0,
+                  ),
+                  const SizedBox(
+                    width: 10.0,
+                  ),
+                  Container(
+                    width: 135.0,
+                    child: Text(
+                      data,
+                      style: const TextStyle(
+                        height: 1.4,
+                        wordSpacing: 1.5,
+                        fontSize: 19,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black54,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
-        ),
-        const SizedBox(
-          height: 15,
-        ),
-        Image(
-          image: AssetImage(pic),
-          width: MediaQuery.of(context).size.width,
-          height: 230,
-          fit: BoxFit.contain,
-        ),
-        Container(
-          margin: const EdgeInsets.only(
-            top: 15,
+          Positioned(
+            left: 8.0,
+            top: MediaQuery.of(context).size.height - 660,
+            child: SizedBox(
+              width: 620.0,
+              height: 670.0,
+              child: Image(
+                image: AssetImage('assets/images/girl.png'),
+              ),
+            ),
           ),
-          height: 1.0,
-          color: Colors.black45,
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -614,8 +668,7 @@ class TextAnswer extends StatefulWidget {
 }
 
 class _TextAnswerState extends State<TextAnswer>
-    with AutomaticKeepAliveClientMixin<TextAnswer>{
-
+    with AutomaticKeepAliveClientMixin<TextAnswer> {
   bool? right;
 
   @override
@@ -629,15 +682,12 @@ class _TextAnswerState extends State<TextAnswer>
         if (widget.model.answer == widget.model.options![widget.index]) {
           right = true;
           controller.nextPage(
-              duration: const Duration(milliseconds: 450), curve: Curves.bounceInOut);
-          setState(() {
-
-          });
+              duration: const Duration(milliseconds: 450),
+              curve: Curves.bounceInOut);
+          setState(() {});
         } else {
           right = false;
-          setState(() {
-
-          });
+          setState(() {});
         }
       },
       child: Container(
@@ -767,9 +817,9 @@ class _MultiChoiseQuestionComponentState
 class UserMessage extends StatelessWidget {
   UserMessage({
     Key? key,
-    required this.model,
+    required this.messagesModel,
   }) : super(key: key);
-  MessagesModel? model;
+  MessagesModel? messagesModel;
 
   @override
   Widget build(BuildContext context) {
@@ -779,38 +829,40 @@ class UserMessage extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const CircleAvatar(
+          CircleAvatar(
             backgroundColor: Colors.blue,
+            backgroundImage: CachedNetworkImageProvider(messagesModel!.senderImage!),
           ),
           const SizedBox(
             width: 10,
           ),
-          if (model!.kind == 'text')
+          if (messagesModel!.kind == 'text')
             Container(
               padding: const EdgeInsets.all(10),
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.blue.shade200,
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Text(
-                '${model!.text}',
+                '${messagesModel!.text}',
                 style: const TextStyle(
                   fontSize: 14,
+                  fontWeight: FontWeight.bold,
                   color: Color(0xff192A3E),
                 ),
               ),
             ),
-          if (model!.kind == 'pic')
+          if (messagesModel!.kind == 'pic')
             Container(
               padding: const EdgeInsets.all(10),
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.blue.shade200,
                 borderRadius: BorderRadius.circular(15),
               ),
               child: CachedNetworkImage(
-                imageUrl: '${model!.pic}',
+                imageUrl: '${messagesModel!.pic}',
                 progressIndicatorBuilder: (context, url, downloadProgress) =>
                     LinearProgressIndicator(value: downloadProgress.progress),
                 errorWidget: (context, url, error) => const Icon(Icons.error),
@@ -826,9 +878,9 @@ class UserMessage extends StatelessWidget {
 class BotMessage extends StatelessWidget {
   BotMessage({
     Key? key,
-    required this.model,
+    required this.messagesModel,
   }) : super(key: key);
-  MessagesModel? model;
+  MessagesModel? messagesModel;
 
   @override
   Widget build(BuildContext context) {
@@ -838,38 +890,39 @@ class BotMessage extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const CircleAvatar(
+          CircleAvatar(
             backgroundColor: Colors.blue,
+            backgroundImage: CachedNetworkImageProvider(messagesModel!.senderImage!),
           ),
           const SizedBox(
             width: 10,
           ),
-          if (model!.kind == 'text')
+          if (messagesModel!.kind == 'text')
             Container(
               padding: const EdgeInsets.all(10),
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.grey.shade200,
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Text(
-                '${model!.text}',
+                '${messagesModel!.text}',
                 style: const TextStyle(
                   fontSize: 14,
                   color: Color(0xff192A3E),
                 ),
               ),
             ),
-          if (model!.kind == 'pic')
+          if (messagesModel!.kind == 'pic')
             Container(
               padding: const EdgeInsets.all(10),
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.grey.shade200,
                 borderRadius: BorderRadius.circular(15),
               ),
               child: CachedNetworkImage(
-                imageUrl: '${model!.pic}',
+                imageUrl: '${messagesModel!.pic}',
                 progressIndicatorBuilder: (context, url, downloadProgress) =>
                     LinearProgressIndicator(value: downloadProgress.progress),
                 errorWidget: (context, url, error) => const Icon(Icons.error),
@@ -1032,7 +1085,7 @@ class BotMessage extends StatelessWidget {
 // }
 
 class FollowChildComponent extends StatelessWidget {
-  const FollowChildComponent({Key? key , required this.model}) : super(key: key);
+  const FollowChildComponent({Key? key, required this.model}) : super(key: key);
 
   final FollowChildModel model;
   final Radius radius = const Radius.circular(25);
@@ -1042,14 +1095,12 @@ class FollowChildComponent extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        padding: const EdgeInsets.symmetric(
-          vertical: 20.0,
-          horizontal: 20.0
-        ),
+        height: 500.0,
+        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
           color: CustomColor.deepBlue.withOpacity(.9),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Colors.white,
               blurRadius: 2,
@@ -1058,51 +1109,48 @@ class FollowChildComponent extends StatelessWidget {
             ),
           ],
         ),
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          children:
-          [
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children:
-              [
-                const Text(
-                  'Education Study \n Record Report',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 32.0,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'NunitoB',
+              children: [
+                Center(
+                  child: Text(
+                    'Education Study \n Record Report',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 36.0,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'NunitoB',
+                    ),
                   ),
                 ),
                 const SizedBox(
-                  height: 30.0,
+                  height: 60.0,
                 ),
                 Stack(
-                  children:
-                  [
+                  children: [
                     SizedBox(
-                      width: 120.0,
-                      height: 120.0,
+                      width: 180.0,
+                      height: 180.0,
                       child: CircularProgressIndicator(
                         strokeWidth: 14.0,
                         color: Colors.white,
                         backgroundColor: CustomColor.blue11,
                         value: model.progress!.toDouble(),
-                        valueColor: AlwaysStoppedAnimation<Color>(CustomColor.mastard),
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(CustomColor.mastard),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
-                        top: 45.0,
-                        left: 30.0
-                      ),
+                      padding: const EdgeInsets.only(top: 70.0, left: 55.0),
                       child: Text(
                         '${(model.progress! * 100).toInt()}%',
                         style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 30,
+                          fontSize: 50,
                         ),
                       ),
                     ),
@@ -1111,74 +1159,72 @@ class FollowChildComponent extends StatelessWidget {
               ],
             ),
             const Spacer(),
-            Column(
-              children:
-              [
-                const SizedBox(
-                  height: 90.0,
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 18,
-                    vertical: 7,
-                  ),
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(10.0),
-                      topRight: Radius.circular(10.0),
-                      bottomLeft: Radius.circular(10.0),
-                      bottomRight: Radius.circular(10.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 14.0,
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 18,
+                      vertical: 7,
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.white,
-                        blurRadius: 1,
-                        offset: Offset.zero,
-                        spreadRadius: 1,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10.0),
+                        topRight: Radius.circular(10.0),
+                        bottomLeft: Radius.circular(10.0),
+                        bottomRight: Radius.circular(10.0),
                       ),
-                    ],
-                  ),
-                  child: Text(
-                    '${model.activity}',
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.white,
+                          blurRadius: 1,
+                          offset: Offset.zero,
+                          spreadRadius: 1,
+                        ),
+                      ],
                     ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50.0),
-                      topRight: Radius.circular(50.0),
-                      bottomLeft: Radius.circular(50.0),
-                      bottomRight: Radius.circular(50.0),
-                    ),
-                    boxShadow:
-                    [
-                      BoxShadow(
-                        color: Colors.white,
-                        blurRadius: 1,
-                        offset: Offset.zero,
-                        spreadRadius: 1,
+                    child: Text(
+                      '${model.activity}',
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 26,
                       ),
-                    ],
-                  ),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 45,
-                    child: Image.asset(
-                      model.pic!,
-                      width: 52,
                     ),
                   ),
-                ),
-              ],
+                  const Spacer(),
+                  Container(
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(60.0),
+                        topRight: Radius.circular(60.0),
+                        bottomLeft: Radius.circular(60.0),
+                        bottomRight: Radius.circular(60.0),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.white,
+                          blurRadius: 1,
+                          offset: Offset.zero,
+                          spreadRadius: 1,
+                        ),
+                      ],
+                    ),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.white,
+                      radius: 55,
+                      child: Image.asset(
+                        model.pic!,
+                        width: 70,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -1187,12 +1233,12 @@ class FollowChildComponent extends StatelessWidget {
   }
 }
 
-
 class CategoryComponent extends StatelessWidget {
-  const CategoryComponent({Key? key,
-    required this.color,
-    required this.name,
-    required this.picName})
+  const CategoryComponent(
+      {Key? key,
+      required this.color,
+      required this.name,
+      required this.picName})
       : super(key: key);
 
   final Color color;
@@ -1246,7 +1292,12 @@ class CategoryComponent extends StatelessWidget {
 }
 
 class BloodRequestComponent extends StatelessWidget {
-  const BloodRequestComponent({super.key});
+  BloodRequestComponent({
+    super.key,
+    required this.receiveInfo,
+  });
+
+  BloodDonorInfo? receiveInfo;
 
   @override
   Widget build(BuildContext context) {
@@ -1273,7 +1324,7 @@ class BloodRequestComponent extends StatelessWidget {
             radius: 35,
             backgroundColor: Colors.grey.shade300,
             child: Text(
-              'A+',
+              receiveInfo!.bloodType.toString(),
               style: TextStyle(
                 fontSize: 35,
                 fontWeight: FontWeight.bold,
@@ -1297,7 +1348,7 @@ class BloodRequestComponent extends StatelessWidget {
                     width: 7,
                   ),
                   Text(
-                    'Ahmed Mohamed',
+                    receiveInfo!.donorName.toString(),
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -1318,8 +1369,8 @@ class BloodRequestComponent extends StatelessWidget {
                   const SizedBox(
                     width: 7,
                   ),
-                  const Text(
-                    '01091857273',
+                  Text(
+                    receiveInfo!.phoneNumber.toString(),
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -1337,9 +1388,15 @@ class BloodRequestComponent extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.grey.shade300,
                   ),
-                  onPressed: ()
-                  {
-
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => WebViewScreen(
+                          long: receiveInfo!.long!,
+                          lat: receiveInfo!.lat!,
+                        ),
+                      ),
+                    );
                   },
                   child: const Text('Show On Map',
                       style: TextStyle(
@@ -1355,6 +1412,170 @@ class BloodRequestComponent extends StatelessWidget {
           Image.asset(
             'assets/images/drop.png',
             //color: CustomColor.blue11,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class RightMessage extends StatelessWidget {
+  const RightMessage({Key? key, required this.msg, required this.isUser})
+      : super(key: key);
+  final ChatBotModel msg;
+  final bool isUser;
+
+  @override
+  Widget build(BuildContext context) {
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const CircleAvatar(
+            backgroundColor: Colors.blue,
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          Container(
+            padding: const EdgeInsets.all(10),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Text(
+              '${msg.rightMessage}',
+              style: const TextStyle(
+                fontSize: 14,
+                color: Color(0xff192A3E),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class LeftMessage extends StatelessWidget {
+  const LeftMessage({Key? key, required this.msg, required this.isUser})
+      : super(key: key);
+  final ChatBotModel msg;
+  final bool isUser;
+
+  @override
+  Widget build(BuildContext context) {
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const CircleAvatar(
+            backgroundColor: Colors.blue,
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          Container(
+            padding: const EdgeInsets.all(10),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Text(
+              '${msg.leftMessage}',
+              style: const TextStyle(
+                fontSize: 14,
+                color: Color(0xff192A3E),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class PrescriptionComponent extends StatelessWidget {
+  PrescriptionComponent({
+    super.key,
+    required this.model,
+  });
+
+  PrescriptionModel model;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 150,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            height: 150,
+            width: 120,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              image: DecorationImage(
+                fit: BoxFit.fill,
+                image: CachedNetworkImageProvider(model.image!),
+              ),
+              color: CustomColor.blue11,
+            ),
+          ),
+          Expanded(
+            child: Container(
+              height: 120,
+              margin: const EdgeInsets.only(right: 10),
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12,
+                    spreadRadius: 1,
+                    blurRadius: 8,
+                    offset: Offset.zero,
+                  ),
+                ],
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(30),
+                  bottomRight: Radius.circular(30),
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Title : ${model.title}',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Text(
+                      'Data : ${model.date!.substring(0, 10)}',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
           ),
         ],
       ),
